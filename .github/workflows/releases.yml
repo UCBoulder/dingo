@@ -27,7 +27,7 @@ jobs:
           cd ../
           zip dingo.zip dingo
           cd $home
-          git remote set-url origin https://$username:$gh_token@github.com/UCBoulder/dingo.git
+          git remote set-url origin https://$username:$GITHUB_TOKEN@github.com/UCBoulder/dingo.git
           git config --global user.email "$email"
           git config --global user.name "$username"
           git fetch
@@ -39,9 +39,9 @@ jobs:
           git checkout $current_sha
           touch release1.txt && echo '# CHANGELOG' > release.md
           git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s' $latest_sha..$current_sha --no-merges >> release.md
-          gh release create $next_version '/path/to/asset.zip#Dingo Built Theme' -F release.md
+          gh release create $next_version '/tmp/dingo.zip#Dingo Built Theme' -F release.md
         env:
           set_version: ${{ github.event.inputs.version }}
           username: ${{ secrets.GIT_USER }}
           email: ${{ secrets.GIT_EMAIL }}
-          gh_token: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
