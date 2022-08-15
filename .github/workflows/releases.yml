@@ -1,0 +1,31 @@
+name: (M) Create Release
+on:
+  push:
+    branches:
+      - 'main'
+permissions:
+  contents: write
+jobs:
+  release:
+    name: Tag code
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Create/push tag
+        run: |
+          git remote set-url origin https://$git_user:$gh_token@github.com/UCBoulder/dingo.git
+          git config --global user.email "$email"
+          git config --global user.name "$username"
+          git fetch origin
+          mkdir /tmp/dingo
+          cp -R * /tmp/dingo
+          pwd
+          cd /tmp/dingo
+          npm install
+        permissions:
+          contents: write
+        env:
+          set_version: ${{ github.event.inputs.version }}
+          username: ${{ secrets.GIT_USER }}
+          email: ${{ secrets.GIT_EMAIL }}
+          gh_token: ${{ secrets.GITHUB_TOKEN }}
