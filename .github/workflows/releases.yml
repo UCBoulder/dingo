@@ -19,10 +19,15 @@ jobs:
         run: |
           mkdir /tmp/dingo
           cp -R * /tmp/dingo
-          pwd
+          home=$(pwd)
           cd /tmp/dingo
           npm install
+          npm run build
+          rm -fR node_modules
+          cd ../
+          zip dingo.zip dingo
           ls
+          cd $home
         env:
           set_version: ${{ github.event.inputs.version }}
           username: ${{ secrets.GIT_USER }}
