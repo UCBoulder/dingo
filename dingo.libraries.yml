@@ -1,0 +1,75 @@
+global:
+  css:
+    theme:
+      dist/style.css: {}
+
+# IE 11 support for SVG use - disable if not needed.
+# See also components/01-atoms/images/icons/_icon.twig to remove attach_library.
+sprite:
+  js:
+    components/01-atoms/images/icons/svgxuse.min.js:
+      { attributes: { defer: true } }
+
+tabs:
+  js:
+    dist/js/02-molecules/tabs/tabs.js: {}
+  dependencies:
+    - core/drupal
+
+buttons:
+  js:
+    dist/js/01-atoms/buttons/buttons.js: {}
+  dependencies:
+    - core/jquery
+
+headings:
+  js:
+    dist/js/01-atoms/text/headings/headings.js: {}
+  dependencies:
+    - core/jquery
+
+links:
+  js:
+    dist/js/01-atoms/links/link/links.js: {}
+
+tables:
+  js:
+    dist/js/01-atoms/tables/tables.js: {}
+
+details:
+  js:
+    dist/js/01-atoms/details/details.js: {}
+  dependencies:
+    - core/jquery
+
+horizontal-scroll:
+  js:
+    dist/js/00-base/base/horizontal-flex.js: {}
+  dependencies:
+    - core/jquery
+
+tutorial:
+  js:
+    dist/js/02-molecules/tutorial/tutorial.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.cookie
+
+page:
+  js:
+    dist/js/04-templates/page.js: {}
+  dependencies:
+    - core/drupal
+
+ie:
+  js:
+    components/04-templates/_ie.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
+
+fonts:
+  css:
+    theme:
+      '//fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap': { type: external, minified: true }
+      '//fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap': { type: external, minified: true }

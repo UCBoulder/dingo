@@ -1,0 +1,15 @@
+svg.service_health {
+  margin-bottom: -5px;
+  height: 20px;
+}
+ circle {
+   .sa-0 & {
+     fill: $green;
+   }
+   .sa-1 & {
+     fill: orange;
+   }
+   .sa-2 & {
+     fill: $red;
+   }
+}

@@ -1,0 +1,114 @@
+.footer {
+  display: grid;
+  display: -ms-grid;
+  -ms-grid-columns: 10px 1fr 10px;
+  -ms-grid-rows: minmax(10px, auto);
+  grid-gap: 10px;
+  grid-template-columns: 10px 1fr 10px;
+  grid-auto-rows: minmax(10px, auto);
+  background-color: $black;
+  color: $white;
+  padding: $space 0;
+  line-height: 1.2em;
+  @include medium {
+    -ms-grid-columns: 10px 1fr 1fr 10px;
+    grid-template-columns: 10px 1fr 1fr 10px;
+    grid-template-areas:
+    ". . . ."
+    "ft ft ft ft"
+    ". . . .";
+  }
+  @include xl {
+    -ms-grid-columns: 1fr 612px 612px 1fr;
+    grid-template-columns: 1fr 612px 612px 1fr;
+  }
+  svg {
+    fill: $white;
+    max-width: 400px;
+    max-height: 80px;
+  }
+  .footer__menu {
+    grid-column: 2;
+    grid-row: 1;
+    -ms-grid-column: 3;
+    -ms-grid-row: 1;
+    min-height: 35px;
+    @include medium {
+      grid-column: 3;
+    }
+  }
+  .to-top-inner {
+    .scrolled & {
+      position: fixed;
+      padding: 5px;
+      background: $black;
+      bottom: 3px;
+      right: 2vw;
+      @include xl {
+        right: 8.6vw;
+      }
+    }
+    .footer_start & {
+      position: relative;
+      right: 0;
+      margin-left: calc( 100% - 30px );
+    }
+  }
+  .to-top {
+    &::after {
+      @include arrow('8');
+    }
+  }
+}
+
+
+[id="block-itservicecenterhoursfooter"] {
+  grid-column: 2;
+  grid-row: 2;
+  -ms-grid-column: 2;
+  -ms-grid-row: 2;
+  ul {
+    padding: 0;
+    margin: 0;
+    li {
+      float: left;
+      padding: 0 5px 0 0;
+      margin: 0;
+      list-style: none;
+      &:not(:first-child) {
+        margin: 0 0 0 15px;
+        list-style: disc;
+        color: #fff;
+      }
+    }
+  }
+  p {
+    margin: 0 0 3px 0;
+  }
+}
+
+[id="block-cuboulderfootertext"] {
+  grid-column: 2;
+  grid-row: 3;
+  -ms-grid-column: 2;
+  -ms-grid-row: 3;
+  @include medium {
+    float: right;
+    margin-left: calc(100% - 340px);
+    grid-column: 3;
+    grid-row: 2;
+    -ms-grid-column: 3;
+    -ms-grid-row: 2;
+    @include ie {
+      margin-left: 18.6vw;
+    }
+  }
+}
+
+.footer__menu {
+  @include large {
+    flex: 1 1 100%;
+    margin-left: auto;
+    text-align: right;
+  }
+}

@@ -1,0 +1,5 @@
+button_content: 'Internal Function'
+button_url: '#'
+button_target: ''
+button_extra:
+ - 'button-internal'

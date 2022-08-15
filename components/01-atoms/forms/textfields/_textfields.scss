@@ -1,0 +1,62 @@
+.form-required {
+  &::after {
+    content: "*";
+    color: $red;
+  }
+}
+
+.form-item {
+  color: clr(text);
+  margin-bottom: 1em;
+  max-width: 32em;
+
+  @include clearfix;
+}
+
+[id="listjs_search"] {
+  position: relative;
+  input {
+    margin-right: 10px;
+  }
+}
+
+.form-item__label {
+  display: block;
+  font-weight: 600;
+
+  @include xs {
+    display: block;
+    margin-right: 2%;
+    padding: 0.6em 0;
+  }
+}
+
+.form-item__textfield {
+  border: 1px solid clr(text);
+  padding: 0.6em;
+  max-width: 100%;
+  border-radius: 5px;
+
+  &:focus {
+    border-color: clr(highlight);
+  }
+
+  &::placeholder {
+    color: clr(highlight);
+  }
+}
+
+.form-item__description {
+  margin-top: 0.3em;
+}
+
+.form-fieldset {
+  border: none;
+  margin-bottom: 2em;
+  padding: 0;
+
+  .form-item {
+    margin-left: 1em;
+    max-width: 31em;
+  }
+}

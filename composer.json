@@ -1,0 +1,9 @@
+{
+  "name": "oit/dingo",
+  "type": "drupal-custom-theme",
+  "description": "Dingo is a custom theme built from Emulsify.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0-or-later",
+  "homepage": "https://github.com/UCBoulder/oit",
+  "minimum-stability": "dev"
+}

@@ -1,0 +1,119 @@
+.request-header {
+  background: top left url('../images/request_bg.jpg') no-repeat;
+  background-size: cover;
+  min-height: 320px;
+  margin-bottom: 25px;
+  h1 {
+    text-align: center;
+    width: inherit;
+    padding-top: 20px;
+  }
+  form {
+    padding-bottom: 20px;
+    input.form-search {
+      width: 70%;
+      margin-left: 11vw;
+    }
+  }
+
+  .flex-one-third {
+    flex-basis: 720px;
+    @include medium {
+      flex-basis: 240px;
+    }
+  }
+
+  .text-long {
+    background: rgba(0,0,0, 0.7);
+    width: 85vw;
+    margin-left: 11vw;
+    padding: 15px;
+    color: $white;
+
+    @include small {
+      width: 90vw;
+    }
+
+    @include medium {
+      width: 20vw;
+    }
+
+    @include large {
+      width: 260px;
+      width: clamp(260px, 20vw, 340px);
+      margin-left: inherit;
+    }
+
+    a {
+      font-size: 1.5em;
+      font-weight: bold;
+      display: block;
+      color: $white;
+      border-bottom: 1px solid $white;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+    }
+  }
+  $request-top-space: 3vw;
+  $request-top-space-medium: 25px;
+  .report .text-long {
+    margin-left: $request-top-space;
+    @include medium {
+      margin-left: $request-top-space-medium;
+    }
+  }
+  .request .text-long {
+    margin: 0 $request-top-space;
+    @include medium {
+      margin: 0 $request-top-space-medium;
+    }
+  }
+  .view .text-long {
+    margin-left: $request-top-space;
+    @include medium {
+      margin-left: $request-top-space-medium;
+    }
+  }
+}
+
+.request-webform-lists {
+  h3 {
+    min-height: 75px;
+    font-size: 2em;
+    line-height: 1.3em;
+    padding-right: 65px;
+    position: relative;
+    svg {
+      position: absolute;
+      right: 0;
+      bottom: 3px;
+    }
+  }
+  span.truncate {
+    display: block;
+  }
+  ul {
+    border-top: 1px solid $gray-lightest;
+    border-bottom: 1px solid $gray-lightest;
+    min-height: 250px;
+    padding: 10px 0;
+  }
+  &.flex {
+    display: block;
+    width: 90vw;
+    margin: 0;
+    @include medium {
+      display: flex;
+      width: inherit;
+      margin: 0 -60px;
+    }
+  }
+  .flex-one-third {
+    width: 100%;
+    padding: 0;
+    @include medium {
+      width: 33%;
+      padding: 0 60px;
+    }
+  }
+}

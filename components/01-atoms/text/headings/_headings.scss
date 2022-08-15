@@ -1,0 +1,233 @@
+/*
+ * Generic header styles:
+ * All arguments are optional. If not defined, the defaults below will be used
+*/
+
+$color-heading: $gray-darker;
+
+@mixin heading-xl(
+  $font-family: $font-heading,
+  $font-size: 2rem,
+  $line-height: 1.4,
+  $color: $gray,
+  $color-link: inherit,
+  $color-link-hover: inherit,
+  $font-weight: 700,
+  $margin: 0 0 0.5em
+) {
+  color: $color;
+  font-family: $font-family;
+  font-weight: $font-weight;
+  font-style: normal;
+  font-size: $font-size;
+  line-height: $line-height;
+  margin: $margin;
+  padding-bottom: 7px;
+  width: auto;
+  position: relative;
+  text-align: center;
+
+  .page-node-type-news &{
+    text-align: left;
+  }
+  &__link {
+    color: $color-link;
+
+    &:hover {
+      color: $color-link-hover;
+    }
+  }
+  &::after {
+    @include after-bg(-26px, 0, $near-white);
+    @include ie {
+      top: -10px;
+    }
+  }
+  .page-node-type-news &::after {
+    display: none;
+  }
+}
+
+@mixin heading-large(
+  $font-family: $font-heading,
+  $font-size: 1.6rem,
+  $line-height: 1.4,
+  $color: $color-heading,
+  $color-link: inherit,
+  $color-link-hover: inherit,
+  $font-weight: 700,
+  $margin: 0 0 0.5em
+) {
+  color: $color;
+  font-family: $font-family;
+  font-weight: $font-weight;
+  font-style: normal;
+  font-size: $font-size;
+  line-height: $line-height;
+  margin: $margin;
+  width: auto;
+
+  &__link {
+    color: $color-link;
+
+    &:hover {
+      color: $color-link-hover;
+    }
+  }
+}
+
+@mixin heading-medium(
+  $font-family: $font-heading,
+  $font-size: 1.4rem,
+  $line-height: 2,
+  $color: $color-heading,
+  $color-link: inherit,
+  $color-link-hover: inherit,
+  $font-weight: 700,
+  $margin: 0 0 0.5em
+) {
+  color: $color;
+  font-family: $font-family;
+  font-weight: $font-weight;
+  font-style: normal;
+  font-size: $font-size;
+  line-height: $line-height;
+  margin: $margin;
+  width: auto;
+
+  &__link {
+    color: $color-link;
+
+    &:hover {
+      color: $color-link-hover;
+    }
+  }
+}
+
+@mixin heading-small(
+  $font-family: $font-heading,
+  $font-size: 1.2rem,
+  $line-height: 1.6,
+  $color: $color-heading,
+  $color-link: inherit,
+  $color-link-hover: inherit,
+  $font-weight: 600,
+  $margin: 0 0 0.5em
+) {
+  color: $color;
+  font-family: $font-family;
+  font-weight: $font-weight;
+  font-style: normal;
+  font-size: $font-size;
+  line-height: $line-height;
+  margin: $margin;
+  width: auto;
+
+  &__link {
+    color: $color-link;
+
+    &:hover {
+      color: $color-link-hover;
+    }
+  }
+}
+
+@mixin heading-xs(
+  $font-family: $font-heading,
+  $font-size: 1.1rem,
+  $line-height: 2,
+  $color: $color-heading,
+  $color-link: inherit,
+  $color-link-hover: inherit,
+  $font-weight: 600,
+  $margin: 0 0 0.5em
+) {
+  color: $color;
+  font-family: $font-family;
+  font-weight: $font-weight;
+  font-style: normal;
+  font-size: $font-size;
+  line-height: $line-height;
+  margin: $margin;
+  width: auto;
+
+  &__link {
+    color: $color-link;
+
+    &:hover {
+      color: $color-link-hover;
+    }
+  }
+}
+
+.h1 {
+  @include heading-xl;
+  [id="block-dingo-page-title"] & {
+    min-height: 80px;
+  }
+}
+
+.h2 {
+  @include heading-large;
+
+  border-bottom: 1px solid $gray-lightest;
+  span {
+    width: max-content;
+    border-bottom: 4px solid $gray-light;
+  }
+  &[id] {
+    scroll-margin-top: 75px;
+  }
+}
+
+.h3 {
+  @include heading-medium;
+}
+
+.h4 {
+  @include heading-small;
+}
+
+.h5,
+.h6 {
+  @include heading-xs;
+}
+
+/* TODO: BEM selectors should be applied to wysiwyg-created content */
+
+.text-long {
+  h1 {
+    @extend .h1;
+  }
+
+  h2 {
+    @extend .h2;
+  }
+
+  h3 {
+    @extend .h3;
+  }
+
+  h4 {
+    @extend .h4;
+  }
+
+  h5 {
+    @extend .h5;
+  }
+
+  h6 {
+    @extend .h6;
+  }
+}
+
+h2 {
+  @extend .h2;
+  .heading-underline & {
+    min-height: 44px;
+    width: 100%;
+    border-bottom: 1px solid $gray-lighter;
+    margin-bottom: 20px;
+    padding-bottom: .2em;
+  }
+}

@@ -1,0 +1,103 @@
+.user-menu {
+  @include list-reset;
+
+  position: relative;
+  li {
+    margin: 0 5px;
+  }
+  button {
+    background: none;
+    border: 0;
+    color: $white;
+    font-weight: bold;
+    font-size: 1em;
+    &.active::after {
+      transform: rotate(180deg);
+      margin-top: -1px;
+      background-size: 10px 20px;
+      background-position: 0 0;
+      width: 15px;
+      height: 10px;
+    }
+    &::after {
+      @include arrow();
+
+      background-size: 10px 20px;
+      width: 15px;
+      height: 10px;
+    }
+  }
+  a {
+    color: $white;
+    font-weight: bold;
+    font-size: 1em;
+    text-decoration: none;
+    &[data-drupal-link-system-path="user/login"]:hover,
+    .user-logged-in &:hover{
+      color: $gray-lightest;
+    }
+    .js &[data-drupal-link-system-path="user/login"] {
+      padding-right: 10px;
+      &.active::after {
+        transform: rotate(180deg);
+        margin-top: -1px;
+        background-size: 10px 20px;
+        background-position: 0 0;
+        width: 15px;
+        height: 10px;
+      }
+      &::after {
+        @include arrow();
+
+        background-size: 10px 20px;
+        width: 15px;
+        height: 10px;
+      }
+    }
+  }
+  ul {
+    display: none;
+    position: absolute;
+    top: 43px;
+    right: 0;
+    background: $white;
+    min-width: 225px;
+    padding: 5px;
+    z-index: 10;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px $gray-light;
+    li {
+      padding: 5px 0;
+    }
+    li:not(:last-child) {
+      border-bottom: 1px solid $gray-light;
+    }
+    a {
+      font-weight: 700;
+      color: $gray;
+      text-transform: uppercase;
+      text-decoration: none;
+      &::after {
+        @include arrow-right();
+
+        filter: brightness(0);
+        background-size: 10px 13px;
+        margin-left: 0;
+        transition: all 300ms;
+        @include reduced-motion {
+          transition: none;
+        }
+      }
+      &:hover::after {
+        margin-left: 10px;
+      }
+      svg.ext path {
+        stroke: $gray-darker;
+      }
+    }
+  }
+}
+.expand-sub {
+  display: none;
+}

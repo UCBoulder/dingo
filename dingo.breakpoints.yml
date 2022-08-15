@@ -1,0 +1,19 @@
+# Breakpoints - change based on site need
+dingo.xsmall:
+  label: extra-small
+  mediaQuery: 'all and (min-width: 21.8em)'
+dingo.small:
+  label: small
+  mediaQuery: 'all and (min-width: 25em)'
+dingo.small-med:
+  label: small-med
+  mediaQuery: 'all and (min-width: 26em)'
+dingo.small-large:
+  label: small-large
+  mediaQuery: 'all and (min-width: 41em)'
+dingo.medium:
+  label: medium
+  mediaQuery: 'all and (min-width: 48em)'
+dingo.large:
+  label: large
+  mediaQuery: 'all and (min-width: 61.25em)'

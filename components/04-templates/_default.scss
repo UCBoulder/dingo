@@ -1,0 +1,354 @@
+/*
+ * General Layout
+*/
+
+$sidebar-width: 33%;
+$gutter: $space;
+$main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
+@mixin section-gray($gray-shade: $near-white) {
+  position: relative;
+  padding: 5px 0;
+  &::after {
+    @include after-bg(-5px, -5px, $gray-shade);
+  }
+}
+@mixin updatebox($gray-shade: $near-white) {
+  background-color: $gray-shade;
+  padding: 10px;
+  margin: 10px;
+}
+.mm-menu {
+  z-index: 1;
+}
+.mm-page {
+  z-index: 1;
+}
+
+// Allows the gray overflow to span the browser width.
+.layout-container {
+  overflow-x: hidden;
+}
+
+.section-gray {
+  @include section-gray;
+}
+
+.section-gray-darker {
+  @include section-gray($gray-darker);
+
+  color: $white;
+}
+
+.updatebox {
+  @include updatebox;
+}
+
+.ui-widget.ui-widget-content {
+  // Only way to overwrite this is !important
+  //  Shame 🔔🔔 Shame 🔔🔔 Shame 🔔🔔 Shame 🔔🔔
+  width: 80% !important;
+  left: 10% !important;
+}
+
+[id="block-pageoverviewblock"] {
+  margin-bottom: 40px;
+  margin-top: -25px;
+  padding-bottom: 18px;
+  .page-node-type-tutorial & {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .software-extra {
+    margin-bottom: -25px;
+    color: #666;
+    font-weight: 600;
+    .flex-one-third div {
+      width: max-content;
+    }
+    @include medium {
+      .m-auto {
+        margin: auto;
+      }
+      .ml-auto {
+        margin-left: auto;
+      }
+    }
+  }
+}
+
+[id="block-pageoverviewblock"],
+[id="block-tutorialoslayoutblock"] {
+  position: relative;
+  .flex-one-half {
+    flex-basis: 250px;
+    margin: 0;
+  }
+  &::after {
+    @include after-bg(-26px, 0, $near-white);
+  }
+  .page-node-type-news &::after {
+    display: none;
+  }
+}
+
+/*
+ * Layout Using CSS Grid (NO IE11 support)
+ * Remove Flexbox code above and uncomment this section to use CSS Grid.
+*/
+
+.main {
+  @include wrapper;
+
+  display: grid;
+  display: -ms-grid;
+  grid-gap: $gutter;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns:repeat( 16, 1fr );
+  margin-top: 10px;
+  margin-bottom: 4em;
+}
+
+.node {
+  footer {
+    margin-bottom: 5px;
+  }
+}
+
+.main-sidebar {
+  z-index: 0;
+  transition: margin-top .25s;
+  grid-area: sidebar;
+  margin-bottom: $space-double;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 16;
+  grid-column: 1 / 17;
+  -ms-grid-row: 3;
+  grid-row: 3;
+  // todo: Not sure where this is showing up from. Fix later maybe.
+  nav .toggle-expand {
+    display: none;
+  }
+  nav .main-nav {
+    display: block;
+  }
+  @include large {
+    -ms-grid-column: 14;
+    -ms-grid-column-span: 3;
+    grid-column: 14 / 17;
+    -ms-grid-row: 2;
+    grid-row: 2;
+  }
+  header {
+    margin-bottom: 2em;
+    .page-node-type-news & {
+      margin-bottom: 0;
+    }
+  }
+  .row-wrapper > div {
+    padding: 10px 0;
+
+    &:not(:first-child) {
+      border-top: 1px solid $gray-lightest;
+    }
+  }
+  > div > div {
+    background: $white;
+    border: 1px solid $gray-lightest;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 25px;
+  }
+  [id="block-sympanewssubscription-2"] {
+    border: none;
+    padding: 0;
+    border-radius: 0;
+    a {
+      display: block;
+    }
+  }
+  footer {
+    border-top: 1px solid $gray-lightest;
+    padding: 10px 0;
+  }
+}
+
+.main-content {
+  min-height: 46vh;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 16;
+  grid-column: 1 / 17;
+  -ms-grid-row: 2;
+  grid-row: 2;
+  @include large {
+    -ms-grid-column: 4;
+    -ms-grid-column-span: 9;
+    grid-column: 4 / 14;
+    -ms-grid-row: 2;
+    grid-row: 2;
+  }
+  .page-node-type-page &,
+  .page-node-type-tutorial & {
+    .flex {
+      margin-top: 25px;
+    }
+  }
+  .phish-indicator {
+    margin-bottom: -12px;
+  }
+}
+
+.path-request-portal {
+  .main-content {
+    @include large {
+      -ms-grid-column: 1;
+      -ms-grid-column-span: 16;
+      grid-column: 1 / 17;
+      -ms-grid-row: 1;
+      grid-row: 1;
+    }
+  }
+}
+
+.path-frontpage {
+  .main {
+    display: block;
+  }
+  .main-content > div {
+    display: grid;
+    display: -ms-grid;
+    grid-gap: 10px 0;
+    //grid-template-columns: 1fr;
+    -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns:repeat( 16, minmax(20px, 1fr) );
+  }
+  [role="contentinfo"] {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 11;
+    grid-column: 1 / 17;
+    -ms-grid-row: 1;
+    grid-row: 1;
+  }
+  [id="block-views-block-news-block-3"] {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 16;
+    grid-column: 1 / 17;
+    -ms-grid-row: 2;
+    grid-row: 2;
+    @include large {
+      -ms-grid-column: 1 / 12;
+      -ms-grid-column-span: 11;
+      grid-column: 1 / 12;
+      -ms-grid-row: 2;
+      grid-row: 2;
+    }
+  }
+  [id="block-views-block-news-block-1"] {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 16;
+    grid-column: 1 / 17;
+    -ms-grid-row: 3;
+    grid-row: 3;
+    @include large {
+      -ms-grid-column: 1 / 12;
+      -ms-grid-column-span: 11;
+      grid-column: 1 / 12;
+      -ms-grid-row: 3;
+      grid-row: 3;
+    }
+  }
+  [id="block-frontactionlinks"] {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 16;
+    grid-column: 1 / 17;
+    -ms-grid-row: 4;
+    grid-row: 4;
+    @include large {
+      -ms-grid-column: 13;
+      -ms-grid-column-span: 4;
+      grid-column: 13 / 17;
+      -ms-grid-row: 2;
+      -ms-grid-row-span: 2;
+      grid-row: 2 / 4;
+    }
+  }
+  [id="block-servicehealthfrontpageblock"] {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 16;
+    grid-column: 1 / 17;
+    -ms-grid-row: 6;
+    grid-row: 6;
+    border-bottom: 1px solid $gray-lighter;
+    @include small {
+      -ms-grid-column: 1;
+      -ms-grid-column-span: 7;
+      grid-column: 1 / 8;
+    }
+    @include large {
+      -ms-grid-column: 1;
+      -ms-grid-column-span: 4;
+      grid-column: 1 / 5;
+      -ms-grid-row: 5;
+      grid-row: 5;
+    }
+  }
+  [id="block-fronttoppages"] {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 16;
+    grid-column: 1 / 17;
+    -ms-grid-row: 8;
+    grid-row: 8;
+    border-bottom: 1px solid $gray-lighter;
+    @include small {
+      -ms-grid-column: 10;
+      -ms-grid-column-span: 6;
+      grid-column: 10 / 17;
+      -ms-grid-row: 6;
+      grid-row: 6;
+    }
+    @include large {
+      -ms-grid-column: 13;
+      -ms-grid-column-span: 4;
+      grid-column: 13 / 17;
+      -ms-grid-row: 5;
+      grid-row: 5;
+    }
+    header {
+      margin-bottom: 0;
+    }
+  }
+  [id="block-fronttoptutorials"] {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 16;
+    grid-column: 1 / 17;
+    -ms-grid-row: 7;
+    grid-row: 7;
+    border-bottom: 1px solid $gray-lighter;
+    @include large {
+      -ms-grid-column: 7;
+      -ms-grid-column-span: 4;
+      grid-column: 7 / 11;
+      -ms-grid-row: 5;
+      grid-row: 5;
+    }
+  }
+  [id="block-frontservices"] {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 16;
+    grid-column: 1 / 17;
+    -ms-grid-row: 5;
+    grid-row: 5;
+    @include large {
+      -ms-grid-row: 4;
+      grid-row: 4;
+    }
+  }
+}
+
+.text-long {
+  .section-gray {
+    @extend .section-gray;
+  }
+  .section-gray-darker {
+    @extend .section-gray-darker;
+  }
+}

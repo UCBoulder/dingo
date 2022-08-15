@@ -1,0 +1,113 @@
+// Flexbox classes
+@mixin flex {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: flex-start;
+  margin:0 -8px;
+}
+
+.flex, .flex-row {
+  @include flex;
+}
+
+@mixin flex-item(
+  $width: 33%,
+  $flexbasis: 240px
+) {
+  width: $width;
+  flex-basis: $flexbasis;
+  flex-grow: 1;
+  flex-shrink: 0;
+  padding:0 8px;
+  margin: 0 0 16px 0;
+}
+
+$flex-height: 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000;
+@each $current-flex-height in $flex-height {
+  .flex-height-#{$current-flex-height} {
+    min-height: #{$current-flex-height}px;
+                      }
+}
+
+.flex-full {
+  @include flex-item(100%, 100%);
+}
+
+.flex-one-third {
+  @include flex-item();
+}
+
+.flex-one-half {
+  @include flex-item(50%, 350px);
+}
+
+.flex-one-quarter {
+  @include flex-item(25%, 180px);
+}
+
+.flex-three-quarters {
+  @include flex-item(75%, 575px);
+
+  flex-shrink: 1;
+}
+
+.main {
+  scroll-snap-align: start;
+}
+.flex-horizontal-wrap {
+  position: relative;
+  .controls {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: #333; // $gray-darker
+    width: 61px;
+    border: none;
+  }
+  .control-left {
+    padding-left: 8px;
+  }
+  .control-right {
+    right: 0;
+    padding-right: 70px
+  }
+  button {
+    background: #333; // $gray-darker
+    border: 0;
+    cursor: pointer;
+    width: 61px;
+    height: 100%;
+    span {
+      background-size: 50px 30px;
+      height: 50px;
+      width: 50px;
+    }
+  }
+}
+.flex-horizontal {
+  display: flex;
+  flex-wrap: nowrap;
+  background: #333; // $gray-darker
+  overflow: auto;
+  margin: 0 auto;
+  width: calc( 100% - 122px );
+  white-space: nowrap;
+  padding: 25px 0;
+  scroll-snap-type: x mandatory;
+  > .flex-horizontal-item {
+    scroll-snap-align: start;
+  }
+  &-item {
+    width: 150px;
+    flex: 0 0 auto;
+    margin: 0 15px 0 0;
+  }
+  @include medium {
+    &-item {
+      width: 250px;
+      margin: 0 25px 0 0;
+    }
+  }
+}

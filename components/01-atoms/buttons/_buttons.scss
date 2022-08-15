@@ -1,0 +1,275 @@
+// Sass map to define colors. Each set should have a "Dark" variation when required.
+// e.g. `default` and `default-dark`. Or `purple` and `purple-dark`.
+$button-colors: (
+  primary: (
+    text: clr(text-inverse),
+    bg: clr(primary),
+    text-hover: clr(text-inverse),
+    bg-hover: $blue-active,
+  ),
+  primary-dark: (
+    text: clr(text),
+    bg: clr(primary),
+    text-hover: clr(text),
+    bg-hover: clr(highlight-high),
+  ),
+  secondary: (
+    text: clr(text-inverse),
+    bg: clr(secondary),
+    text-hover: clr(secondary),
+    bg-hover: clr(highlight),
+  ),
+  secondary-dark: (
+    text: clr(text),
+    bg: clr(secondary),
+    text-hover: clr(text),
+    bg-hover: clr(highlight-high),
+  ),
+);
+
+// Mixin to define colors for one or more schemes.
+// Simply pass the color scheme to the mixin to get the colors defined in the map.
+// e.g. @include buttonColors(default) will get all of the colors defined in the "default" section.
+@mixin buttonColors(
+  $scheme,
+  $pallate: map-get($button-colors, $scheme),
+  $map: $button-colors
+) {
+  color: map-get($pallate, text);
+  background-color: map-get($pallate, bg);
+
+  &:visited {
+    color: map-get($pallate, text);
+  }
+
+  &:hover {
+    color: map-get($pallate, text-hover);
+    background-color: map-get($pallate, bg-hover);
+  }
+}
+
+// The button-base mixin contains styles that apply to all buttons
+// regardless of color or size.
+@mixin button-base {
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+// Button color variations
+// Note how we include dark mode options for each
+@mixin button-color-primary {
+  @include buttonColors(primary);
+
+  @media (prefers-color-scheme: dark) {
+    @include buttonColors(primary-dark);
+  }
+}
+
+@mixin button-color-secondary {
+  @include buttonColors(secondary);
+
+  @media (prefers-color-scheme: dark) {
+    @include buttonColors(secondary-dark);
+  }
+}
+
+// Button size variations
+@mixin button-medium {
+  line-height: 1.4;
+  padding: $space-one-half $space;
+}
+
+@mixin button-large {
+  line-height: 2;
+  padding: $space $space-double;
+}
+
+@mixin button(
+  $bg: $blue,
+  $color: $white,
+  $hoverBg: $blue-active,
+  $hoverColor: $white
+) {
+  background-color: $bg;
+  border: 1px solid $color;
+  border-radius: 5px;
+  color: $color;
+  cursor: pointer;
+  line-height: 1.4;
+  padding: $space-one-half $space;
+  display: inline-block;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 2px 0;
+
+  &:visited {
+    color: $color;
+  }
+
+  &:hover {
+    color: $hoverColor;
+    background-color: $hoverBg;
+    border: 1px solid $hoverColor;
+    text-decoration: none;
+  }
+}
+
+@mixin button-int {
+  padding: 10px 10px 10px 20px;
+  &::after {
+    @include arrow-right();
+
+    transition: all 300ms;
+    margin: 1px 15px 0 5px;
+  }
+  &:hover::after {
+    @include arrow-right();
+
+    margin: 1px 0 0 20px;
+  }
+}
+
+@mixin button-ext-icon {
+  position: relative;
+  padding: 10px 20px 10px 40px;
+  svg {
+    position: absolute;
+    left: 20px;
+  }
+  &::after,
+  &:hover::after {
+    display: none;
+  }
+}
+
+.button {
+  @include button;
+
+  &.int {
+    @include button-int;
+  }
+
+  &.ext {
+    @include button($white, $blue, $blue-active, $white);
+
+    position: relative;
+    svg {
+      display: none;
+    }
+    &[target="_blank"] {
+      padding-right: 40px;
+      svg {
+        display: inherit;
+        position: absolute;
+        right: 3px;
+        top: 1px;
+        height: 25px;
+        width: 25px;
+      }
+      &:hover svg path {
+        stroke: $white;
+        fill: $white;
+      }
+      svg path {
+        stroke: $blue;
+        fill: $blue;
+      }
+    }
+  }
+
+  &.icon {
+    @include button($blue, $white, $blue-active, $white);
+    @include button-ext-icon;
+  }
+  &-internal {
+    @include button($white,$green, $green, $white);
+  }
+  &-internal--active {
+    display: block;
+    position: relative;
+    @include button($green, $white, $white, $green);
+
+    padding-right: 50px;
+    &:hover {
+      border-radius: 5px;
+      svg {
+        stroke: $green;
+      }
+    }
+    svg {
+      width: 45px;
+      stroke: $white;
+      stroke-width: 3px;
+    }
+    span {
+      position: absolute;
+      top: -5px;
+      right: 0;
+    }
+  }
+
+  li.red &.icon {
+    @include button($red, $white, $red-active, $white);
+  }
+  span:nth-child(2) {
+    background: $red-active;
+    position: absolute;
+    padding-top: 5px;
+    border-radius: 5px;
+    font-size: 1.3em;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+  }
+
+}
+.mm-menu a.button  {
+  @include button($white, $gray-darker, $blue-active, $white);
+
+  margin-top: 0;
+}
+
+.social-icon {
+  padding: 10px;
+  background: $white;
+  margin-right: 2vw;
+  border-radius: 5px;
+  img {
+    height: 20px;
+    min-width: 25px;
+  }
+  &:hover {
+    background: $blue-active;
+  }
+}
+
+input[value='Search'] {
+  height: 15px;
+  width: 20px;
+  border: none;
+  background: none;
+  background: top left url(../images/search.svg) no-repeat;
+  text-indent: -9999px;
+  &:hover {
+    background-color: inherit;
+    opacity: 0.6;
+  }
+  @include small {
+    height: 20px;
+    width: 24px;
+  }
+  [id='search-request'] & {
+    background: 5px 5px url(../images/search_white.svg) no-repeat $blue-active;
+    background-size: 26px 25px;
+    height: 34px;
+    width: 34px;
+  }
+}

@@ -1,0 +1,22 @@
+[id="block-views-block-news-block-1"] {
+  margin-top: 5px;
+}
+.news-item {
+  a {
+    border-right: 1px solid $gray-lighter;
+    display: block;
+    margin: 0 2px;
+  }
+  &:last-child a {
+    border: none;
+  }
+  span {
+    display: block;
+    width: 100%;
+  }
+  &--title {
+    font-weight: 600;
+    line-height: 1.2em;
+    min-height: 45px;
+  }
+}

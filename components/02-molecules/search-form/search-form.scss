@@ -1,0 +1,10 @@
+[id="search-block-form"] {
+  position: relative;
+  .form-item {
+    display: none;
+    margin-bottom: 0;
+    .show-search & {
+      display: block;
+    }
+  }
+}

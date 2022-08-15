@@ -1,0 +1,129 @@
+/* Create a mixin for paragraph styles that can be implemented
+ * in components with other classnames.
+*/
+@mixin paragraph($margin: 0 0 1em) {
+  margin: $margin;
+}
+
+@mixin truncate {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  list-style: none;
+  vertical-align: top;
+}
+
+@mixin body-copy {
+  font-family: $font-body;
+  font-size: 0.9rem;
+  line-height: 1.6em;
+}
+
+@mixin reference {
+  font-size: .8em;
+}
+
+@mixin mr-roboto-c {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+body {
+  color: $gray-dark;
+
+  @include body-copy;
+}
+
+.main {
+  font-size: .95rem;
+}
+
+.paragraph {
+  @include paragraph;
+}
+
+.mr-roboto-c {
+  @include mr-roboto-c;
+}
+
+.blockquote {
+  font-style: italic;
+  border-left: solid 3px clr(accent);
+  margin-left: 1em;
+  padding-left: 1em;
+}
+
+.hr {
+  border-style: solid;
+  border-width: 1px 0 0;
+  color: currentColor;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.reference {
+  @include reference;
+}
+
+.text- {
+  &center {
+    text-align: center;
+  }
+  &right {
+    text-align: right;
+  }
+  &lowercase {
+    text-transform: lowercase;
+  }
+  &uppercase {
+    text-transform: uppercase;
+  }
+  &capitalize {
+    text-transform: capitalize;
+  }
+}
+
+ .truncate {
+  @include truncate;
+
+/*
+ *  @include medium {
+ *    &:hover {
+ *      display: initial;
+ *      overflow: visible;
+ *      background: $white;
+ *      &::before {
+ *        top: -1px;
+ *      }
+ *    }
+ *  }
+ */
+ }
+
+/* TODO: BEM selectors should be applied to wysiwyg-created content */
+
+.text-long {
+  p {
+    @extend .paragraph;
+  }
+
+  .text-center {
+    @extend .text-center;
+  }
+
+  .text-right {
+    @extend .text-right;
+  }
+
+  blockquote {
+    @extend .blockquote;
+  }
+
+  hr {
+    @extend .hr;
+  }
+  .reference {
+    @extend .reference;
+  }
+}

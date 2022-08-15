@@ -1,0 +1,31 @@
+.flex-horizontal {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.flex-horizontal-item {
+  a {
+    display: block;
+    color: $white;
+    text-align: center;
+    text-decoration: none;
+  }
+  span {
+    display: block;
+    white-space: normal;
+  }
+  &--title {
+    @include mr-roboto-c;
+
+    font-size: 1.2em;
+    font-weight: 600;
+    line-height: 1.1em;
+    margin-bottom: .8em;
+  }
+  &--desc {
+    color: $white;
+    line-height: 1em;
+  }
+}

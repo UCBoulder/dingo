@@ -1,0 +1,10 @@
+code {
+  display: block;
+  font-family: monospace;
+  color: $red;
+  background-color: $gray-lightest;
+  border: 1px solid $gray;
+  border-left: 5px solid $gray-dark;
+  width: 100%;
+  padding: 10px;
+}

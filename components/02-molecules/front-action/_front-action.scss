@@ -1,0 +1,20 @@
+.frontactionlinks-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  li {
+    margin: 0 0 10px 0;
+  }
+  a {
+    width: 100%;
+    @include medium {
+      width: calc(100% - 60px);
+    }
+  }
+}
+
+[id="block-frontactionlinks"] {
+  border-bottom: 1px solid $gray-lighter;
+  overflow: hidden;
+}
+

@@ -1,0 +1,5 @@
+button_svg: 'facebook'
+button_url: 'https://facebook.com'
+button_target: ''
+button_extra:
+ - 'social-icon'

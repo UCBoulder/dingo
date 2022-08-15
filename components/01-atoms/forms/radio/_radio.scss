@@ -1,0 +1,8 @@
+.form-item--radios,
+.form-item--radio__item {
+  @include list-reset;
+}
+
+.form-radio + label.form-item__label {
+  display: inline;
+}

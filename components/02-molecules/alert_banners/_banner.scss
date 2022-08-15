@@ -1,0 +1,36 @@
+.banner {
+  font-weight: bold;
+  text-align: center;
+  padding: 5px 0;
+  svg.svg-icon {
+    margin-bottom: -5px;
+  }
+  a {
+    color: $gold;
+  }
+  &--persistent {
+    background: $gray-dark;
+    color: $near-white;
+  }
+  &--specific {
+    background: $blue;
+    color: $near-white;
+  }
+  &--oit-cu-rave-alerts {
+    position: relative;
+    background: $red;
+    text-align: center;
+    font-weight: bold;
+    color: $white;
+    svg.ext {
+      fill: #fff;
+      path {
+        stroke: #fff;
+      }
+    }
+    a {
+      color: #fff;
+      text-decoration: underline;
+    }
+  }
+}

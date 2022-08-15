@@ -1,0 +1,8 @@
+.form-item--checkboxes,
+.form-item--checkbox__item {
+  @include list-reset;
+}
+
+.form-checkbox + label {
+  display: inline;
+}

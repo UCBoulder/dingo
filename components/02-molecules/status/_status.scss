@@ -1,0 +1,30 @@
+.status__list {
+  @include list-reset;
+
+  margin-bottom: $space;
+}
+
+.status {
+  display: block;
+  margin-bottom: $space-one-half;
+  padding: $space-one-half;
+  text-align: center;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  max-width: 70vw;
+
+  &--warning {
+    color: clr(accent-high);
+    border: 5px solid clr(warning);
+  }
+
+  &--error {
+    color: clr(accent-high);
+    border: 5px solid clr(error);
+  }
+
+  &--status {
+    color: clr(accent-high);
+    border: 5px solid clr(message);
+  }
+}

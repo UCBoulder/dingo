@@ -1,0 +1,15 @@
+{% set footer__base_class = 'footer' %}
+
+<footer {{ bem(footer__base_class, '', '', 'dark') }}>
+  {% block footer_content %}
+    {{ content }}
+  {% endblock %}
+  <div {{ bem('menu', [], footer__base_class) }}>
+    <div class='to-top-inner'>
+      <a href="#top" class="to-top" title="back to the top">Top</a>
+    </div>
+    {% block footer__menu %}
+      {% include "@molecules/menus/inline/inline-menu.twig" %}
+    {% endblock %}
+  </div>
+</footer>

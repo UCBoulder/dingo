@@ -1,0 +1,61 @@
+html {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: clr(background);
+  color: clr(text);
+
+  @include body-copy;
+}
+
+.margin-center {
+  margin: 0 auto;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+.main {
+  @include wrapper;
+
+  display: block; /* Fix for IE weirdness */
+
+  .pull-left {
+    @include xl {
+      margin-left: -100px;
+    }
+  }
+
+  .pull-right {
+    @include xl {
+      margin-right: -100px;
+    }
+  }
+
+  .pull-both {
+    @include xl {
+      max-width: inherit;
+      width: calc(100% + 200px);
+      margin-left: -100px;
+      margin-right: -100px;
+    }
+  }
+}
+
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  word-wrap: normal;
+}
+
+.inline {
+  display: inline;
+}
+

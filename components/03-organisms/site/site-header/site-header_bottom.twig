@@ -1,0 +1,15 @@
+{% set header__base_class = 'header_bottom' %}
+{# If `directory` is defined, set the path relative for Drupal.
+ # Otherwise, set the path relative to the Component Library. #}
+{% set header__logo_src = directory ? '/' ~ directory ~ '/images/cuboulder.svg' : 'images/cuboulder.svg' %}
+
+<div {{ bem(header__base_class) }}>
+  <div {{ bem('inner', [], header__base_class) }}>
+    <div {{ bem('primary', [], header__base_class) }}>
+      <div class="header_start"></div>
+      {% block header__content %}
+        {% include "@molecules/menus/main-menu/main-menu.twig" %}
+      {% endblock %}
+    </div>
+  </div>
+</div>

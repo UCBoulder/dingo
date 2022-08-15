@@ -1,0 +1,18 @@
+.wakeupamericagetsmart {
+  #block-cassowary-system-main {
+    min-height: 1200px;
+    background: url('../images/nywhat.jpg') 0 130px no-repeat;
+  }
+}
+
+// Search box on search page.
+.main-content #search-form  {
+  .form-item {
+    display: inline-block;
+    width: min-content;
+  }
+  [value="Search"] {
+    background-position-y: 10px;
+    height: 30px;
+  }
+}

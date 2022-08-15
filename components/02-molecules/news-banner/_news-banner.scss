@@ -1,0 +1,79 @@
+[id='block-views-block-news-block-3'] {
+  position: relative;
+}
+.news-banner {
+  position: relative;
+  max-width: max-content;
+  &--banner {
+    display: block;
+    border-bottom: 1px solid $gray-lighter;
+    @include medium {
+      position: absolute;
+      background-image: linear-gradient(180deg, rgba(255,255,255, 0), rgba(0, 0, 0, 0.8) 70%);
+      min-height: 180px;
+      padding: 80px 25px 0 25px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+    &-all{
+      width: max-content;
+      margin-top: 10px;
+      @include medium {
+        position: absolute;
+        right: 10px;
+        bottom: 2px;
+        margin-top: 0;
+      }
+      a {
+        text-transform: uppercase;
+        color: $gray-dark;
+        @include medium {
+          color: $white;
+        }
+        &::after {
+          @include arrow-right();
+
+          background-size: 10px 15px;
+          width: 14px;
+        }
+      }
+    }
+    &-created ,
+    &-title {
+      display: block;
+      font-size: 2.2em;
+      line-height: 1.4em;
+      color: $gray-dark;
+      width: 100%;
+      @include medium {
+        color: $white;
+      }
+    }
+    &-created {
+      font-size: .9em;
+      @include medium {
+        font-weight: 100;
+        color: $gray-lightest;
+      }
+    }
+  }
+  a:hover span {
+    color: $gray-dark;
+    @include medium {
+      color: $gray-lightest;
+    }
+  }
+}
+
+[id="block-views-block-news-block-1"] .row-wrapper {
+  @include flex;
+
+  border-bottom: 1px solid $gray-lighter;
+}
+
+.news-item {
+  @include flex-item(25%, 180px);
+
+  margin: 22px 0;
+}

@@ -1,0 +1,9 @@
+presentational: TRUE
+attributes: ''
+message_list:
+  oit-cu-rave-alerts:
+    message: 'CU ALERT'
+  persistent:
+    message: 'Wookie Spotted'
+  specific:
+    message: 'Missing cat'

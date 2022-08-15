@@ -1,0 +1,128 @@
+/*
+ * General Mixins (put specific ones in component files where applicable)
+*/
+
+/* Mixin - Clearfix.
+ * Adds clearfix based on http://bourbon.io/docs/#clearfix
+ * use example =   @include cleafix
+*/
+
+@mixin body-copy {
+  font-family: $font-body;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+@mixin clearfix {
+  &::after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+
+$outer-container-break: $small;
+
+/// Mixin - Wrapper
+/// Outer container mixin for large screens
+@mixin wrapper(
+  $container-max-width: $max-width,
+  $outer-container-break: $small,
+  $v-margin: 0,
+  $v-padding: 0,
+  $h-padding: $space,
+  $h-padding-large: $h-padding
+) {
+  max-width: #{$container-max-width};
+  width: 100%;
+  margin: #{$v-margin} auto;
+  padding: #{$v-padding} #{$h-padding};
+
+  @include breakpoint($outer-container-break) {
+    padding: #{$v-padding} #{$h-padding-large};
+  }
+
+  @include breakpoint($container-max-width) {
+    padding-left: calc(
+      #{$h-padding-large} + calc(-50vw + calc(#{$container-max-width} / 2))
+    );
+    padding-right: calc(
+      #{$h-padding-large} + calc(-50vw + calc(#{$container-max-width} / 2))
+    );
+  }
+}
+
+// Mixin - Standard Margin
+@mixin margin {
+  margin-bottom: 1em;
+}
+
+@mixin no-bottom {
+  margin-bottom: 0;
+}
+
+@mixin list-reset {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+// Mixin - adds arrow to element via ::after
+@mixin arrow(
+  $size: 15
+) {
+  $bgsize: $size + 5;
+  $bgsize: $bgsize + px;
+  $size: $size + px;
+
+  content: "";
+  background: top right url("../images/tojibbers.svg") no-repeat;
+  background-size: $size $bgsize;
+  width: $size;
+  height: $size;
+  margin: 4px 0 0 0;
+  display: inline-flex;
+  @include ie {
+    display: none;
+  }
+}
+
+@mixin arrow-right(
+  $size: 15
+) {
+  transform: rotate(90deg);
+  margin: 1px 0 0 5px;
+  @include arrow();
+}
+
+@mixin arrow-left(
+  $size: 15
+) {
+  transform: rotate(-90deg);
+  margin: 1px 0 0 5px;
+  @include arrow();
+}
+
+.arrow-right {
+  @include arrow-right();
+}
+
+.arrow-left {
+  @include arrow-left();
+}
+
+// Mixin - adds background to element that stretches far right/left via :after.
+@mixin after-bg(
+  $top: 0,
+  $bottom: 0,
+  $background: #f2f2f2, // $near-white
+) {
+  content: '';
+  position: absolute;
+  background-color: $background;
+  z-index: -1;
+  top: $top;
+  left: -99999em;
+  right: -99999em;
+  bottom: $bottom;
+}

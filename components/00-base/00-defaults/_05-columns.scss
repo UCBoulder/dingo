@@ -1,0 +1,9 @@
+$cols: 2, 3, 4, 5, 6;
+
+@each $col in $cols {
+  @include large {
+    .text-cols--#{$col} {
+      column-count: #{$col};
+    }
+  }
+}

@@ -1,0 +1,35 @@
+@mixin image {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+img,
+picture {
+  @include image;
+}
+
+.main img[data-entity-type="file"] {
+  margin-bottom: 10px;
+}
+
+.align-left {
+  margin-right: 10px;
+}
+
+.align-right {
+  margin-left: 10px;
+}
+
+figure {
+  margin: 0; /* override normalize */
+}
+
+.figure__caption {
+  font-style: italic;
+}
+
+.culogo {
+  max-height: 20px;
+  max-width: 222px;
+}
