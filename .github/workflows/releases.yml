@@ -22,8 +22,6 @@ jobs:
           pwd
           cd /tmp/dingo
           npm install
-        permissions:
-          contents: write
         env:
           set_version: ${{ github.event.inputs.version }}
           username: ${{ secrets.GIT_USER }}
