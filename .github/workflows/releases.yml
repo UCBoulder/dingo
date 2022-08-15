@@ -37,8 +37,8 @@ jobs:
           next_version=$(echo ${current_version} | awk -F. -v OFS=. '{$NF += 1 ; print}')
           git checkout $latest_sha
           git checkout $current_sha
-          touch release1.txt && touch release.md && echo '# CHANGELOG' > release.md
-          git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s' $latest_sha..main --no-merges >> release.md
+          touch release1.txt && echo '# CHANGELOG' > release.md
+          git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s' $latest_sha..$current_sha --no-merges >> release.md
           gh release create $next_version '/path/to/asset.zip#Dingo Built Theme' -F release.md
         env:
           set_version: ${{ github.event.inputs.version }}
