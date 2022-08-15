@@ -12,6 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Create/push tag
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14.x'
         run: |
           git remote set-url origin https://$git_user:$gh_token@github.com/UCBoulder/dingo.git
           git config --global user.email "$email"
