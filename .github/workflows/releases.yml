@@ -1,4 +1,4 @@
-name: (M) Create Release
+name: (A) Create Release
 on:
   push:
     branches:
@@ -15,7 +15,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '14.x'
-      - name: Create/push tag
+      - name: Create/push release
         run: |
           mkdir /tmp/dingo
           cp -R * /tmp/dingo
@@ -25,7 +25,7 @@ jobs:
           npm run build
           rm -fR node_modules
           cd ../
-          zip dingo.zip dingo
+          zip -r dingo.zip dingo
           cd $home
           git remote set-url origin https://$username:$GITHUB_TOKEN@github.com/UCBoulder/dingo.git
           git config --global user.email "$email"
