@@ -27,7 +27,7 @@ jobs:
           cd ../
           zip dingo.zip dingo
           cd $home
-          git remote set-url origin https://$username:$gh_token@github.com/UCBoulder/oit_dingo.git
+          git remote set-url origin https://$username:$gh_token@github.com/UCBoulder/dingo.git
           git config --global user.email "$email"
           git config --global user.name "$username"
           git fetch
