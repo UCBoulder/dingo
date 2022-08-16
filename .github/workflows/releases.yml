@@ -17,9 +17,10 @@ jobs:
           node-version: '14.x'
       - name: Create/push release
         run: |
+          home=$(pwd)
           mkdir /tmp/dingo
           cp -R * /tmp/dingo
-          home=$(pwd)
+          cp -R .* /tmp/dingo
           cd /tmp/dingo
           npm install
           npm run build
@@ -40,6 +41,8 @@ jobs:
           touch release1.txt && echo '# CHANGELOG' > release.md
           git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s' $latest_sha..$current_sha --no-merges >> release.md
           gh release create $next_version '/tmp/dingo.zip#Dingo Built Theme' -F release.md
+          rm -fR /tmp/dingo
+          rm -f /tmp/dingo.zip
         env:
           set_version: ${{ github.event.inputs.version }}
           username: ${{ secrets.GIT_USER }}
