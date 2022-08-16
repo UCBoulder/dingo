@@ -20,7 +20,12 @@ jobs:
           home=$(pwd)
           mkdir /tmp/dingo
           cp -R * /tmp/dingo
-          cp -R .* /tmp/dingo
+          cp -R .browserslistrc /tmp/dingo
+          cp -R .editorconfig /tmp/dingo
+          cp -R .eslintignore /tmp/dingo
+          cp -R .eslintrc.yml /tmp/dingo
+          cp -R .npmrc /tmp/dingo
+          cp -R .storybook /tmp/dingo
           cd /tmp/dingo
           npm install
           npm run build
