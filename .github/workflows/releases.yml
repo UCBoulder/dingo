@@ -20,16 +20,16 @@ jobs:
           home=$(pwd)
           mkdir /tmp/dingo
           cp -R * /tmp/dingo
-          cp -R .browserslistrc /tmp/dingo
-          cp -R .editorconfig /tmp/dingo
-          cp -R .eslintignore /tmp/dingo
-          cp -R .eslintrc.yml /tmp/dingo
-          cp -R .npmrc /tmp/dingo
-          cp -R .storybook /tmp/dingo
           cd /tmp/dingo
           npm install
           npm run build
           rm -fR node_modules
+          rm -fR package.json
+          rm -fR package-lock.json
+          rm -fR README.md
+          rm -fR screenshot.png
+          rm -fR yarn.lock
+          rm -fR babel.config.js
           cd ../
           zip -r dingo.zip dingo
           cd $home
