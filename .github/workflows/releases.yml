@@ -43,11 +43,11 @@ jobs:
           rm -fR yarn.lock
           rm -fR babel.config.js
           cd ../
-          zip -r dingo-$next_version.zip dingo
+          zip -r "dingo-$next_version.zip" dingo
           cd $home
           touch release1.txt && echo '# CHANGELOG' > release.md
           git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s' $latest_sha..$current_sha --no-merges >> release.md
-          gh release create $next_version '/tmp/dingo-$next_version.zip#Dingo Built Theme' -F release.md
+          gh release create $next_version "/tmp/dingo-$next_version.zip#Dingo Built Theme" -F release.md
           rm -fR /tmp/dingo
           rm -f /tmp/dingo.zip
         env:
