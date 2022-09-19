@@ -83,9 +83,6 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
     flex-basis: 250px;
     margin: 0;
   }
-  &::after {
-    @include after-bg(-26px, 0, $near-white);
-  }
   .page-node-type-news &::after {
     display: none;
   }
