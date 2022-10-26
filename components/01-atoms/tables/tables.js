@@ -11,7 +11,11 @@ function addMobileTableData(int) {
       if (j === thCollection.length) {
         continue;
       }
-      var headerLabel = thCollection[j].innerHTML;
+      if (thCollection[j].hasAttribute('data-header-text')) {
+        var headerLabel = thCollection[j].getAttribute('data-header-text');
+      } else {
+        var headerLabel = thCollection[j].innerHTML;
+      }
       tdCollection[j].setAttribute('data-label', headerLabel);
     }
   }
