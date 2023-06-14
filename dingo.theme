@@ -12,7 +12,7 @@ use Drupal\Component\Utility\Xss;
  */
 function dingo_preprocess_html(&$variables) {
   // Add icon to title per environment.
-  $getEnv = new \Drupal\oit\Plugin\EnvironmentIcon();
+  $getEnv = \Drupal::service('oit.environment.icon');
   $stack = \Drupal::request();
   $keys = $stack->get('keys');
   $env = getenv('AH_SITE_ENVIRONMENT');
