@@ -23,7 +23,7 @@
     top: 0;
     right: 0;
     bottom: 0;
-    z-index: 0;
+    z-index: 2000;
     background-color: $blue-active;
     background-size: 15px 14px;
     background-position: 0 0;
@@ -39,6 +39,33 @@
   }
 }
 
+.select2-container {
+  .select2-selection {
+    border: none !important;
+    background-color: inherit;
+    margin-top: -3px;
+  }
+
+  .select2-dropdown {
+    margin-top: -5px;
+  }
+
+  .select2-selection__rendered {
+    padding-left: 3px !important;
+  }
+}
+
+body .select2-container--open {
+  border: none;
+  .select2-dropdown--above {
+    border-bottom: 1px solid clr(text);
+  }
+  .select2-dropdown--below {
+    border-top: 1px solid clr(text);
+  }
+}
+
+.select2-container,
 .form-item__select {
   border: 1px solid clr(text);
   height: 37px; // set height required for discrepancy between .form-item__dropdown border and the select :focus border
