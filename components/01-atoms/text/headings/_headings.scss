@@ -37,6 +37,15 @@ $color-heading: $gray-darker;
       color: $color-link-hover;
     }
   }
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: -24px;
+    left: -99999em;
+    right: -99999em;
+    bottom: 0;
+  }
   &::after {
     @include after-bg(-26px, 0, $near-white);
     @include ie {
