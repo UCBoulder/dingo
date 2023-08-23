@@ -1,3 +1,4 @@
+fieldset.required legend,
 .form-required {
   &::after {
     content: "*";
@@ -18,6 +19,10 @@
   input {
     margin-right: 10px;
   }
+}
+
+.form-item__description{
+    white-space: normal;
 }
 
 .form-item__label {
