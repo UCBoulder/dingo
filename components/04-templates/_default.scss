@@ -292,7 +292,7 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
       grid-row: 5;
     }
   }
-  [id="block-fronttoppages"] {
+  [id="block-dingo-views-block-top-pages-blocks-block-1"] {
     -ms-grid-column: 1;
     -ms-grid-column-span: 16;
     grid-column: 1 / 17;
@@ -317,7 +317,7 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
       margin-bottom: 0;
     }
   }
-  [id="block-fronttoptutorials"] {
+  [id="block-dingo-views-block-top-pages-blocks-block-2"] {
     -ms-grid-column: 1;
     -ms-grid-column-span: 16;
     grid-column: 1 / 17;
@@ -330,6 +330,9 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
       grid-column: 7 / 11;
       -ms-grid-row: 5;
       grid-row: 5;
+    }
+    header {
+      margin-bottom: 0;
     }
   }
   [id="block-frontservices"] {
