@@ -156,6 +156,13 @@ $button-colors: (
     @include button-int;
   }
 
+  &.active {
+    @include button($blue-active, $white, $blue-active, $white);
+    &:hover {
+      cursor: default;
+    }
+  }
+
   &.ext {
     @include button($white, $blue, $blue-active, $white);
 
