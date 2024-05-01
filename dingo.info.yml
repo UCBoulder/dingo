@@ -36,6 +36,8 @@ regions:
   header_top: Header Top
   header_bottom: Header Bottom
   banner: Banner to show message
+  title_section: Title Section
+  breadcrumb: Breadcrumbs
   content: Content # the content region is required
   sidebar: 'Sidebar'
   footer: Footer

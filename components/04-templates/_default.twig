@@ -19,6 +19,16 @@
   {% endblock %}
   <div {{ bem(main_base_class, main_modifiers, main_blockname) }}>
     <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+    {% if page.title_section %}
+      <div class="title-section">
+        {% block page_title_section %}{% endblock %}
+      </div>
+    {% endif %}
+    {% if page.breadcrumb %}
+      <div class="breadcrumb-section">
+        {% block page_breadcrumb %}{% endblock %}
+      </div>
+    {% endif %}
     {% if sidebar %}
       <aside class="main-sidebar" role="complementary">
         {% block page_sidebar %}{% endblock %}

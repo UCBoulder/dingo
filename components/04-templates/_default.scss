@@ -115,6 +115,15 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
   }
 }
 
+.title-section {
+  grid-area: title;
+  grid-column: 1 / 17;
+  grid-row: 1;
+  & .h1:after {
+    top: -10px;
+  }
+}
+
 .main-sidebar {
   z-index: 0;
   transition: margin-top .25s;
@@ -137,7 +146,7 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
     -ms-grid-column-span: 3;
     grid-column: 14 / 17;
     -ms-grid-row: 2;
-    grid-row: 2;
+    grid-row: 3;
   }
   header {
     margin-bottom: 2em;
@@ -179,19 +188,27 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
   }
 }
 
+.breadcrumb-section {
+  -ms-grid-column: 4;
+  -ms-grid-column-span: 9;
+  grid-column: 4 / 14;
+  -ms-grid-row: 2;
+  grid-row: 2;
+}
+
 .main-content {
   min-height: 46vh;
   -ms-grid-column: 1;
   -ms-grid-column-span: 16;
   grid-column: 1 / 17;
   -ms-grid-row: 2;
-  grid-row: 2;
+  grid-row: 3;
   @include large {
     -ms-grid-column: 4;
     -ms-grid-column-span: 9;
     grid-column: 4 / 14;
     -ms-grid-row: 2;
-    grid-row: 2;
+    grid-row: 3;
   }
   .page-node-type-page &,
   .page-node-type-tutorial & {

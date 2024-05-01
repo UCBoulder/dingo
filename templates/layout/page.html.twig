@@ -62,10 +62,17 @@
     {% if page.banner %}
       {{ page.banner }}
     {% endif %}
-    {{ page.breadcrumb }}
     {{ page.highlighted }}
     {{ page.help }}
     {{ messages }}
+  {% endblock %}
+
+  {% block page_title_section %}
+    {{ page.title_section }}
+  {% endblock %}
+
+  {% block page_breadcrumb %}
+    {{ page.breadcrumb }}
   {% endblock %}
 
   {% block page_sidebar %}
