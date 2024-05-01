@@ -161,6 +161,9 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
     &.border-none {
       border: none;
     }
+    &.background-none {
+      background: none;
+    }
   }
   [id="block-sympanewssubscription-2"] {
     border: none;
