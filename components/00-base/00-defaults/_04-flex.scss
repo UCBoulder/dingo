@@ -111,3 +111,11 @@ $flex-height: 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000;
     }
   }
 }
+
+.flex-start {
+  justify-content: flex-start;
+  & li:not(:first-child) {
+    padding-left: 0;
+    margin-left: 1em;
+  }
+}
