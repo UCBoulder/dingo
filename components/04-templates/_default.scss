@@ -122,6 +122,9 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
   & .h1:after {
     top: -10px;
   }
+  @include large {
+  grid-column: 4 / 14;
+  }
 }
 
 .main-sidebar {
@@ -132,8 +135,8 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
   -ms-grid-column: 1;
   -ms-grid-column-span: 16;
   grid-column: 1 / 17;
-  -ms-grid-row: 3;
-  grid-row: 3;
+  -ms-grid-row: 4;
+  grid-row: 4;
   // todo: Not sure where this is showing up from. Fix later maybe.
   nav .toggle-expand {
     display: none;
@@ -145,7 +148,7 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
     -ms-grid-column: 14;
     -ms-grid-column-span: 3;
     grid-column: 14 / 17;
-    -ms-grid-row: 2;
+    -ms-grid-row: 3;
     grid-row: 3;
   }
   header {
