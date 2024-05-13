@@ -54,6 +54,11 @@
         height: 10px;
       }
     }
+    .domain-oda &[data-drupal-link-system-path="user/login"] {
+      &::after {
+        display: none;
+      }
+    }
   }
   ul {
     display: none;
