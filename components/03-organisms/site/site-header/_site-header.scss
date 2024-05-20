@@ -300,6 +300,7 @@ header {
     right: 40px;
     top: -8px;
     max-width: inherit;
+    width: 150px;
     @include small {
       top: -6px;
     }
