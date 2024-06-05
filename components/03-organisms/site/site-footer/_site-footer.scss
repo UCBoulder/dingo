@@ -62,11 +62,27 @@
 }
 
 
+[id="block-pup-odafootersiteinfo"],
 [id="block-itservicecenterhoursfooter"] {
   grid-column: 2;
   grid-row: 2;
   -ms-grid-column: 2;
   -ms-grid-row: 2;
+  h2 {
+    font-size: 1em;
+    border: 0;
+    a {
+      color: $gold;
+      text-decoration: none;
+      &:hover {
+        color: $white;
+        text-decoration: underline;
+      }
+      &::after {
+        content: none;
+      }
+    }
+  }
   ul {
     padding: 0;
     margin: 0;
@@ -87,14 +103,15 @@
   }
 }
 
-[id="block-cuboulderfootertext"] {
+[id="block-pup-cuboulderfootertextupdatedtoallowsvgunfiltered"],
+[id="block-dingo-cuboulderfootertextupdatedtoallowsvgunfiltered"] {
   grid-column: 2;
   grid-row: 3;
   -ms-grid-column: 2;
   -ms-grid-row: 3;
   @include medium {
     float: right;
-    margin-left: calc(100% - 340px);
+    margin-left: calc(100% - 360px);
     grid-column: 3;
     grid-row: 2;
     -ms-grid-column: 3;
