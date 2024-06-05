@@ -103,15 +103,15 @@
   }
 }
 
-[id="block-pup-cuboulderfootertext"],
-[id="block-cuboulderfootertext"] {
+[id="block-pup-cuboulderfootertextupdatedtoallowsvgunfiltered"],
+[id="block-dingo-cuboulderfootertextupdatedtoallowsvgunfiltered"] {
   grid-column: 2;
   grid-row: 3;
   -ms-grid-column: 2;
   -ms-grid-row: 3;
   @include medium {
     float: right;
-    margin-left: calc(100% - 340px);
+    margin-left: calc(100% - 360px);
     grid-column: 3;
     grid-row: 2;
     -ms-grid-column: 3;
