@@ -10,21 +10,35 @@ function removeClickToSearch() {
 clickToSearch();
 searchIcon.onclick = clickMagSearch;
 function clickMagSearch() {
+    showhideSearch();
+}
+
+// Execute a function when the user presses a key on the keyboard
+domBody.addEventListener("keypress", function(event) {
+  // If the user presses the "/" key on the keyboard
+  if (event.key === "/") {
+    if (!searchBox.offsetParent) {
+      showhideSearch();
+      setTimeout("document.getElementById('edit-keys').value = ''", 1);
+    }
+  }
+});
+
+var ignoreClickOnMeElement = document.getElementById('search-block-form');
+
+
+function showhideSearch() {
   if (searchBox.offsetParent) {
-    console.log('remove');
     domBody.classList.remove('show-search');
     clickToSearch();
     return true;
   } else {
-    console.log('show');
     domBody.classList.add('show-search');
     searchBox.focus();
     removeClickToSearch();
     return false;
   }
 }
-
-var ignoreClickOnMeElement = document.getElementById('search-block-form');
 
 document.addEventListener('click', function(event) {
   var isClickInsideElement = ignoreClickOnMeElement.contains(event.target);
