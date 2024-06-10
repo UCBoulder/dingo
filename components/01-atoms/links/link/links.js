@@ -10,24 +10,6 @@ function removeClickToSearch() {
 clickToSearch();
 searchIcon.onclick = clickMagSearch;
 function clickMagSearch() {
-    showhideSearch();
-}
-
-// Execute a function when the user presses a key on the keyboard
-domBody.addEventListener("keypress", function(event) {
-  // If the user presses the "/" key on the keyboard
-  if (event.key === "/") {
-    if (!searchBox.offsetParent) {
-      showhideSearch();
-      setTimeout("document.getElementById('edit-keys').value = ''", 1);
-    }
-  }
-});
-
-var ignoreClickOnMeElement = document.getElementById('search-block-form');
-
-
-function showhideSearch() {
   if (searchBox.offsetParent) {
     domBody.classList.remove('show-search');
     clickToSearch();
@@ -39,6 +21,21 @@ function showhideSearch() {
     return false;
   }
 }
+
+// Execute a function when the user presses a key on the keyboard
+domBody.addEventListener("keypress", function(event) {
+  // If the user presses the "/" key on the keyboard
+  if (!searchBox.offsetParent) {
+    if (event.key === "/") {
+      setTimeout("document.getElementById('edit-keys').value = ''", 1);
+      domBody.classList.add('show-search');
+      searchBox.focus();
+      removeClickToSearch();
+    }
+  }
+});
+
+var ignoreClickOnMeElement = document.getElementById('search-block-form');
 
 document.addEventListener('click', function(event) {
   var isClickInsideElement = ignoreClickOnMeElement.contains(event.target);
