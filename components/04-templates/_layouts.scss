@@ -1,0 +1,35 @@
+.layout--twocol-section {
+  .layout__region--first > .block {
+    margin-right: 1em;
+  }
+  .layout__region--second > .block {
+    margin-left: 1em;
+  }
+}
+
+.layout--threecol-section {
+  .layout__region--first > .block {
+    margin-right: 1em;
+  }
+  .layout__region--second > .block {
+    margin: 0 1em;
+  }
+  .layout__region--third > .block {
+    margin-left: 1em;
+  }
+}
+
+.layout--fourcol-section {
+  .layout__region--first > .block {
+    margin-right: 1em;
+  }
+  .layout__region--second > .block {
+    margin: 0 1em;
+  }
+  .layout__region--third > .block {
+    margin: 0 1em;
+  }
+  .layout__region--fourth > .block {
+    margin-left: 1em;
+  }
+}
