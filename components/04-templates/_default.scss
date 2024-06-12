@@ -222,6 +222,9 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
   .phish-indicator {
     margin-bottom: -12px;
   }
+  &:has(.layout--twocol-section, .layout--threecol-section, .layout--fourcol-section, .dingo-layout) {
+    grid-column: 1 / 17;
+  }
 }
 
 .path-request-portal {
