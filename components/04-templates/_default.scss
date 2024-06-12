@@ -227,6 +227,20 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
   }
 }
 
+.layout-wrap:has(.layout--twocol-section, .layout--threecol-section, .layout--fourcol-section, .dingo-layout) {
+  .layout--onecol {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-gap: 1rem;
+    .layout__region {
+      grid-column: 1 / 17;
+      @include large {
+        grid-column: 4 / 14;
+      }
+    }
+  }
+}
+
 .path-request-portal {
   .main-content {
     @include large {
