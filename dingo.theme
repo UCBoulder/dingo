@@ -116,7 +116,11 @@ function dingo_preprocess_facets_result_item(&$variables) {
   $facet = $variables['facet'];
   $term_id = $variables['raw_value'];
 
-  $term_description = \Drupal\taxonomy\Entity\Term::load($term_id)->get('description')->value;
+  if($facet->getFieldIdentifier() == 'field_oda_population') {
+    if ( \Drupal\taxonomy\Entity\Term::load($term_id) ) {
+      $term_description = \Drupal\taxonomy\Entity\Term::load($term_id)->get('description')->value;
+    }
+  }
 
   if(isset($term_description)) {
     $variables['term_description'] = rtrim(strip_tags($term_description));
