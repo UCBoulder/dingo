@@ -21,10 +21,6 @@ fieldset.required legend,
   }
 }
 
-.form-item__description{
-    white-space: normal;
-}
-
 .form-item__label {
   display: block;
   font-weight: 600;
@@ -53,6 +49,7 @@ fieldset.required legend,
 
 .form-item__description {
   margin-top: 0.3em;
+  white-space: normal;
 }
 
 .form-fieldset {

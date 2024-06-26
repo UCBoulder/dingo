@@ -19,8 +19,6 @@ export default {
   title: 'Atoms/Button',
 };
 
-export const react = () => <Button>React Button</Button>;
-
 export const buttonFunction = () => (
   <div dangerouslySetInnerHTML={{ __html: button(buttonInternalData) }} />
 );
