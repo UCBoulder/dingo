@@ -116,7 +116,16 @@ function dingo_preprocess_facets_result_item(&$variables) {
   $facet = $variables['facet'];
   $term_id = $variables['raw_value'];
 
-  if($facet->getFieldIdentifier() == 'field_oda_population') {
+  if($facet->getFieldIdentifier() == 'field_oda_population' ||
+      $facet->getFieldIdentifier() == 'field_oda_level_of_detail' ||
+      $facet->getFieldIdentifier() == 'field_oda_cu_stats' ||
+      $facet->getFieldIdentifier() == 'field_oda_course_data' ||
+      $facet->getFieldIdentifier() == 'field_oda_term' ||
+      $facet->getFieldIdentifier() == 'field_oda_type' ||
+      $facet->getFieldIdentifier() == 'field_oda_academic_terms_covered' ||
+      $facet->getFieldIdentifier() == 'field_oda_demographics' ||
+      $facet->getFieldIdentifier() == 'field_oda_peers_ext_org'
+    ) {
     if ( \Drupal\taxonomy\Entity\Term::load($term_id) ) {
       $term_description = \Drupal\taxonomy\Entity\Term::load($term_id)->get('description')->value;
     }
