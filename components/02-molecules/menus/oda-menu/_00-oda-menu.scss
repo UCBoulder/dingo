@@ -1,4 +1,23 @@
 .domain-oda {
+
+  .oda_menu {
+    display: none;
+  }
+
+  @include medium {
+    [id="block-pup-menuanchorlink"] {
+      display: none;
+    }
+
+    [id="block-pup-searchform"], [id="block-searchform"] {
+      justify-self: end;
+      grid-column: 4;
+    }
+    .oda_menu {
+      display: grid;
+    }
+  }
+
   .oda_menu__inner {
     grid-column: 2 / 4;
 
