@@ -1,0 +1,12 @@
+{% set header__base_class = 'oda_menu' %}
+
+<div {{ bem(header__base_class) }}>
+  <div {{ bem('inner', [], header__base_class) }}>
+    <div {{ bem('primary', [], header__base_class) }}>
+      <div class="oda_menu_wrap"></div>
+      {% block header__content %}
+        {% include "@molecules/menus/main-menu/main-menu.twig" %}
+      {% endblock %}
+    </div>
+  </div>
+</div>

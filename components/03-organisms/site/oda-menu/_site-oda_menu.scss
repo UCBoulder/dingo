@@ -1,0 +1,11 @@
+.oda_menu {
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: 10px 1fr 10px;
+  @include xs {
+    grid-template-columns: 10px 1fr .1fr 120px 10px;
+  }
+  @include xl {
+    grid-template-columns: 1fr 500px 600px 124px 1fr;
+  }
+}
