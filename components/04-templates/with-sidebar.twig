@@ -1,6 +1,12 @@
 {% set sidebar = true %}
+{% set sidebar_left = true %}
 
 {% extends "@templates/_default.twig" %}
+  {% block page_sidebar_left %}
+    {% include "@templates/placeholder/place-holder.twig" with {
+      "place_holder": "Secondary left Content",
+    } %}
+  {% endblock %}
   {% block page_content %}
     {% include "@templates/placeholder/place-holder.twig" with {
       "place_holder": "Primary Content",

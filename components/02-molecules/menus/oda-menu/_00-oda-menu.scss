@@ -1,10 +1,11 @@
 .domain-oda {
 
-  .oda_menu {
+  .oda_menu,
+  .layout__region--right-sidebar nav {
     display: none;
   }
 
-  @include medium {
+  @include large {
     [id="block-pup-menuanchorlink"] {
       display: none;
     }
@@ -16,12 +17,16 @@
     .oda_menu {
       display: grid;
     }
+
+    .layout__region--right-sidebar nav {
+      display: block;
+    }
   }
 
   .oda_menu__inner {
-    grid-column: 2 / 4;
+    grid-column: 2 / 5;
 
-    ul.menu {
+    nav > ul {
       display: flex;
       list-style: none;
       padding: 0;
@@ -59,4 +64,65 @@
 
     }
   }
+
+  .layout__region--right-sidebar nav {
+    h2 {
+      font-family: "Roboto Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: normal;
+      text-align: center;
+      color: $gray-dark;
+      border-bottom: none;
+      :before {
+        content: '';
+        display: inline-block;
+        height: 20px;
+        width: 20px;
+        background-image: url('../images/icons/oda_secondary_menu.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-bottom: -2px;
+        margin-right: 10px;
+      }
+      span {
+        border-bottom: none;
+      }
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        a {
+          display: block;
+          position: relative;
+          font-family: "Roboto Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+          color: $blue;
+          text-decoration: none;
+          padding: 1em;
+          border-bottom: 1px solid $gray-lighter;
+          &:hover {
+            color: $blue-active;
+          }
+
+          &.is-active {
+            color: $blue-active;
+          }
+        }
+      }
+
+      li li a {
+        padding-left: 2em;
+      }
+      li li li a {
+        padding-left: 3em;
+      }
+      li li li li a {
+        padding-left: 4em;
+      }
+    }
+  }
+
+
 }

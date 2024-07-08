@@ -38,6 +38,7 @@ regions:
   banner: Banner to show message
   title_section: Title Section
   breadcrumb: Breadcrumbs
+  sidebar_left: 'Sidebar Left'
   content: Content # the content region is required
   sidebar: 'Sidebar'
   footer: Footer

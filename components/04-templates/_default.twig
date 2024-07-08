@@ -11,6 +11,11 @@
   {% set main_content_modifiers = main_content_modifiers|merge(['with-sidebar']) %}
 {% endif %}
 
+{% if sidebar_left %}
+  {% set main_modifiers = main_modifiers|merge(['with-sidebar']) %}
+  {% set main_content_modifiers = main_content_modifiers|merge(['with-sidebar']) %}
+{% endif %}
+
 <div {{ bem('layout-container', layout_modifiers) }}>
   {% block page_header %}
     {% include "@organisms/site/site-header/site-header.twig" %}
@@ -28,6 +33,11 @@
       <div class="breadcrumb-section">
         {% block page_breadcrumb %}{% endblock %}
       </div>
+    {% endif %}
+    {% if sidebar_left %}
+      <aside class="sidebar-left" role="complementary">
+        {% block page_sidebar_left %}{% endblock %}
+      </aside>
     {% endif %}
     {% if sidebar %}
       <aside class="main-sidebar" role="complementary">

@@ -9,7 +9,7 @@
  *   - attributes: HTML attributes for the menu item.
  *   - below: The menu item child items.
  *   - title: The menu link title.
- *   - url: The menu link url, instance of \Drupal\Core\Url
+ *   - url: The menu link URL, instance of \Drupal\Core\Url
  *   - localized_options: Menu link localized options.
  *   - is_expanded: TRUE if the link has visible children within the current
  *     menu tree.
@@ -18,32 +18,30 @@
  *   - in_active_trail: TRUE if the link is in the active trail.
  */
 #}
+{% import _self as menus %}
 
 {#
   We call a macro which calls itself to render the full tree.
-  @see http://twig.sensiolabs.org/doc/tags/macro.html
+  @see https://twig.symfony.com/doc/3.x/tags/macro.html
 #}
-{% macro menu_links(items, attributes, menu_level, menu_class, menu_modifiers, menu_blockname, item_base_class, item_modifiers, item_blockname, directory) %}
+{{ menus.menu_links(items, attributes, 0) }}
+
+{% macro menu_links(items, attributes, menu_level) %}
   {% import _self as menus %}
   {% if items %}
-
-    {# Set classes #}
-    {% set menu_class = menu_class|default('menu') %}
-    {% if not menu_modifiers %}
-      {% set menu_modifiers = [] %}
+    {% if menu_level == 0 %}
+      <ul{{ attributes }}>
+    {% else %}
+      <ul>
     {% endif %}
-    {% if menu_level > 0 %}
-      {% set menu_modifiers = menu_modifiers|merge(['sub', 'sub-' ~ menu_level]) %}
-    {% endif %}
-
-    {% include "@molecules/menus/_menu-list.twig" %}
+    {% for item in items %}
+      <li{{ item.attributes }}>
+        {{ link(item.title, item.url) }}
+        {% if item.below %}
+          {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+        {% endif %}
+      </li>
+    {% endfor %}
+    </ul>
   {% endif %}
 {% endmacro %}
-
-{% import _self as menus %}
-
-{{ menus.menu_links(items, attributes, 0, menu_class, menu_modifiers, menu_blockname, item_base_class, item_modifiers, item_blockname, directory) }}
-
-
-{% import _self as menus %}
-
