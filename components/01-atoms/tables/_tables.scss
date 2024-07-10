@@ -77,6 +77,15 @@ thead {
 
   tbody {
     display: block;
+    th {
+      display: block;
+    }
+    @include large {
+      th {
+        display: table-cell;
+      }
+    }
+
   }
 
   thead {
