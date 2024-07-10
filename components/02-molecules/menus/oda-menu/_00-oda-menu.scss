@@ -1,0 +1,128 @@
+.domain-oda {
+
+  .oda_menu,
+  .layout__region--right-sidebar nav {
+    display: none;
+  }
+
+  @include large {
+    [id="block-pup-menuanchorlink"] {
+      display: none;
+    }
+
+    [id="block-pup-searchform"], [id="block-searchform"] {
+      justify-self: end;
+      grid-column: 4;
+    }
+    .oda_menu {
+      display: grid;
+    }
+
+    .layout__region--right-sidebar nav {
+      display: block;
+    }
+  }
+
+  .oda_menu__inner {
+    grid-column: 2 / 5;
+
+    nav > ul {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border-top: 1px solid $gray-lighter;
+      border-bottom: 1px solid $gray-lighter;
+
+      li {
+        a {
+          display: block;
+          font-family: "Roboto Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+          color: $gray-darker;
+          text-decoration: none;
+          padding: .8em 1.2em;
+          border-top: 4px solid $white;
+          border-bottom: 4px solid $white;
+          &:hover {
+            border-bottom: 4px solid $gray-light;
+          }
+        }
+      }
+
+      li:first-child {
+        a {
+          height: 50px;
+          width: 20px;
+          background-image: url(../images/icons/home.svg);
+          font-size: 0;
+          background-repeat: no-repeat;
+          background-size: contain;
+          display: block;
+          background-position: center 13px;
+        }
+      }
+
+    }
+  }
+
+  .layout__region--right-sidebar nav {
+    h2 {
+      font-family: "Roboto Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: normal;
+      text-align: center;
+      color: $gray-dark;
+      border-bottom: none;
+      :before {
+        content: '';
+        display: inline-block;
+        height: 20px;
+        width: 20px;
+        background-image: url('../images/icons/oda_secondary_menu.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-bottom: -2px;
+        margin-right: 10px;
+      }
+      span {
+        border-bottom: none;
+      }
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        a {
+          display: block;
+          position: relative;
+          font-family: "Roboto Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+          color: $blue;
+          text-decoration: none;
+          padding: 1em;
+          border-bottom: 1px solid $gray-lighter;
+          &:hover {
+            color: $blue-active;
+          }
+
+          &.is-active {
+            color: $blue-active;
+          }
+        }
+      }
+
+      li li a {
+        padding-left: 2em;
+      }
+      li li li a {
+        padding-left: 3em;
+      }
+      li li li li a {
+        padding-left: 4em;
+      }
+    }
+  }
+
+
+}

@@ -1,0 +1,30 @@
+form[id='views-exposed-form-oda-data-page-1'] {
+  position: relative;
+
+  input[name='search_api_fulltext'] {
+    padding-right: 2.1em;
+  }
+
+  .form-actions {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+  }
+
+  input[type='submit'] {
+    height: 15px;
+    width: 20px;
+    border: none;
+    background: none;
+    background: top left url(../images/search.svg) no-repeat;
+    text-indent: -9999px;
+    &:hover {
+      background-color: inherit;
+      opacity: 0.6;
+    }
+    @include small {
+      height: 20px;
+      width: 24px;
+    }
+  }
+}

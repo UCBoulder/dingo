@@ -127,6 +127,26 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
   }
 }
 
+.sidebar-left {
+  z-index: 0;
+  transition: margin-top .25s;
+  grid-area: sidebar-left;
+  margin-bottom: $space-double;
+  grid-column: 1 / 17;
+  grid-row: 2;
+  // todo: Not sure where this is showing up from. Fix later maybe.
+  nav .toggle-expand {
+    display: none;
+  }
+  nav .main-nav {
+    display: block;
+  }
+  @include large {
+    grid-column: 1 / 4;
+    grid-row: 3;
+  }
+}
+
 .main-sidebar {
   z-index: 0;
   transition: margin-top .25s;
@@ -253,7 +273,7 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
   }
 }
 
-.path-frontpage {
+.path-frontpage:not(.domain-oda) {
   .main {
     display: block;
   }
@@ -397,5 +417,15 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
   }
   .section-gray-darker {
     @extend .section-gray-darker;
+  }
+}
+
+.page-node-329 {
+  .main {
+    display: block;
+
+    .layout--onecol {
+      display: block;
+    }
   }
 }
