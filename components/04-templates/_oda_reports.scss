@@ -167,7 +167,8 @@
     }
   }
 
-  [id='block-pup-odadataandreportsclearfilters'] {
+  [id='block-pup-odadataandreportsclearfilters'],
+  [id='block-pup-odadataandreportsfavorites'] {
     border-top: 1px solid $gray-light;
     border-bottom: 1px solid $gray-light;
     padding: .5rem 0;
@@ -177,6 +178,10 @@
       margin: 0;
       padding: 0;
     }
+  }
+
+  [id='block-pup-odadataandreportsfavorites'] {
+    border-bottom: none;
   }
 
   .block-facet--checkbox {
@@ -191,6 +196,7 @@
       border: 1px solid $gray-light;
       margin-bottom: 1rem;
       padding: 0 1rem;
+      min-height: 70px;
 
       button {
         color: $gray-darker;
