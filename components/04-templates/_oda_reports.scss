@@ -7,6 +7,7 @@
   left: 50%;
   right: 0;
   bottom: 0;
+  z-index: 1;
 }
 
 .path-reports {
@@ -94,7 +95,7 @@
       position: fixed;
       background: $white;
       padding: 1rem;
-      width: 50%;
+      width: 100%;
       margin: 0;
       padding: 0;
       top: 0;
@@ -115,6 +116,11 @@
         background: $white;
         padding-top: 1rem;
       }
+
+      @include medium {
+        width: 50%;
+      }
+
     }
 
     button.close-filter {
@@ -168,7 +174,8 @@
   }
 
   [id='block-pup-odadataandreportsclearfilters'],
-  [id='block-pup-odadataandreportsfavorites'] {
+  [id='block-pup-odadataandreportsfavorites'],
+  [id='block-pup-odadataandreportsexportlink'] {
     border-top: 1px solid $gray-light;
     border-bottom: 1px solid $gray-light;
     padding: .5rem 0;
@@ -180,7 +187,8 @@
     }
   }
 
-  [id='block-pup-odadataandreportsfavorites'] {
+  [id='block-pup-odadataandreportsfavorites'],
+  [id='block-pup-odadataandreportsexportlink'] {
     border-bottom: none;
   }
 
