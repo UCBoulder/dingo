@@ -429,3 +429,102 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
     }
   }
 }
+
+.domain-oda.path-frontpage {
+  .main,
+  .dingo-layout {
+    display: block;
+  }
+
+  .layout__region--content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+    grid-template-columns:repeat( 16, minmax(20px, 1fr) );
+
+    .block:first-child {
+      grid-column: 1 / 12;
+    }
+
+    .block:nth-child(2) {
+      grid-column: 13 / 17;
+      ul {
+        list-style: none;
+        padding: 0;
+        li {
+          border-bottom: 1px solid $gray-lightest;
+          margin-bottom: .35rem;
+          padding-bottom: .5rem;
+        }
+      }
+    }
+
+    .block:nth-child(3) {
+      grid-column: 1 / 17;
+      background: url('../images/oda_front_reports_bg.png') no-repeat center center;
+      background-size: cover;
+      padding: 2rem 0;
+      .inner-content {
+        background: rgba(207, 184, 124, 0.9);
+        padding: 25px;
+        width: 75%;
+        border-radius: 5px;
+        h2 {
+          color: $black;
+          border-bottom: 1px solid $black;
+          span {
+            border: none;
+          }
+        }
+      }
+    }
+
+    .block:nth-child(4) {
+      grid-column: 1 / 17;
+    }
+
+    .block:not(.contextual-region):has(a):nth-child(3n-1) {
+      grid-column: 1 / 5;
+    }
+
+    .block:not(.contextual-region):has(a):nth-child(3n) {
+      grid-column: 6 / 11;
+    }
+
+    .block:not(.contextual-region):has(a):nth-child(3n-2) {
+      grid-column: 12 / 17;
+    }
+
+    .block:not(.contextual-region):has(a) {
+      h2 {
+        position: relative;
+        font-size: 1rem;
+        text-transform: uppercase;
+        text-align: center;
+        border: none;
+        margin-bottom: .75rem;
+        span {
+          border: none;
+        }
+        &:before {
+          display: block;
+          content: "";
+          height: 25px;
+          width: 100%;
+          margin-bottom: .5rem;
+          background: url('../images/icons/oda_front_wwd_title.svg') no-repeat center center;
+        }
+        &:after {
+          content: "";
+          position: absolute;
+          left: 42%;
+          right: 42%;
+          bottom: -.4rem;
+          height: 1px;
+          width: 16%;
+          border-bottom:4px solid $gold;
+        }
+      }
+    }
+  }
+}

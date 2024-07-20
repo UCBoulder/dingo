@@ -203,6 +203,9 @@ $button-colors: (
   &-internal {
     @include button($white,$green, $green, $white);
   }
+  &-black {
+    @include button($black, $white, $white, $black);
+  }
   &-internal--active {
     display: block;
     position: relative;
