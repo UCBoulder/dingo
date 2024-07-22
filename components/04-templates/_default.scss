@@ -528,3 +528,44 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
     }
   }
 }
+
+.page-node-type-data-report {
+  .flag a.button-internal {
+    border: 1px solid $green;
+  }
+
+  .layout__region--content > div:has(img) {
+    border: 1px solid $gray-lightest;
+    margin-bottom: 2rem;
+  }
+
+  .layout__region--right-sidebar {
+    .views-element-container {
+      .views-row:has(a.oda-right-ext) {
+        border-bottom: 1px solid $gray-lightest;
+        border-top: 1px solid $gray-lightest;
+        padding: 1rem 0;
+        margin: 1rem 0;
+      }
+    }
+
+    h2 {
+      font-weight: normal;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      margin-bottom: .25rem;
+      border: none;
+      span {
+        border: none;
+      }
+    }
+
+    header {
+      margin-bottom: 0;
+    }
+    .views-field-term-node-tid {
+      color: $gray-light;
+      margin-bottom: 1rem;
+    }
+  }
+}

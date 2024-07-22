@@ -154,17 +154,7 @@
 
   .views-exposed-form {
     h2 {
-      &:after {
-        content: '';
-        display: inline-block;
-        height: 20px;
-        width: 20px;
-        background-image: url('../images/icons/oda_filter_by.svg');
-        background-repeat: no-repeat;
-        background-size: contain;
-        margin-bottom: -5px;
-        margin-left: .5em;
-      }
+      @include filter-icon;
     }
   }
 

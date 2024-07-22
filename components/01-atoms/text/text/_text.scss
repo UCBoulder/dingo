@@ -27,6 +27,20 @@
   font-family: 'Roboto Condensed', sans-serif;
 }
 
+@mixin filter-icon {
+  &:after {
+    content: '';
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    background-image: url('../images/icons/oda_filter_by.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-bottom: -5px;
+    margin-left: .5em;
+  }
+}
+
 body {
   color: $gray-dark;
 
@@ -43,6 +57,10 @@ body {
 
 .mr-roboto-c {
   @include mr-roboto-c;
+}
+
+.filter-icon {
+  @include filter-icon;
 }
 
 .blockquote {
