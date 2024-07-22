@@ -30,6 +30,35 @@ $button-colors: (
 // Mixin to define colors for one or more schemes.
 // Simply pass the color scheme to the mixin to get the colors defined in the map.
 // e.g. @include buttonColors(default) will get all of the colors defined in the "default" section.
+@mixin flag_fav_base {
+  content: '';
+  display: inline-block;
+  height: 20px;
+  width: 22px;
+  margin-bottom: -5px;
+  background-color: $green;
+  -webkit-mask-size: cover;
+  mask-size: cover;
+}
+
+@mixin flag_favorite {
+  &:before {
+    @include flag_fav_base;
+    --webkit-mask: url('../images/icons/oda_fav_outline.svg') 50% 50% no-repeat;
+    mask: url('../images/icons/oda_fav_outline.svg') 50% 50% no-repeat;
+    margin-right: .5em;
+  }
+}
+
+@mixin flag_unfavorite {
+  &:before {
+    @include flag_fav_base;
+    --webkit-mask: url('../images/icons/oda_unfav.svg') 50% 50% no-repeat;
+    mask: url('../images/icons/oda_unfav.svg') 50% 50% no-repeat;
+    margin-right: .5em;
+  }
+}
+
 @mixin buttonColors(
   $scheme,
   $pallate: map-get($button-colors, $scheme),

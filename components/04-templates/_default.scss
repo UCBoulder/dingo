@@ -432,7 +432,8 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
 
 .domain-oda.path-frontpage {
   .main,
-  .dingo-layout {
+  .dingo-layout,
+  .layout--onecol {
     display: block;
   }
 
@@ -529,9 +530,33 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
   }
 }
 
+.page-node-type-oda-page {
+  .layout__region--content > div:has(picture) {
+    margin-left: 0;
+    margin-bottom: 1.5rem;
+    @include large {
+      margin-left: -100px;
+    }
+  }
+}
+
 .page-node-type-data-report {
   .flag a.button-internal {
     border: 1px solid $green;
+  }
+
+  .action-flag a {
+    @include flag_favorite;
+    &:hover::before {
+      background-color: $white;
+    }
+  }
+
+  .action-unflag a {
+    @include flag_unfavorite;
+    &:hover::before {
+      background-color: $white;
+    }
   }
 
   .layout__region--content > div:has(img) {
@@ -540,12 +565,25 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
   }
 
   .layout__region--right-sidebar {
+
+    & > div:first-child,
+    & > div:nth-child(2) .views-row > div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
     .views-element-container {
-      .views-row:has(a.oda-right-ext) {
-        border-bottom: 1px solid $gray-lightest;
-        border-top: 1px solid $gray-lightest;
-        padding: 1rem 0;
-        margin: 1rem 0;
+      .views-row {
+        svg {
+          display: none;
+        }
+        &:has(a.oda-right-ext) {
+          border-bottom: 1px solid $gray-lightest;
+          border-top: 1px solid $gray-lightest;
+          padding: 1rem 0;
+          margin: 1rem 0;
+        }
       }
     }
 

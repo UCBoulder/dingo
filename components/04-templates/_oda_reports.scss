@@ -85,6 +85,9 @@
       .image {
         border: 1px solid $gray-light;
         margin-right: 1rem;
+        div {
+          width: 120px;
+        }
       }
     }
   }

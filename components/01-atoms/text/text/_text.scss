@@ -27,17 +27,28 @@
   font-family: 'Roboto Condensed', sans-serif;
 }
 
+@mixin filter-icon-base {
+  content: '';
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  background-image: url('../images/icons/oda_filter_by.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-bottom: -5px;
+}
+
 @mixin filter-icon {
   &:after {
-    content: '';
-    display: inline-block;
-    height: 20px;
-    width: 20px;
-    background-image: url('../images/icons/oda_filter_by.svg');
-    background-repeat: no-repeat;
-    background-size: contain;
-    margin-bottom: -5px;
+    @include filter-icon-base;
     margin-left: .5em;
+  }
+}
+
+@mixin filter-icon-left {
+  &:before {
+    @include filter-icon-base;
+    margin-right: .5em;
   }
 }
 
@@ -61,6 +72,10 @@ body {
 
 .filter-icon {
   @include filter-icon;
+}
+
+.filter-icon-left {
+  @include filter-icon-left;
 }
 
 .blockquote {
