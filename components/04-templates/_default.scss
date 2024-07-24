@@ -480,6 +480,12 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
             border: none;
           }
         }
+        a.button-black:before {
+          @include data_secure_left;
+        }
+        a.button-black:hover:before {
+          background-color: $black;
+        }
       }
     }
 
@@ -582,17 +588,7 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
     }
 
     .block:first-child a:before {
-      content: '';
-      display: inline-block;
-      height: 20px;
-      width: 22px;
-      margin-right: .5em;
-      margin-bottom: -5px;
-      background-color: $white;
-      --webkit-mask: url('../images/icons/oda_external.svg') 50% 50% no-repeat;
-      mask: url('../images/icons/oda_external.svg') 50% 50% no-repeat;
-      -webkit-mask-size: cover;
-      mask-size: cover;
+      @include data_secure_left;
     }
 
     .block:first-child,
@@ -606,6 +602,10 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
 
     .block:nth-child(3) {
       margin-top: 1rem;
+    }
+
+    .block:last-child {
+      margin-top: -40px;
     }
   }
 

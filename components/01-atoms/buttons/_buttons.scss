@@ -59,6 +59,29 @@ $button-colors: (
   }
 }
 
+@mixin data_secure {
+  content: '';
+  display: inline-block;
+  height: 20px;
+  width: 22px;
+  margin-bottom: -5px;
+  background-color: $white;
+  --webkit-mask: url('../images/icons/oda_external.svg') 50% 50% no-repeat;
+  mask: url('../images/icons/oda_external.svg') 50% 50% no-repeat;
+  -webkit-mask-size: cover;
+  mask-size: cover;
+}
+
+@mixin data_secure_left {
+  @include data_secure;
+  margin-right: .5em;
+}
+
+@mixin data_secure_right {
+  @include data_secure;
+  margin-left: .5em;
+}
+
 @mixin buttonColors(
   $scheme,
   $pallate: map-get($button-colors, $scheme),
@@ -316,4 +339,12 @@ input[value='Search'] {
     height: 34px;
     width: 34px;
   }
+}
+
+.data-secure-left:before {
+  @include data_secure_left;
+}
+
+.data-secure-right:before {
+  @include data_secure_right;
 }
