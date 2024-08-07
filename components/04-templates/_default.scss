@@ -441,17 +441,30 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 1rem;
-    grid-template-columns:repeat( 16, minmax(20px, 1fr) );
+
+    .news-banner--banner-created {
+      margin-bottom: 1rem;
+    }
+
+    @include large {
+      grid-template-columns:repeat( 16, minmax(20px, 1fr) );
+    }
   }
 
   .layout-wrap .layout--onecol:nth-child(1) .layout__region--content {
 
     .block:first-child {
-      grid-column: 1 / 12;
+      grid-column: 1 / 1;
+      @include large {
+        grid-column: 1 / 12;
+      }
     }
 
     .block:nth-child(2) {
-      grid-column: 13 / 17;
+      grid-column: 1 / 1;
+      @include large {
+        grid-column: 13 / 17;
+      }
       ul {
         list-style: none;
         padding: 0;
@@ -464,7 +477,10 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
     }
 
     .block:nth-child(3) {
-      grid-column: 1 / 17;
+      grid-column: 1 / 1;
+      @include large {
+        grid-column: 1 / 17;
+      }
       background: url('../images/oda_front_reports_bg.png') no-repeat center center;
       background-size: cover;
       padding: 2rem 0;
@@ -490,7 +506,10 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
     }
 
     .block:nth-child(4) {
-      grid-column: 1 / 17;
+      grid-column: 1 / 1;
+      @include large {
+        grid-column: 1 / 17;
+      }
     }
 
   }
@@ -499,15 +518,24 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
     margin-top: 1rem;
 
     .block:not(.contextual-region):has(a):nth-child(3n-2) {
-      grid-column: 1 / 5;
+      grid-column: 1 / 1;
+      @include large {
+        grid-column: 1 / 5;
+      }
     }
 
     .block:not(.contextual-region):has(a):nth-child(3n-1) {
-      grid-column: 6 / 11;
+      grid-column: 1 / 1;
+      @include large {
+        grid-column: 6 / 11;
+      }
     }
 
     .block:not(.contextual-region):has(a):nth-child(3n) {
-      grid-column: 12 / 17;
+      grid-column: 1 / 1;
+      @include large {
+        grid-column: 12 / 17;
+      }
     }
 
     .block {
