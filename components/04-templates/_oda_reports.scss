@@ -12,6 +12,30 @@
 }
 
 .path-reports {
+
+  .sidebar-left {
+
+    details {
+      background: inherit;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      margin: 0;
+    }
+
+    summary {
+      border: none;
+      font-weight: normal;
+      background: inherit;
+      margin: 0;
+      padding: 0;
+      &:after {
+        top: 5px;
+      }
+    }
+
+  }
+
   main {
 
     .row-wrapper {
