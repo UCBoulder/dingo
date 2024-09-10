@@ -13,27 +13,28 @@
 
 .path-reports {
 
-  .sidebar-left {
-
-    details {
-      background: inherit;
-      border-top: none;
-      border-left: none;
-      border-right: none;
-      margin: 0;
-    }
-
-    summary {
-      border: none;
-      font-weight: normal;
-      background: inherit;
-      margin: 0;
-      padding: 0;
-      &:after {
+  div {
+    .collapsiblockTitle button {
+      position: relative;
+      background: none;
+      &::after {
+        position: absolute;
         top: 5px;
+        right: 10px;
+        content: "";
+        background: top right url("../images/tojibbers-bl.svg") no-repeat;
+        background-size: 15px 15px;
+        height: 15px;
+        width: 15px;
+        transition: transform .5s;
+        @include reduced-motion {
+          transition: none;
+        }
       }
     }
-
+    .collapsiblockTitleCollapsed button::after {
+      transform: rotate(180deg);
+    }
   }
 
   main {
