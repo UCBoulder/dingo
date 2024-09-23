@@ -58,6 +58,14 @@
         grid-gap: 1rem;
         grid-template-columns: repeat(2, 1fr);
 
+        &:has(.no-results) {
+          grid-template-columns: 1fr;
+        }
+
+        .no-results {
+          text-align: center;
+        }
+
         .views-row {
           border-bottom: 1px solid $gray-light;
         }
