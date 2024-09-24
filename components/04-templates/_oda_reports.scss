@@ -102,7 +102,6 @@
       }
 
       .revision {
-        color: $gray-light;
         &:before {
           content: '';
           display: inline-block;
@@ -113,6 +112,10 @@
           background-size: contain;
           margin-bottom: -5px;
         }
+      }
+      .revision,
+      .type {
+        color: $gray-light;
       }
 
       .image {
@@ -339,6 +342,21 @@
       }
 
     }
+  }
+
+  ul.js-pager__items {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  a[rel="prev"],
+  a[rel="next"] {
+    font-size: 2em;
+    line-height: 0;
+    font-weight: normal;
+    text-decoration: none;
   }
 }
 
