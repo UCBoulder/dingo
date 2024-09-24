@@ -228,7 +228,7 @@
       display: flex;
       position: relative;
       border: 1px solid $gray-light;
-      margin-bottom: 1rem;
+      margin-bottom: 3rem;
       padding: 0 1rem;
       min-height: 70px;
 
@@ -307,6 +307,12 @@
           background: $white;
           border-radius: 5px;
         }
+      }
+
+      .view-summary {
+        position: absolute;
+        top: 80px;
+        left: 0;
       }
 
       .layout {
