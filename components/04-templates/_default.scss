@@ -618,6 +618,11 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
     .block:first-child a:before {
       @include data_secure_left;
     }
+    .block:first-child a.vpn:before {
+      --webkit-mask: url('../images/icons/oda_vpn.svg') 50% 50% no-repeat;
+      mask: url('../images/icons/oda_vpn.svg') 50% 50% no-repeat;
+
+    }
 
     .block:first-child,
     .block:nth-child(2) {
