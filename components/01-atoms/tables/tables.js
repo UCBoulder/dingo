@@ -1,7 +1,7 @@
 function addMobileTableData(int) {
   var table = document.getElementsByTagName("table")[int];
   var bodyTrCollection = table.querySelectorAll('tbody tr');
-  var th = table.querySelectorAll('th');
+  var th = table.querySelectorAll('thead th');
   var thCollection = Array.from(th);
 
   for (var i = 0; i < bodyTrCollection.length; i++) {

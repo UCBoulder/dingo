@@ -97,7 +97,7 @@ thead {
     border: none;
     &::before {
       display: block;
-      content: attr(data-label) ":";
+      content: attr(data-label);
       font-weight: bold;
     }
   }
