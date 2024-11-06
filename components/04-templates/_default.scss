@@ -549,6 +549,16 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
         span {
           border: none;
         }
+        a[href] {
+          text-decoration: none;
+          &:after {
+            display:none;
+          }
+          &:hover {
+            color: $graylight;
+          }
+
+        }
         &:before {
           display: block;
           content: "";
@@ -566,6 +576,11 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
           height: 1px;
           width: 16%;
           border-bottom:4px solid $gold;
+        }
+        &:hover:after {
+          left: 38%;
+          right: 38%;
+          width: 24%;
         }
       }
     }
