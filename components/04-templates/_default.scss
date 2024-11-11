@@ -570,6 +570,7 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
         &:after {
           content: "";
           position: absolute;
+          transition: all .3s;
           left: 42%;
           right: 42%;
           bottom: -.4rem;
@@ -577,7 +578,7 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
           width: 16%;
           border-bottom:4px solid $gold;
         }
-        &:hover:after {
+        &:has(a):hover:after {
           left: 38%;
           right: 38%;
           width: 24%;
