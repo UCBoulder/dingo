@@ -539,7 +539,7 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
     }
 
     .block {
-      h2 {
+      h2, h3 {
         position: relative;
         font-size: 1rem;
         text-transform: uppercase;
