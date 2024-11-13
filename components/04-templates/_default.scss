@@ -184,19 +184,6 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
       border-top: 1px solid $gray-lightest;
     }
   }
-  > div > div {
-    background: $white;
-    border: 1px solid $gray-lightest;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 25px;
-    &.border-none {
-      border: none;
-    }
-    &.background-none {
-      background: none;
-    }
-  }
   [id="block-sympanewssubscription-2"] {
     border: none;
     padding: 0;
