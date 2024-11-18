@@ -80,7 +80,8 @@ h2.news-banner--banner-title {
   font-weight: normal;
   @include medium {
     position: absolute;
-    bottom: 25%;
+    bottom: 28%;
+    width: 90%;
   }
   a {
     display: block;
