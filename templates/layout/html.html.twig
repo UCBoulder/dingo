@@ -61,6 +61,11 @@
       <a href="#main-content" class="visually-hidden focusable">
         {{ 'Skip to main content'|t }}
       </a>
+      {% if 'page-node-type-data-report' in body_classes  %}
+        <a href="/node/31860" class="visually-hidden focusable">
+          {{ 'Accessibility Information'|t }}
+        </a>
+      {% endif %}
     </div>
     {{ page_top }}
     {{ page }}
