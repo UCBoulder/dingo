@@ -24,6 +24,11 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
   z-index: 1;
 }
 
+#userupdateinfo {
+  position: absolute;
+  left:-9999px;
+}
+
 // Allows the gray overflow to span the browser width.
 .layout-container {
   overflow-x: hidden;
@@ -587,6 +592,7 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
 }
 
 .page-node-type-data-report {
+
   .flag a.button-internal {
     border: 1px solid $green;
   }
