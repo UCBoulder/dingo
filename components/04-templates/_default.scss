@@ -624,7 +624,7 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
       margin-bottom: 2rem;
     }
 
-    .block:first-child a:before {
+    .views-element-container:first-child a:before {
       @include data_secure_left;
     }
     .block:first-child a.vpn:before {
