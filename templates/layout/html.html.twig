@@ -51,6 +51,7 @@
     <js-placeholder token="{{ placeholder_token|raw }}">
   </head>
   <body{{ attributes.addClass(body_classes) }}>
+    {% set attr_array = attributes|split(' ') %}
     <div id="top">
     </div>
     {#
@@ -61,7 +62,7 @@
       <a href="#main-content" class="visually-hidden focusable">
         {{ 'Skip to main content'|t }}
       </a>
-      {% if 'page-node-type-data-report' in body_classes  %}
+      {% if 'domain-oda' in attr_array %}
         <a href="/node/31860" class="visually-hidden focusable">
           {{ 'Accessibility Information'|t }}
         </a>
