@@ -60,7 +60,7 @@
       }
     }
   }
-  ul {
+  ul:not(.toolbar-menu) {
     display: none;
     position: absolute;
     top: 43px;
