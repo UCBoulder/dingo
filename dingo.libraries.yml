@@ -53,7 +53,7 @@ tutorial:
     dist/js/02-molecules/tutorial/tutorial.js: {}
   dependencies:
     - core/jquery
-    - core/js-cookie
+    - js_cookie/js-cookie
 
 page:
   js:
