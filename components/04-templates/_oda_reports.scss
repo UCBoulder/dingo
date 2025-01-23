@@ -396,6 +396,34 @@
 
 }
 
+.data-tabs {
+  display: flex;
+  p {
+    margin-right: .5em;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+
+      &::after {
+        content: " | ";
+        margin: 0 .25em;
+      }
+
+      &:last-of-type::after {
+        content: "";
+        margin: 0;
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 920px){
   .path-reports aside {
     position: absolute;
