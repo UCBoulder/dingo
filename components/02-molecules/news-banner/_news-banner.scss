@@ -79,8 +79,6 @@ h2.news-banner--banner-title {
   font-size: 1rem;
   font-weight: normal;
   @include medium {
-    position: absolute;
-    bottom: 28%;
     width: 90%;
   }
   a {
@@ -91,6 +89,7 @@ h2.news-banner--banner-title {
     color: $gray-dark;
     width: 100%;
     @include medium {
+      padding-top: 23px;
       color: $white;
     }
     &:hover {
@@ -110,8 +109,12 @@ h2.news-banner--banner-title {
       bottom: 0;
       width: inherit;
       height: inherit;
-      margin: -25% 0 0 0;
+      margin: 0;
       transform: none;
+
+      @include medium {
+        margin: -25% 0 0 0;
+      }
     }
   }
 }
