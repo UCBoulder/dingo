@@ -2,7 +2,7 @@ name: (A) Create Release
 on:
   push:
     branches:
-      - 'main'
+      - '*'
 permissions:
   contents: write
 jobs:
