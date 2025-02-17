@@ -1,0 +1,50 @@
+.path-tutorial {
+
+  .sidebar-left {
+    margin-top: 6.5em;
+    padding-right: 1.5em;
+
+    .bef-toggle--select-all {
+      display: block;
+      margin-bottom: .5em;
+    }
+
+    .form-item {
+      display: flex;
+      align-items: baseline;
+      margin-left: 0;
+    }
+
+    .form-checkbox {
+      margin-right: .5em;
+    }
+  }
+
+  fieldset {
+    margin-bottom: 1em;
+  }
+
+  legend {
+    color: $gray-dark;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.6rem;
+    line-height: 1.4;
+    margin: 0 0 0.5em;
+    width: auto;
+    padding: 0;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  label {
+    font-weight: normal;
+    padding: 0;
+    margin: 0;
+  }
+
+  .form-item {
+    margin-bottom: .5em;
+  }
+
+}
