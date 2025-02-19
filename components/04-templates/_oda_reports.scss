@@ -245,6 +245,13 @@
         font-size: 1.2rem;
         font-weight: normal;
         margin: .75em 0;
+
+        h2 {
+          display: inline-block;
+          font-size: 1.2rem;
+          line-height: 1rem;
+        }
+
         &:after {
           content: '';
           display: inline-block;
@@ -361,7 +368,22 @@
               fill: $gray-darker;
             }
           }
+
+          button {
+            display: block;
+            margin: 0;
+            padding: 0;
+            border: 0;
+
+            @include large {
+              display: block;
+            }
+            &:after {
+              display: none;
+            }
+          }
         }
+
       }
 
     }
