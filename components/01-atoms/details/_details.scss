@@ -52,3 +52,29 @@ summary {
     background: $gray-lightest;
   }
 }
+
+html:has(main .view-facets) {
+  .sidebar-left .views-exposed-form {
+    details {
+      display: block;
+    }
+  }
+  .views-exposed-form {
+    details {
+      background: none;
+      border-left: none;
+      border-right: none;
+      border-top: none;
+
+      summary {
+        background: none;
+        border: none;
+        font-family: "Roboto Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 1.2rem;
+        font-weight: normal;
+        text-transform: uppercase;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
