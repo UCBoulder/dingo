@@ -53,17 +53,13 @@ a.gray-links{
 h1, h2, h3, h4, h5, h6 {
   width: max-content;
   a[href] {
-    @include link($gray-dark, $blue-active);
+    @include link($blue, $blue-active);
 
-    text-decoration: underline;
-    text-decoration-color: $blue-active;
-    text-decoration-thickness: .2em;
-    text-underline-offset: .44em;
-    text-decoration-style: inherit;
     &:hover {
       text-decoration: underline;
-      text-decoration-thickness: .2em;
-      text-underline-offset: .44em;
+      text-decoration-color: $blue-active;
+      text-decoration-thickness: .1em;
+      text-underline-offset: .25em;
       text-decoration-style: inherit;
       &::after {
         filter: brightness(0.6) sepia(1) hue-rotate(190deg) saturate(6);

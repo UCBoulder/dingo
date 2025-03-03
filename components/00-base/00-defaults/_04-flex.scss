@@ -40,7 +40,7 @@ $flex-height: 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000;
 }
 
 .flex-one-half {
-  @include flex-item(50%, 350px);
+  @include flex-item(50%, 275px);
 }
 
 .flex-one-quarter {
