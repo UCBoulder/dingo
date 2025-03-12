@@ -21,9 +21,10 @@ jobs:
           git remote set-url origin https://$username:$GITHUB_TOKEN@github.com/UCBoulder/dingo.git
           git config --global user.email "$email"
           git config --global user.name "$username"
-          git fetch
+          git fetch --tags
           current_sha=$(git rev-parse --short HEAD)
-          current_version=$(git describe --tags --abbrev=0)
+          # Get highest version tag by sorting tags numerically
+          current_version=$(git tag -l | sort -V | tail -n 1)
           latest_sha=$(git rev-list --tags --max-count=1)
           next_version=$(echo ${current_version} | awk -F. -v OFS=. '{$NF += 1 ; print}')
           git checkout $latest_sha
