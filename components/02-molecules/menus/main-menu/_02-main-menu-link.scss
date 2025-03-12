@@ -112,6 +112,9 @@
         border-bottom: 1px solid $gray-lighter;
         &:hover {
           color: $blue-active;
+          text-decoration: underline;
+          text-decoration-thickness: 1px;
+          text-underline-offset: 4px;
         }
 
         &.is-active {

@@ -179,6 +179,7 @@ $color-heading: $gray-darker;
 .h2 {
   @include heading-large;
 
+  border-bottom: 1px solid $gray-lightest;
   span {
     width: max-content;
     border-bottom: 4px solid $gray-light;
@@ -234,6 +235,7 @@ h2 {
   .heading-underline & {
     min-height: 44px;
     width: 100%;
+    border-bottom: 1px solid $gray-lighter;
     margin-bottom: 20px;
     padding-bottom: .2em;
   }

@@ -8,11 +8,17 @@ ol {
 }
 
 ul {
-  list-style-type: circle;
+  list-style-type: disc;
+  ul {
+    list-style-type: circle;
+  }
 }
 
 ol {
-  list-style-type: lower-alpha;
+  list-style-type: decimal;
+  ol {
+    list-style-type: lower-alpha;
+  }
 }
 
 .list-item {

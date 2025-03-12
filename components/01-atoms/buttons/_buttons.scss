@@ -255,6 +255,7 @@ $button-colors: (
   }
   &-internal {
     @include button($white,$green, $green, $white);
+    border: 1px solid $green;
   }
   &-black {
     @include button($black, $white, $white, $black);
@@ -263,6 +264,9 @@ $button-colors: (
     display: block;
     position: relative;
     @include button($green, $white, $white, $green);
+    &:hover {
+      border: 1px solid $green;
+    }
 
     padding-right: 50px;
     &:hover {
