@@ -23,16 +23,39 @@ jobs:
           git remote set-url origin https://$username:$GITHUB_TOKEN@github.com/UCBoulder/dingo.git
           git config --global user.email "$email"
           git config --global user.name "$username"
-          git fetch --tags
-          current_sha=$(git rev-parse --short HEAD)
-          current_version=$(git describe --tags --abbrev=0)
-          latest_sha=$(git rev-list --tags --max-count=1)
+
+          # Fetch all tags and branches
+          git fetch --tags --force
+
+          # Determine current version and next version
+          echo "Determining latest version..."
+          git tag -l | sort -V
+          current_version=$(git tag -l | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -1)
+          echo "Current version: $current_version"
+
+          # If no version tag exists, start with 1.0.0
+          if [ -z "$current_version" ]; then
+            current_version="1.0.0"
+            echo "No version tag found. Starting with $current_version"
+          fi
+
+          # Calculate next version
           next_version=$(echo ${current_version} | awk -F. -v OFS=. '{$NF += 1 ; print}')
-          git checkout $latest_sha
-          git checkout $current_sha
+          echo "Next version will be: $next_version"
+
+          # Get current and latest commit hashes
+          current_sha=$(git rev-parse --short HEAD)
+          latest_tag_sha=$(git rev-list -n 1 $current_version 2>/dev/null || echo "none")
+
+          # Check if a release for next version already exists
+          if git tag | grep -q "^$next_version$"; then
+            echo "Error: Tag $next_version already exists!"
+            exit 1
+          fi
+
           # Build Theme
           home=$(pwd)
-          mkdir /tmp/dingo
+          mkdir -p /tmp/dingo
           cp -R * /tmp/dingo
           cd /tmp/dingo
           npm install
@@ -47,11 +70,20 @@ jobs:
           cd ../
           zip -r "dingo-$next_version.zip" dingo
           cd $home
+
           # Create changelog without affecting release title
           echo '# CHANGELOG' > release.md
-          git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s' $latest_sha..$current_sha --no-merges >> release.md
-          # Create release with exact version number as title (--title flag ensures clean title)
+          if [ "$latest_tag_sha" != "none" ]; then
+            git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s' $latest_tag_sha..$current_sha --no-merges >> release.md
+          else
+            git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s' --no-merges -n 10 >> release.md
+          fi
+
+          # Create release with exact version number as title
+          echo "Creating release $next_version..."
           gh release create $next_version "/tmp/dingo-$next_version.zip#Dingo Built Theme" -F release.md --title "$next_version"
+
+          # Clean up
           rm -fR /tmp/dingo
           rm -f /tmp/dingo-*.zip
         env:
