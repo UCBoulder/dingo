@@ -10,7 +10,9 @@ jobs:
     name: Tag code
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
@@ -21,7 +23,7 @@ jobs:
           git remote set-url origin https://$username:$GITHUB_TOKEN@github.com/UCBoulder/dingo.git
           git config --global user.email "$email"
           git config --global user.name "$username"
-          git fetch
+          git fetch --tags
           current_sha=$(git rev-parse --short HEAD)
           current_version=$(git describe --tags --abbrev=0)
           latest_sha=$(git rev-list --tags --max-count=1)
@@ -45,11 +47,13 @@ jobs:
           cd ../
           zip -r "dingo-$next_version.zip" dingo
           cd $home
-          touch release1.txt && echo '# CHANGELOG' > release.md
+          # Create changelog without affecting release title
+          echo '# CHANGELOG' > release.md
           git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s' $latest_sha..$current_sha --no-merges >> release.md
-          gh release create $next_version "/tmp/dingo-$next_version.zip#Dingo Built Theme" -F release.md
+          # Create release with exact version number as title (--title flag ensures clean title)
+          gh release create $next_version "/tmp/dingo-$next_version.zip#Dingo Built Theme" -F release.md --title "$next_version"
           rm -fR /tmp/dingo
-          rm -f /tmp/dingo.zip
+          rm -f /tmp/dingo-*.zip
         env:
           set_version: ${{ github.event.inputs.version }}
           username: ${{ secrets.GIT_USER }}
