@@ -330,6 +330,7 @@ input[value='Search'] {
   background: none;
   background: top left url(../images/search.svg) no-repeat;
   text-indent: -9999px;
+  box-shadow: none;
   &:hover {
     background-color: inherit;
     opacity: 0.6;

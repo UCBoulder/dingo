@@ -391,6 +391,7 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
     }
   }
   [id="block-frontservices"] {
+    margin: 20px 0;
     -ms-grid-column: 1;
     -ms-grid-column-span: 16;
     grid-column: 1 / 17;
