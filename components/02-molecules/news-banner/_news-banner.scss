@@ -121,6 +121,7 @@ h2.news-banner--banner-title {
 
 [id="block-views-block-news-block-1"] .row-wrapper {
   @include flex;
+  margin: 0;
 
   border-bottom: 1px solid $gray-lighter;
 }
@@ -129,4 +130,5 @@ h2.news-banner--banner-title {
   @include flex-item(25%, 180px);
 
   margin: 22px 0;
+  padding-right: 5px;
 }
