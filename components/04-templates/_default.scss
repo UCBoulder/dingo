@@ -277,7 +277,6 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
     -ms-grid-row: 1;
     grid-row: 1;
   }
-}
 
   .layout__region--content {
     display: grid;
@@ -332,6 +331,7 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
       grid-row: 2 / 4;
     }
   }
+}
 
   // Middle section.
   [id="front-services-horizontal"] {
