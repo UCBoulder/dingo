@@ -269,14 +269,7 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
   .main {
     display: block;
   }
-  .main-content > div {
-    display: grid;
-    display: -ms-grid;
-    grid-gap: 10px 0;
-    //grid-template-columns: 1fr;
-    -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-columns:repeat( 16, minmax(20px, 1fr) );
-  }
+
   [role="contentinfo"] {
     -ms-grid-column: 1;
     -ms-grid-column-span: 11;
@@ -284,7 +277,19 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
     -ms-grid-row: 1;
     grid-row: 1;
   }
-  [id="block-views-block-news-block-3"] {
+}
+
+  .layout__region--content {
+    display: grid;
+    display: -ms-grid;
+    grid-gap: 10px 0;
+    //grid-template-columns: 1fr;
+    -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns:repeat( 16, minmax(20px, 1fr) );
+  }
+
+  // top section.
+  #hero-news-item {
     -ms-grid-column: 1;
     -ms-grid-column-span: 16;
     grid-column: 1 / 17;
@@ -298,7 +303,7 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
       grid-row: 2;
     }
   }
-  [id="block-views-block-news-block-1"] {
+  #top-news-items {
     -ms-grid-column: 1;
     -ms-grid-column-span: 16;
     grid-column: 1 / 17;
@@ -312,7 +317,7 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
       grid-row: 3;
     }
   }
-  [id="block-frontactionlinks"] {
+  #how-do-i {
     -ms-grid-column: 1;
     -ms-grid-column-span: 16;
     grid-column: 1 / 17;
@@ -327,82 +332,60 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
       grid-row: 2 / 4;
     }
   }
-  [id="block-servicehealthfrontpageblock"] {
-    -ms-grid-column: 1;
-    -ms-grid-column-span: 16;
+
+  // Middle section.
+  [id="front-services-horizontal"] {
+    margin: 20px 0;
     grid-column: 1 / 17;
-    -ms-grid-row: 6;
-    grid-row: 6;
+    grid-row: 1;
+    @include large {
+      grid-row: 1;
+    }
+  }
+
+  // Bottom section.
+  [id="front-service-health"] {
+    grid-column: 1 / 17;
+    grid-row: 1;
     border-bottom: 1px solid $gray-lighter;
     @include small {
-      -ms-grid-column: 1;
-      -ms-grid-column-span: 7;
       grid-column: 1 / 8;
     }
     @include large {
-      -ms-grid-column: 1;
-      -ms-grid-column-span: 4;
       grid-column: 1 / 5;
-      -ms-grid-row: 5;
-      grid-row: 5;
+      grid-row: 1;
     }
   }
-  [id="block-dingo-views-block-top-pages-blocks-block-1"] {
-    -ms-grid-column: 1;
-    -ms-grid-column-span: 16;
+
+  [id="front-top-tutorials"] {
     grid-column: 1 / 17;
-    -ms-grid-row: 8;
-    grid-row: 8;
+    grid-row: 1;
+    border-bottom: 1px solid $gray-lighter;
+    @include large {
+      grid-column: 7 / 11;
+      grid-row: 1;
+    }
+    header {
+      margin-bottom: 0;
+    }
+  }
+
+  [id="front-top-service-pages"] {
+    grid-column: 1 / 17;
+    grid-row: 1;
     border-bottom: 1px solid $gray-lighter;
     @include small {
-      -ms-grid-column: 10;
-      -ms-grid-column-span: 6;
       grid-column: 10 / 17;
-      -ms-grid-row: 6;
-      grid-row: 6;
+      grid-row: 1;
     }
     @include large {
-      -ms-grid-column: 13;
-      -ms-grid-column-span: 4;
       grid-column: 13 / 17;
-      -ms-grid-row: 5;
-      grid-row: 5;
+      grid-row: 1;
     }
     header {
       margin-bottom: 0;
     }
   }
-  [id="block-dingo-views-block-top-pages-blocks-block-2"] {
-    -ms-grid-column: 1;
-    -ms-grid-column-span: 16;
-    grid-column: 1 / 17;
-    -ms-grid-row: 7;
-    grid-row: 7;
-    border-bottom: 1px solid $gray-lighter;
-    @include large {
-      -ms-grid-column: 7;
-      -ms-grid-column-span: 4;
-      grid-column: 7 / 11;
-      -ms-grid-row: 5;
-      grid-row: 5;
-    }
-    header {
-      margin-bottom: 0;
-    }
-  }
-  [id="block-frontservices"] {
-    margin: 20px 0;
-    -ms-grid-column: 1;
-    -ms-grid-column-span: 16;
-    grid-column: 1 / 17;
-    -ms-grid-row: 5;
-    grid-row: 5;
-    @include large {
-      -ms-grid-row: 4;
-      grid-row: 4;
-    }
-  }
-}
 
 .text-long {
   .section-gray {

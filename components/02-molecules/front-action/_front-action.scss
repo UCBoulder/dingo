@@ -13,8 +13,11 @@
   }
 }
 
-[id="block-frontactionlinks"] {
+#how-do-i {
   border-bottom: 1px solid $gray-lighter;
   overflow: hidden;
+  .flex {
+    margin-top: 0;
+  }
 }
 
