@@ -119,11 +119,14 @@ h2.news-banner--banner-title {
   }
 }
 
-[id="top-news-items"] .row-wrapper {
-  @include flex;
-  margin: 0;
+[id="top-news-items"],
+.block--views_block-news-block_1 {
+  .row-wrapper {
+    @include flex;
+    margin: 0;
 
-  border-bottom: 1px solid $gray-lighter;
+    border-bottom: 1px solid $gray-lighter;
+  }
 }
 
 .news-item {

@@ -288,7 +288,8 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
   }
 
   // top section.
-  #hero-news-item {
+  #hero-news-item,
+  .block--views_block-news-block_3 {
     -ms-grid-column: 1;
     -ms-grid-column-span: 16;
     grid-column: 1 / 17;
@@ -302,7 +303,8 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
       grid-row: 2;
     }
   }
-  #top-news-items {
+  #top-news-items,
+  .block block--views_block-news-block_1 {
     -ms-grid-column: 1;
     -ms-grid-column-span: 16;
     grid-column: 1 / 17;
@@ -316,7 +318,8 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
       grid-row: 3;
     }
   }
-  #how-do-i {
+  #how-do-i,
+  .block--front_action_links {
     -ms-grid-column: 1;
     -ms-grid-column-span: 16;
     grid-column: 1 / 17;
@@ -334,7 +337,8 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
 }
 
   // Middle section.
-  [id="front-services-horizontal"] {
+  [id="front-services-horizontal"],
+  .block--block_content-0791d438-609e-4a8d-b1a2-b3dcc5cac585{
     margin: 20px 0;
     grid-column: 1 / 17;
     grid-row: 1;
@@ -344,7 +348,8 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
   }
 
   // Bottom section.
-  [id="front-service-health"] {
+  [id="front-service-health"],
+  .block--service_health_block {
     grid-column: 1 / 17;
     grid-row: 1;
     border-bottom: 1px solid $gray-lighter;
@@ -357,7 +362,8 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
     }
   }
 
-  [id="front-top-tutorials"] {
+  [id="front-top-tutorials"],
+  .block--front_top_tutorial_block {
     grid-column: 1 / 17;
     grid-row: 1;
     border-bottom: 1px solid $gray-lighter;
@@ -370,7 +376,8 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
     }
   }
 
-  [id="front-top-service-pages"] {
+  [id="front-top-service-pages"],
+  .front-top-service-pages {
     grid-column: 1 / 17;
     grid-row: 1;
     border-bottom: 1px solid $gray-lighter;
