@@ -1,4 +1,4 @@
-[id='block-views-block-news-block-3'] {
+.views-element-container:has(.views-field-field-news-front-image) {
   position: relative;
 }
 .news-banner {
@@ -119,11 +119,14 @@ h2.news-banner--banner-title {
   }
 }
 
-[id="block-views-block-news-block-1"] .row-wrapper {
-  @include flex;
-  margin: 0;
+[id="top-news-items"],
+.block--views_block-news-block_1 {
+  .row-wrapper {
+    @include flex;
+    margin: 0;
 
-  border-bottom: 1px solid $gray-lighter;
+    border-bottom: 1px solid $gray-lighter;
+  }
 }
 
 .news-item {
