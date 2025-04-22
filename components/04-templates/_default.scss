@@ -394,6 +394,12 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
     }
   }
 
+.block--views_block-tutorial-block_1 {
+  header {
+    margin-bottom: 0;
+  }
+}
+
 .text-long {
   .section-gray {
     @extend .section-gray;
