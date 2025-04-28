@@ -1,10 +1,10 @@
-// Libraries
-@import '~normalize.css/normalize';
-@import '~breakpoint-sass/stylesheets/breakpoint';
+// Libraries - First import directly from node_modules
+@import "../node_modules/normalize.css/normalize.css";
+@import "../node_modules/breakpoint-sass/stylesheets/breakpoint";
 
-// Components
-@import '00-base/**/*.scss';
-@import '01-atoms/**/*.scss';
-@import '02-molecules/**/*.scss';
-@import '03-organisms/**/*.scss';
-@import '04-templates/**/*.scss';
+// Components - Import via glob patterns
+@import "00-base/**/*.scss";
+@import "01-atoms/**/*.scss";
+@import "02-molecules/**/*.scss";
+@import "03-organisms/**/*.scss";
+@import "04-templates/**/*.scss";

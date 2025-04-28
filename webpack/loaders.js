@@ -1,5 +1,7 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const globImporter = require('node-sass-glob-importer');
+const path = require('path');
+const globImporter = require('sass-glob-importer');
+const nodeSassGlobImporter = require('node-sass-glob-importer');
 
 const JSLoader = {
   test: /^(?!.*\.(stories|component)\.js$).*\.js$/,
@@ -10,7 +12,10 @@ const JSLoader = {
 const ImageLoader = {
   test: /\.(png|svg|jpg|gif)$/i,
   exclude: /icons\/.*\.svg$/,
-  loader: 'file-loader',
+  type: 'asset/resource',
+  generator: {
+    filename: 'images/[name][ext]',
+  },
 };
 
 const CSSLoader = {
@@ -29,6 +34,12 @@ const CSSLoader = {
       loader: 'postcss-loader',
       options: {
         sourceMap: true,
+        postcssOptions: {
+          plugins: [
+            ['autoprefixer'],
+            ['postcss-custom-properties'],
+          ],
+        },
       },
     },
     {
@@ -36,7 +47,11 @@ const CSSLoader = {
       options: {
         sourceMap: true,
         sassOptions: {
-          importer: globImporter(),
+          importer: [globImporter(), nodeSassGlobImporter()],
+          includePaths: [
+            path.resolve(__dirname, '../node_modules'),
+            path.resolve(__dirname, '../components')
+          ],
           outputStyle: 'compressed',
         },
       },

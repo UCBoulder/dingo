@@ -1,5 +1,5 @@
 const path = require('path');
-const glob = require('glob');
+const { globSync } = require('glob');
 const loaders = require('./loaders');
 const plugins = require('./plugins');
 
@@ -10,7 +10,7 @@ const distDir = path.resolve(rootDir, 'dist');
 function getEntries(pattern) {
   const entries = {};
 
-  glob.sync(pattern).forEach((file) => {
+  globSync(pattern).forEach((file) => {
     const filePath = file.split('components/')[1];
     const newfilePath = `js/${filePath.replace('.js', '')}`;
     entries[newfilePath] = file;
@@ -47,5 +47,16 @@ module.exports = {
   output: {
     path: distDir,
     filename: '[name].js',
+    chunkFormat: 'array-push',
+  },
+  resolve: {
+    modules: [
+      path.resolve(rootDir, 'node_modules'),
+      'node_modules'
+    ],
+    alias: {
+      'normalize.css': path.resolve(rootDir, 'node_modules/normalize.css'),
+      'breakpoint-sass': path.resolve(rootDir, 'node_modules/breakpoint-sass')
+    }
   },
 };

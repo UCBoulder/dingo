@@ -5,20 +5,21 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const _MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const _ImageminPlugin = require('imagemin-webpack-plugin').default;
 const _SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
-const glob = require('glob');
+const { globSync } = require('glob');
 
 const imagePath = path.resolve(__dirname, '../images');
 
 const MiniCssExtractPlugin = new _MiniCssExtractPlugin({
   filename: 'style.css',
   chunkFilename: '[id].css',
+  ignoreOrder: true,
 });
 
 const ImageminPlugin = new _ImageminPlugin({
   disable: process.env.NODE_ENV !== 'production',
   externalImages: {
     context: imagePath,
-    sources: glob.sync(path.resolve(imagePath, '**/*.{png,jpg,gif,svg}')),
+    sources: globSync(path.resolve(imagePath, '**/*.{png,jpg,gif,svg}')),
     destination: imagePath,
   },
 });
