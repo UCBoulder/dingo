@@ -37,6 +37,7 @@ ul.force-list-style {
     position: relative;
     padding: 0 0 0 18px;
     margin: 0 0 0 -18px;
+    list-style: none;
     &::before {
       content: "・";
       color: $blue-active;

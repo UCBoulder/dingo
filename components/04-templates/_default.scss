@@ -351,9 +351,10 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
   [id="front-service-health"],
   .block--service_health_block {
     grid-column: 1 / 17;
-    grid-row: 1;
+    grid-row: 2;
     border-bottom: 1px solid $gray-lighter;
     @include small {
+      grid-row: 1;
       grid-column: 1 / 8;
     }
     @include large {
@@ -365,7 +366,7 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
   [id="front-top-tutorials"],
   .block--front_top_tutorial_block {
     grid-column: 1 / 17;
-    grid-row: 1;
+    grid-row: 3;
     border-bottom: 1px solid $gray-lighter;
     @include large {
       grid-column: 7 / 11;
