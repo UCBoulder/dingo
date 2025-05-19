@@ -5,6 +5,9 @@
   border-radius: 4px;
   .prog-img {
     max-width: 325px;
+    a:not(.modal-close) {
+      cursor: zoom-in;
+    }
   }
   .step-inner {
     margin: 20px 20px 20px 60px;
@@ -85,7 +88,7 @@
 
 .tut-modal-window {
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.6);
   top: 0;
   right: 0;
   bottom: 0;
@@ -94,7 +97,7 @@
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
-  transition: all 0.3s;
+  transition: all 0.5s;
   &:target {
     visibility: visible;
     opacity: 1;
