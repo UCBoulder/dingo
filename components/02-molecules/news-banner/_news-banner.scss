@@ -1,6 +1,11 @@
 .views-element-container:has(.views-field-field-news-front-image) {
   position: relative;
 }
+
+.block--views_block-news-block_3 .views-row {
+  position: relative;
+}
+
 .news-banner {
   position: relative;
   max-width: max-content;
@@ -13,11 +18,18 @@
       min-height: 180px;
       padding: 80px 25px 0 25px;
       margin-top: 10%;
-      top: 25%;
+      top: 20%;
       bottom: 0;
       left: 0;
       right: 0;
     }
+    @include large {
+      top: 12%;
+    }
+    @include xl {
+      top: 25%;
+    }
+
     &-all{
       width: max-content;
       margin-top: 10px;
