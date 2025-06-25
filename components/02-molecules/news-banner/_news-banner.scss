@@ -103,6 +103,12 @@ h2.news-banner--banner-title {
     @include medium {
       padding-top: 23px;
       color: $white;
+      height: 96px;
+      display: -webkit-box;
+      overflow-y: hidden;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      text-overflow: ellipsis;
     }
     &:hover {
       color: $gray-lightest;
