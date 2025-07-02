@@ -253,7 +253,7 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
   }
 }
 
-.path-request-portal {
+.path-request-catalog {
   .main-content {
     @include large {
       -ms-grid-column: 1;
