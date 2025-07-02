@@ -5,6 +5,7 @@
   background-color: clr(muted);
   width: 100%;
   margin: 1em 0;
+  table-layout: fixed;
 }
 
 .table__heading-cell,
@@ -73,6 +74,7 @@ thead {
     border-bottom: 10px solid #424242;
     border-radius: 0;
     width: 100%;
+    table-layout: fixed;
   }
 
   tbody {
