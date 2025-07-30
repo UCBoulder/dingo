@@ -20,6 +20,11 @@ function dingo_preprocess_html(&$variables) {
   if ($env == 'local' || $env == 'LANDO') {
     $variables['attributes']['class'][] = 'env-local';
   }
+  if ($env != 'live') {
+    $url = 'url-' . \Drupal::request()->getHost();
+    $url = preg_replace('/[^a-zA-Z0-9]+/', '-', $url);
+    $variables['attributes']['class'][] = $url;
+  }
   if (isset($keys)) {
     $searchKeys = Xss::filter($keys);
     $searchKeys = strtolower($searchKeys);
