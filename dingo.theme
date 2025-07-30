@@ -21,9 +21,7 @@ function dingo_preprocess_html(&$variables) {
     $variables['attributes']['class'][] = 'env-local';
   }
   if ($env != 'live') {
-    $url = 'url-' . \Drupal::request()->getHost();
-    $url = preg_replace('/[^a-zA-Z0-9]+/', '-', $url);
-    $variables['attributes']['class'][] = $url;
+    $variables['attributes']['class'][] = "env-$env";
   }
   if (isset($keys)) {
     $searchKeys = Xss::filter($keys);
