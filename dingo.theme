@@ -15,14 +15,7 @@ function dingo_preprocess_html(&$variables) {
   $getEnv = \Drupal::service('oit.environment.icon');
   $stack = \Drupal::request();
   $keys = $stack->get('keys');
-  $env = getenv('PANTHEON_ENVIRONMENT');
-  // Currently used for login button via js injector to fix behat.
-  if ($env == 'local') {
-    $variables['attributes']['class'][] = 'env-local';
-  }
-  if ($env != 'live') {
-    $variables['attributes']['class'][] = "env-$env";
-  }
+
   if (isset($keys)) {
     $searchKeys = Xss::filter($keys);
     $searchKeys = strtolower($searchKeys);
