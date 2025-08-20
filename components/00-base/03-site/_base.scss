@@ -34,20 +34,20 @@ body {
 
   .pull-left {
     @include large {
-      margin-left: -15vw;
+      margin-left: -8vw;
     }
   }
 
   .pull-right {
     @include large {
-      margin-right: -15vw;
+      margin-right: -8vw;
     }
   }
 
   .pull-both {
     @include large {
-      margin-left: -15vw;
-      margin-right: -15vw;
+      margin-left: -8vw;
+      margin-right: -8vw;
     }
   }
 }
