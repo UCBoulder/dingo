@@ -9,25 +9,51 @@
 .news-banner {
   position: relative;
   max-width: max-content;
+
+  @include medium {
+    img {
+      position: relative;
+      z-index: -2;
+    }
+  }
   &--banner {
     display: block;
     border-bottom: 1px solid $gray-lighter;
     @include medium {
       position: absolute;
-      background-image: linear-gradient(180deg, rgba(255,255,255, 0), rgba(0, 0, 0, 0.8) 70%);
-      min-height: 180px;
-      padding: 80px 25px 0 25px;
-      margin-top: 10%;
-      top: 20%;
+      top: 0;
       bottom: 0;
       left: 0;
       right: 0;
     }
-    @include large {
-      top: 12%;
+
+    &:after {
+      @include medium {
+        content: "";
+        background-image: linear-gradient(180deg, rgba(255,255,255, 0), rgba(0, 0, 0, 0.8) 70%);
+        position: absolute;
+        top: 30%;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: -1;
+      }
+
+      @include large {
+        top: 12%;
+      }
+
+      @include xl {
+        top: 40%;
+      }
     }
-    @include xl {
-      top: 25%;
+
+    h2 {
+      padding: 1em 0 0 0;
+
+      @include medium {
+        padding: 80px 25px 0 25px;
+      }
     }
 
     &-all{
@@ -101,37 +127,36 @@ h2.news-banner--banner-title {
     color: $gray-dark;
     width: 100%;
     @include medium {
-      padding-top: 23px;
+      padding-top: 25%;
       color: $white;
-      height: 96px;
       display: -webkit-box;
       overflow-y: hidden;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       text-overflow: ellipsis;
     }
+    @include large {
+      padding-top: 13%;
+    }
+    @include xl {
+      padding-top: 26%;
+    }
     &:hover {
-      color: $gray-lightest;
       text-decoration: none;
+      color: $gray;
+      @include medium {
+        color: $gray-lightest;
+      }
     }
     &:after {
-      background: none;
-      content: "";
-      inset: 0;
-      pointer-events: auto;
-      position: absolute;
-      z-index: 10;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      width: inherit;
-      height: inherit;
-      margin: 0;
-      transform: none;
-
       @include medium {
-        margin: -25% 0 0 0;
+        background: none;
+        content: "";
+        inset: 0;
+        pointer-events: auto;
+        position: absolute;
+        z-index: 10;
+        transform: none;
       }
     }
   }
