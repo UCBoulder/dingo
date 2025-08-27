@@ -4,9 +4,26 @@
 
   var step = 1;
 
-  $( '.tutorial-step:even' ).addClass('odd');
-
   $( ".tutorial-step" ).each(function( index ) {
+    if (!$(this).prev().hasClass('tutorial-step')) {
+      $(this).prev().addClass('w-100');
+    }
+
+    if (!$(this).next().hasClass('tutorial-step')) {
+      $(this).next().addClass('w-100');
+    }
+
+    var attrReset = $(this).children( "h2" ).attr('data-reset');
+
+    if (attrReset) {
+      step = 1;
+    }
+
+    if (step % 2 == 1) {
+      $(this).addClass('odd');
+    }
+
+
     $(this).children( "h2" ).html('<span>Step</span> ' + step);
     step++;
   });
