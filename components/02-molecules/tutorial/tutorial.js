@@ -15,7 +15,8 @@
 
     var attrReset = $(this).children( "h2" ).attr('data-reset');
 
-    if (attrReset) {
+    if (attrReset && attrReset != 'FALSE') {
+      console.log(attrReset);
       step = 1;
     }
 
