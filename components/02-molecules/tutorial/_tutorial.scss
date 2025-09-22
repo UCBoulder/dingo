@@ -20,11 +20,8 @@
     &.flex-full {
       flex-basis: 100%;
     }
-    &.odd {
+    &.odd:has(+ .even) {
       margin-right: 20px;
-    }
-    &:last-of-type {
-      margin-right: 0;
     }
   }
   > h2 {

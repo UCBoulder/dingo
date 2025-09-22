@@ -2,8 +2,6 @@
 
   "use strict";
 
-  var step = 1;
-
   var attrResetExists = $(".tutorial-step h2[data-reset='TRUE']").length;
 
   $( ".tutorial-step" ).each(function( index ) {
@@ -18,22 +16,6 @@
       }
     }
 
-    var attrReset = $(this).children( "h2" ).attr('data-reset');
-
-    if (attrReset && attrReset != 'FALSE') {
-      step = 1;
-    }
-
-    if (step % 2 == 1) {
-      $(this).addClass('odd');
-    }
-
-    if (attrResetExists > 0 && !$(this).next().hasClass('tutorial-step')) {
-      $(this).removeClass('odd');
-    }
-
-    $(this).children( "h2" ).html('<span>Step</span> ' + step);
-    step++;
   });
   if (Cookies.get('tutorial-layout') == 'tutorial-layout--one') {
     tutorialOneColumn();
