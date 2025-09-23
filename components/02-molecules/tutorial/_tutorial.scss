@@ -64,6 +64,10 @@
   margin-bottom: 20px;
 }
 
+.page-node-type-tutorial:not(:has(.step-2)) .tutorial-layout {
+  display: none;
+}
+
 .tutorial-layout {
   dl {
     display: none;
