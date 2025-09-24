@@ -2,17 +2,22 @@
 
   "use strict";
 
-  $( ".tutorial-step" ).each(function( index ) {
+  // Add full width to elements that are not tutorial steps only on tutorials
+  // that have multiple tutorials on one page.
+  if ($('.step-1').length > 1) {
+    $( ".tutorial-step" ).each(function( index ) {
 
-    if (!$(this).prev().hasClass('tutorial-step')) {
-      $(this).prev().addClass('w-100');
-    }
+      if (!$(this).prev().hasClass('tutorial-step')) {
+        $(this).prev().addClass('w-100');
+      }
 
-    if (!$(this).next().hasClass('tutorial-step')) {
-      $(this).next().addClass('w-100');
-    }
+      if (!$(this).next().hasClass('tutorial-step')) {
+        $(this).next().addClass('w-100');
+      }
 
-  });
+    });
+  }
+
   if (Cookies.get('tutorial-layout') == 'tutorial-layout--one') {
     tutorialOneColumn();
   } else {
