@@ -23,6 +23,12 @@
     &.odd:has(+ .even) {
       margin-right: 20px;
     }
+    &.odd:has(+ p + .even) {
+      margin-right: 20px;
+    }
+    &.odd:has(+ p + p + .even) {
+      margin-right: 20px;
+    }
   }
   > h2 {
     position: absolute;

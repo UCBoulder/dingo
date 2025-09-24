@@ -2,18 +2,14 @@
 
   "use strict";
 
-  var attrResetExists = $(".tutorial-step h2[data-reset='TRUE']").length;
-
   $( ".tutorial-step" ).each(function( index ) {
 
-    if (attrResetExists > 0) {
-      if (!$(this).prev().hasClass('tutorial-step')) {
-        $(this).prev().addClass('w-100');
-      }
+    if (!$(this).prev().hasClass('tutorial-step')) {
+      $(this).prev().addClass('w-100');
+    }
 
-      if (!$(this).next().hasClass('tutorial-step')) {
-        $(this).next().addClass('w-100');
-      }
+    if (!$(this).next().hasClass('tutorial-step')) {
+      $(this).next().addClass('w-100');
     }
 
   });
