@@ -10,10 +10,7 @@
     }
   }
   .step-inner {
-    margin: 20px 20px 20px 60px;
-    @include large {
-      margin: 20px;
-    }
+    margin: 20px;
   }
   @include large {
     flex-basis: 265px;
@@ -31,37 +28,18 @@
     }
   }
   > h2 {
-    position: absolute;
-    background: $gray-dark;
-    margin: 0 20px;
-    left: -12px;
-    top: 20px;
-    border-radius: 25px;
-    padding: 0 10px;
+    padding: 0;
     color: $white;
     border-bottom: none;
-    span {
-      display: none;
-      border-bottom: none;
-      @include large {
-        display: inline;
-      }
-    }
-    @include large {
-      position: initial;
-      padding: 0;
-      left: inherit;
-      top: inherit;
-      &::after {
-        content: '';
-        position: absolute;
-        background: $gray-dark;
-        z-index: -1;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 38px;
-      }
+    &::after {
+      content: '';
+      position: absolute;
+      background: $gray-dark;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 38px;
     }
   }
 }
