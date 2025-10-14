@@ -365,7 +365,7 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
 
   [id="front-top-tutorials"],
   .block--front_top_tutorial_block,
-  div.block:has(>.text-long ul.top-services) {
+  div.block:has(>.text-long ul.top-tutorials) {
     grid-column: 1 / 17;
     grid-row: 3;
     border-bottom: 1px solid $gray-lighter;
@@ -380,7 +380,7 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
 
   [id="front-top-service-pages"],
   .block--views_block-top_pages_blocks-block_1,
-  div.block:has(>.text-long ul.top-tutorials) {
+  div.block:has(>.text-long ul.top-services) {
     grid-column: 1 / 17;
     grid-row: 1;
     border-bottom: 1px solid $gray-lighter;
@@ -401,7 +401,6 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
   .path-frontpage ul.top-tutorials {
     padding-left: 0;
     li {
-      padding-left: 0;
       margin-bottom: 0;
     }
   }
