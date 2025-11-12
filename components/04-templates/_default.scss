@@ -540,6 +540,13 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
             border-radius: 0.25rem;
             line-height: 1.2;
 
+            &:first-child {
+              margin-left: auto;
+            }
+            &:last-child {
+              margin-right: auto;
+            }
+
             &:hover {
               text-decoration: none;
               background-color: $gold;
@@ -577,13 +584,16 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
 
     [id='block-156'] {
       ul {
-        display: flex;
         list-style: none;
         width: 100%;
         border: 1px solid $gray-lighter;
         border-radius: 0.25rem;
-        justify-content: space-between;
+        box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
         padding: 0;
+        @include medium {
+          display: flex;
+          justify-content: space-between;
+        }
         li {
           position: relative;
           width: inherit;
@@ -591,16 +601,22 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
           padding: 0;
 
           button {
-            padding: 0 0 4.5rem 0;
+            display: flex;
             width: inherit;
             background: none;
             border: none;
             font-size: 1rem;
             font-weight: bold;
             color: $gray-dark;
-            display: flex;
-            flex-flow: column;
             align-items: center;
+            padding: 2rem 0;
+
+            @include medium {
+              flex-flow: column;
+              align-items: center;
+              padding: 0 0 4.5rem 0;
+              min-height: 185px;
+            }
 
             &::after {
               position: absolute;
@@ -609,22 +625,30 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
               background-size: 15px 15px;
               height: 15px;
               width: 15px;
+              right: 1rem;
               transform: rotate(180deg);
               transition: transform .5s;
-              bottom: 40px;
               @include reduced-motion {
                 transition: none;
+              }
+              @include medium {
+                bottom: 40px;
+                right: inherit;
               }
             }
 
             &.active::after {
-              transform: rotate(180deg);
+              transform: rotate(0deg);
             }
 
             img {
-              margin: 1.5rem 0;
               width: 35px;
               height: 35px;
+              margin-right: 1rem;
+              margin-left: 1rem;
+              @include medium {
+                margin: 1.5rem 0;
+              }
             }
 
             &:hover {
@@ -639,19 +663,22 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
           }
         }
         ul {
-          display: none;
-          position: absolute;
-          left: 0;
-          right: 0;
           border: none;
           width: auto;
           background: $white;
-          border: 1px solid $gray-lighter;
-          border-radius: 0.25rem;
+          border-bottom: 1px solid $gray-lighter;
           margin-bottom: 0.5rem;
           margin-top: 0.5rem;
           padding: 1rem;
           z-index: 20;
+
+          @include medium {
+            position: absolute;
+            left: 0;
+            right: 0;
+            border: 1px solid $gray-lighter;
+            border-radius: 0.25rem;
+          }
 
           li {
             &:not(:last-child) {
@@ -668,81 +695,113 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
       }
     }
 
+    [id='block-157'] {
+      padding-top: 5rem;
+      h2 {
+        border: none;
+      }
+    }
   }
 
-  .layout-wrap .layout--onecol:nth-child(2) .layout__region--content {
-    margin-top: 1rem;
+  .layout-wrap .layout--_by3 {
+      position: relative;
 
-    @include large {
-      grid-template-columns:repeat( 16, minmax(20px, 1fr) );
-    }
-
-    .block:not(.contextual-region):has(a):nth-child(3n-2) {
-      grid-column: 1 / 1;
-      @include large {
-        grid-column: 1 / 5;
+      &:before {
+        background: url('../images/oda-what-we-do-bg.svg') repeat-x left top;
+        background-size: 1950px 1550px;
+        content: "";
+        display: block;
+        position: absolute;
+        left: -50%;
+        right: -50%;
+        top: -160px;
+        bottom: -70px;
+        z-index: -1;
       }
-    }
-
-    .block:not(.contextual-region):has(a):nth-child(3n-1) {
-      grid-column: 1 / 1;
-      @include large {
-        grid-column: 6 / 11;
+      &:after {
+        background-color: #fefdfc;
+        content: "";
+        display: block;
+        position: absolute;
+        left: -50%;
+        right: -50%;
+        top: 50%;
+        bottom: -70px;
+        z-index: -2;
       }
-    }
 
-    .block:not(.contextual-region):has(a):nth-child(3n) {
-      grid-column: 1 / 1;
-      @include large {
-        grid-column: 12 / 17;
+    .layout__region--content {
+      margin-top: 1rem;
+
+      @include large{
+        grid-template-columns:repeat( 2, minmax(20px, 1fr) );
+        gap: 2rem;
       }
-    }
 
-    .block {
-      h2, h3 {
+      @include xl {
+        grid-template-columns:repeat( 3, minmax(20px, 1fr) );
+        gap: 2rem;
+      }
+
+      .block:not(.contextual-region) {
+        grid-column: 1 / 1;
+      }
+
+      @include large {
+        .block:not(.contextual-region):has(a):nth-child(2n-1) {
+          grid-column: 1 / 1;
+        }
+
+        .block:not(.contextual-region):has(a):nth-child(2n) {
+          grid-column: 2 / 2;
+        }
+      }
+
+      @include xl {
+        .block:not(.contextual-region):has(a):nth-child(3n-2) {
+            grid-column: 1 / 1;
+        }
+
+        .block:not(.contextual-region):has(a):nth-child(3n-1) {
+            grid-column: 2 / 2;
+        }
+
+        .block:not(.contextual-region):has(a):nth-child(3n) {
+            grid-column: 3 / 3;
+        }
+      }
+
+      .block {
         position: relative;
-        font-size: 1rem;
-        text-transform: uppercase;
-        text-align: center;
-        border: none;
-        margin-bottom: .75rem;
-        span {
-          border: none;
-        }
-        a[href] {
-          color: $gray-dark;
-          text-decoration: none;
-          &:after {
-            display:none;
-          }
-          &:hover {
-            color: $gray-light;
-          }
+        background-color: $white;
+        padding: 5rem 2rem 2rem 2rem;
+        box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
 
+        h2, h3 {
+          position: relative;
+          font-size: 1rem;
+          text-transform: uppercase;
+          border: none;
+          margin-bottom: .75rem;
+          span {
+            border: none;
+          }
         }
-        &:before {
-          display: block;
-          content: "";
-          height: 25px;
-          width: 100%;
-          margin-bottom: .5rem;
-          background: url('../images/icons/oda_front_wwd_title.svg') no-repeat center center;
+        &:has(a:hover) img {
+          width: 45px;
         }
-        &:after {
+        a:after {
+         background: none;
           content: "";
+          inset: 0;
+          pointer-events: auto;
           position: absolute;
-          transition: all .3s;
-          left: 42%;
-          right: 42%;
-          bottom: -.4rem;
-          height: 1px;
-          width: 16%;
-          border-bottom:4px solid $gold;
+          z-index: 10;
+          transform: none;
         }
-        &:has(a):hover:after {
-          left: 38%;
-          right: 38%;
-          width: 24%;
+        img {
+          position: absolute;
+          top: 25px;
         }
       }
     }
