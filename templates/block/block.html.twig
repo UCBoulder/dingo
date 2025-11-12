@@ -26,7 +26,11 @@
  */
 #}
 {% if content|render|trim is not empty %}
-	<div{{attributes}} {{ bem('block', plugin_id|replace({':': '-'} ) ) }} id="block-{{ block_id }}">
+  {% if block_id %}
+    <div{{attributes}} {{ bem('block', plugin_id|replace({':': '-'} ) ) }} id="block-{{ block_id }}">
+  {% else %}
+    <div {{ bem('block', plugin_id|replace({':': '-'}) ) }}>
+  {% endif %}
 		{{ title_prefix }}
 		{% if label %}
 			<h2{{title_attributes.addClass('h2')}}>{{ label }}</h2>

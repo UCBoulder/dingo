@@ -297,7 +297,6 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
   }
 
   // top section.
-  #hero-news-item,
   .block--views_block-news-block_3 {
     -ms-grid-column: 1;
     -ms-grid-column-span: 16;
@@ -345,9 +344,8 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
   }
 }
 
-  // Middle section.
-  [id="front-services-horizontal"],
-  .block--block_content-0791d438-609e-4a8d-b1a2-b3dcc5cac585{
+  // Middle section - services.
+  [id="block-48"] {
     margin: 20px 0;
     grid-column: 1 / 17;
     grid-row: 1;
@@ -372,9 +370,8 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
     }
   }
 
-  [id="front-top-tutorials"],
-  .block--front_top_tutorial_block,
-  div.block:has(>.text-long ul.top-tutorials) {
+  // Top Tutorials
+  [id="block-152"] {
     grid-column: 1 / 17;
     grid-row: 3;
     border-bottom: 1px solid $gray-lighter;
@@ -387,9 +384,8 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
     }
   }
 
-  [id="front-top-service-pages"],
-  .block--views_block-top_pages_blocks-block_1,
-  div.block:has(>.text-long ul.top-services) {
+  // Top services pages.
+  [id="block-153"] {
     grid-column: 1 / 17;
     grid-row: 1;
     border-bottom: 1px solid $gray-lighter;
@@ -589,12 +585,12 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
         justify-content: space-between;
         padding: 0;
         li {
+          position: relative;
           width: inherit;
           margin: 0;
           padding: 0;
 
           button {
-            position: relative;
             padding: 0 0 4.5rem 0;
             width: inherit;
             background: none;
@@ -621,6 +617,10 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
               }
             }
 
+            &.active::after {
+              transform: rotate(180deg);
+            }
+
             img {
               margin: 1.5rem 0;
               width: 35px;
@@ -640,6 +640,30 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
         }
         ul {
           display: none;
+          position: absolute;
+          left: 0;
+          right: 0;
+          border: none;
+          width: auto;
+          background: $white;
+          border: 1px solid $gray-lighter;
+          border-radius: 0.25rem;
+          margin-bottom: 0.5rem;
+          margin-top: 0.5rem;
+          padding: 1rem;
+          z-index: 20;
+
+          li {
+            &:not(:last-child) {
+              border-bottom: 1px solid $gray-lighter;
+              margin-bottom: 1rem;
+              padding-bottom: 1rem;
+            }
+            a {
+              display: block;
+              color: $black;
+            }
+          }
         }
       }
     }
