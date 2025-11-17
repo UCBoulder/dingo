@@ -558,9 +558,10 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
 
               &:first-child {
                 font-weight: bold;
+                font-size: 0.9rem;
               }
               &:last-child {
-                font-size: 0.8rem;
+                font-size: 0.7rem;
               }
             }
           }
@@ -590,10 +591,12 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
         border-radius: 0.25rem;
         box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
         padding: 0;
+
         @include medium {
           display: flex;
           justify-content: space-between;
         }
+
         li {
           position: relative;
           width: inherit;
@@ -776,6 +779,10 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
         background-color: $white;
         padding: 5rem 2rem 2rem 2rem;
         box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+
+        &:hover {
+          box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+        }
 
         h2, h3 {
           position: relative;

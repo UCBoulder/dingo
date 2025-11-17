@@ -134,3 +134,9 @@ a:has(span.truncate) {
   padding-right: 1.8em;
   background: url(../images/icons/oda_external.svg) top right no-repeat;
 }
+
+.oda-lock {
+  padding-right: 1em;
+  background: url(../images/icons/lock.svg) center right no-repeat;
+  background-size: 15px 15px;
+}
