@@ -587,14 +587,14 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
       ul {
         list-style: none;
         width: 100%;
-        border: 1px solid $gray-lighter;
         border-radius: 0.25rem;
-        box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
         padding: 0;
 
         @include medium {
           display: flex;
           justify-content: space-between;
+          box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+          border: 1px solid $gray-lighter;
         }
 
         li {
@@ -669,9 +669,6 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
           border: none;
           width: auto;
           background: $white;
-          border-bottom: 1px solid $gray-lighter;
-          margin-bottom: 0.5rem;
-          margin-top: 0.5rem;
           padding: 1rem;
           z-index: 20;
 
@@ -680,15 +677,23 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
             left: 0;
             right: 0;
             border: 1px solid $gray-lighter;
+            margin-bottom: 0.5rem;
+            margin-top: 0.5rem;
             border-radius: 0.25rem;
           }
 
           li {
-            &:not(:last-child) {
               border-bottom: 1px solid $gray-lighter;
               margin-bottom: 1rem;
               padding-bottom: 1rem;
-            }
+
+              @include medium {
+                &:last-child {
+                  border-bottom: none;
+                  margin-bottom: 0;
+                  padding-bottom: 0;
+                }
+              }
             a {
               display: block;
               color: $black;
