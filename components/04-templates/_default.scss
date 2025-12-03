@@ -461,23 +461,21 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
       flex-flow: column;
       position: relative;
 
-      @include xl {
+      @include large {
         flex-flow: inherit;
-
-        &:before {
-          position: absolute;
-          z-index: 0;
-          content: "";
-          right: -999em;
-          left: -999em;
-          top: 0;
-          height: 100%;
-          background-color: #000;
-        }
+        max-height: 400px;
       }
 
       div {
         z-index: 1;
+      }
+
+      img {
+        object-fit: cover;
+        object-position: center bottom;
+        @include large {
+          max-height: 400px;
+        }
       }
 
       .text-long {
@@ -490,7 +488,7 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
         border-top: 10px solid $gold;
         padding: 2rem 0;
 
-        @include xl {
+        @include large {
           border-top: none;
           order: 0;
 
