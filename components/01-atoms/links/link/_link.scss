@@ -121,6 +121,10 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+a:has(span.truncate) {
+  display: flex;
+}
+
 .oda-left-ext {
   padding-left: 1.8em;
   background: url(../images/icons/oda_external.svg) top left no-repeat;
