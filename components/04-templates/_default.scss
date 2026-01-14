@@ -515,7 +515,7 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
           border-bottom: none;
           text-align: center;
 
-          @include xl {
+          @include large {
             text-align: left;
           }
         }
@@ -652,7 +652,8 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
               }
             }
 
-            &:hover {
+            &:hover,
+            &.active {
               cursor: pointer;
               background-color: $gold;
               img {
@@ -857,7 +858,7 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
   }
 
   .layout__region--content {
-    & > div:has(img) {
+    & > div:has(img.border) {
       border: 1px solid $gray-lightest;
       margin-bottom: 2rem;
     }
