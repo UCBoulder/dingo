@@ -62,7 +62,7 @@
     "twig": "^1.17.0",
     "twig-drupal-filters": "^3.2.0",
     "twig-loader": "https://github.com/fourkitchens/twig-loader",
-    "webpack": "^5.89.0",
+    "webpack": "^5.104.1",
     "webpack-cli": "^5.1.4",
     "webpack-merge": "^5.10.0"
   },
