@@ -108,6 +108,30 @@ function dingo_preprocess_breadcrumb(&$variables) {
   }
 }
 
+/**
+ * Implements hook_preprocess_HOOK() for image_formatter.
+ *
+ * The `fn_large` image style is only used for top-of-page news hero images
+ * (the "Front Spotlight" block on the home page and the Data News hero),
+ * which are the LCP on those pages. Core's image formatter adds
+ * loading="lazy" and no fetchpriority, which Lighthouse flags as hurting
+ * LCP. Force eager loading and fetchpriority="high" for that style so the
+ * browser discovers and prioritizes the hero image immediately. Only the
+ * first fn_large image per request gets fetchpriority so we don't end up
+ * with competing high-priority fetches.
+ */
+function dingo_preprocess_image_formatter(array &$variables) {
+  if (($variables['image_style'] ?? '') !== 'fn_large') {
+    return;
+  }
+  $variables['image']['#attributes']['loading'] = 'eager';
+  static $fetchpriority_applied = FALSE;
+  if (!$fetchpriority_applied) {
+    $variables['image']['#attributes']['fetchpriority'] = 'high';
+    $fetchpriority_applied = TRUE;
+  }
+}
+
 function dingo_preprocess_facets_result_item(&$variables) {
   $facet = $variables['facet'];
   $term_id = $variables['raw_value'];
