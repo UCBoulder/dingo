@@ -82,9 +82,6 @@ $outer-container-break: $small;
   height: $size;
   margin: 4px 0 0 0;
   display: inline-flex;
-  @include ie {
-    display: none;
-  }
 }
 
 @mixin arrow-right(

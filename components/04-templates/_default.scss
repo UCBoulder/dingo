@@ -103,8 +103,6 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
 */
 
 .main {
-  @include wrapper;
-
   display: grid;
   display: -ms-grid;
   grid-gap: $gutter;
@@ -112,6 +110,8 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
   grid-template-columns:repeat( 16, 1fr );
   margin-top: 10px;
   margin-bottom: 4em;
+
+  @include wrapper;
 }
 
 .node {
@@ -478,12 +478,12 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
 
     .block:nth-child(3) {
       grid-column: 1 / 1;
-      @include large {
-        grid-column: 1 / 17;
-      }
       background: url('../images/oda_front_reports_bg.png') no-repeat center center;
       background-size: cover;
       padding: 2rem 0;
+      @include large {
+        grid-column: 1 / 17;
+      }
       .inner-content {
         background: rgba(207, 184, 124, 0.9);
         padding: 25px;

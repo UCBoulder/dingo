@@ -1,13 +1,9 @@
 /* eslint-disable no-underscore-dangle */
-const path = require('path');
 const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const _MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const _ImageminPlugin = require('imagemin-webpack-plugin').default;
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const _SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
-const { globSync } = require('glob');
-
-const imagePath = path.resolve(__dirname, '../images');
 
 const MiniCssExtractPlugin = new _MiniCssExtractPlugin({
   filename: 'style.css',
@@ -15,12 +11,22 @@ const MiniCssExtractPlugin = new _MiniCssExtractPlugin({
   ignoreOrder: true,
 });
 
-const ImageminPlugin = new _ImageminPlugin({
-  disable: process.env.NODE_ENV !== 'production',
-  externalImages: {
-    context: imagePath,
-    sources: globSync(path.resolve(imagePath, '**/*.{png,jpg,gif,svg}')),
-    destination: imagePath,
+// Replaces the unmaintained imagemin-webpack-plugin (which pulled in dozens of
+// vulnerable transitive deps). image-minimizer-webpack-plugin uses sharp to
+// compress raster images webpack emits. SVGs are skipped here so svg-sprite-
+// loader can extract its sprite without the minimizer mangling its asset.
+const ImageminPlugin = new ImageMinimizerPlugin({
+  test: /\.(jpe?g|png|gif)$/i,
+  minimizer: {
+    implementation: ImageMinimizerPlugin.sharpMinify,
+    options: {
+      encodeOptions: {
+        jpeg: { quality: 85 },
+        png: { compressionLevel: 9 },
+        webp: { quality: 85 },
+        gif: {},
+      },
+    },
   },
 });
 

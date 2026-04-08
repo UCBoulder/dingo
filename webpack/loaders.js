@@ -1,7 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
-const globImporter = require('sass-glob-importer');
-const nodeSassGlobImporter = require('node-sass-glob-importer');
 
 const JSLoader = {
   test: /^(?!.*\.(stories|component)\.js$).*\.js$/,
@@ -45,16 +43,22 @@ const CSSLoader = {
     {
       loader: 'sass-loader',
       options: {
+        api: 'modern',
         sourceMap: true,
         sassOptions: {
-          importer: [globImporter(), nodeSassGlobImporter()],
-          includePaths: [
+          loadPaths: [
             path.resolve(__dirname, '../node_modules'),
-            path.resolve(__dirname, '../components')
+            path.resolve(__dirname, '../components'),
           ],
-          outputStyle: 'compressed',
+          // Silence deprecations that require a full @use/@forward migration to fix
+          silenceDeprecations: ['import', 'global-builtin', 'color-functions'],
         },
       },
+    },
+    // Expands glob patterns in @import/@use (e.g. @import "00-base/**/*.scss")
+    // before Sass sees them, removing the need for legacy glob importers.
+    {
+      loader: 'glob-import-loader',
     },
   ],
 };

@@ -177,9 +177,9 @@ $color-heading: $gray-darker;
 }
 
 .h2 {
-  @include heading-large;
-
   border-bottom: 1px solid $gray-lightest;
+
+  @include heading-large;
   span {
     width: max-content;
     border-bottom: 4px solid $gray-light;

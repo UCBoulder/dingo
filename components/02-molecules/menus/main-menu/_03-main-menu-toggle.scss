@@ -1,15 +1,15 @@
 /* Toggle */
 .toggle-expand {
+  display: inline-block;
+  padding: $space;
+  text-decoration: none;
+  width: 100%;
+
   @include link;
 
   @include medium {
     display: none;
   }
-
-  display: inline-block;
-  padding: $space;
-  text-decoration: none;
-  width: 100%;
 
   /* See main-menu.js */
   &--open {
