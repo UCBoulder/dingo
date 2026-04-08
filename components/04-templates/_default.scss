@@ -103,6 +103,8 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
 */
 
 .main {
+  @include wrapper;
+
   display: grid;
   display: -ms-grid;
   grid-gap: $gutter;
@@ -111,7 +113,6 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
   margin-top: 10px;
   margin-bottom: 4em;
 
-  @include wrapper;
 }
 
 .node {
