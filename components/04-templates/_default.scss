@@ -32,6 +32,14 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
 // Allows the gray overflow to span the browser width.
 .layout-container {
   overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  align-content: start;
 }
 
 .section-gray {

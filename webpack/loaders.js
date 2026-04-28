@@ -51,7 +51,7 @@ const CSSLoader = {
             path.resolve(__dirname, '../components'),
           ],
           // Silence deprecations that require a full @use/@forward migration to fix
-          silenceDeprecations: ['import', 'global-builtin', 'color-functions'],
+          silenceDeprecations: ['import', 'global-builtin', 'color-functions', 'if-function'],
         },
       },
     },
