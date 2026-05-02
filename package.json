@@ -19,7 +19,7 @@
     "@babel/core": "^7.29.0",
     "@babel/preset-env": "^7.29.2",
     "@storybook/addon-a11y": "^7.6.20",
-    "@storybook/addon-actions": "^7.6.20",
+    "@storybook/addon-actions": "^9.0.8",
     "@storybook/addon-links": "^7.6.20",
     "@storybook/addons": "^7.6.20",
     "@storybook/react": "^7.6.20",
