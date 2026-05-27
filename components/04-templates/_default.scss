@@ -297,7 +297,6 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
   }
 
   // top section.
-  #hero-news-item,
   .block--views_block-news-block_3 {
     -ms-grid-column: 1;
     -ms-grid-column-span: 16;
@@ -345,9 +344,8 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
   }
 }
 
-  // Middle section.
-  [id="front-services-horizontal"],
-  .block--block_content-0791d438-609e-4a8d-b1a2-b3dcc5cac585{
+  // Middle section - services.
+  [id="block-48"] {
     margin: 20px 0;
     grid-column: 1 / 17;
     grid-row: 1;
@@ -372,9 +370,8 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
     }
   }
 
-  [id="front-top-tutorials"],
-  .block--front_top_tutorial_block,
-  div.block:has(>.text-long ul.top-tutorials) {
+  // Top Tutorials
+  [id="block-152"] {
     grid-column: 1 / 17;
     grid-row: 3;
     border-bottom: 1px solid $gray-lighter;
@@ -387,9 +384,8 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
     }
   }
 
-  [id="front-top-service-pages"],
-  .block--views_block-top_pages_blocks-block_1,
-  div.block:has(>.text-long ul.top-services) {
+  // Top services pages.
+  [id="block-153"] {
     grid-column: 1 / 17;
     grid-row: 1;
     border-bottom: 1px solid $gray-lighter;
@@ -455,143 +451,368 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
       margin-bottom: 1rem;
     }
 
-    @include large {
-      grid-template-columns:repeat( 16, minmax(20px, 1fr) );
-    }
   }
 
-  .layout-wrap .layout--onecol:nth-child(1) .layout__region--content {
+  .layout-wrap .layout--top .layout__region--content {
 
-    .block:first-child {
+    [id='block-155'] {
       grid-column: 1 / 1;
+      display: flex;
+      flex-flow: column;
+      position: relative;
+
       @include large {
-        grid-column: 1 / 12;
+        flex-flow: inherit;
+        max-height: 400px;
       }
+
+      div {
+        z-index: 1;
+      }
+
+      img {
+        object-fit: cover;
+        object-position: center bottom;
+        @include large {
+          max-height: 400px;
+        }
+      }
+
+      .text-long {
+        position: relative;
+        display: flex;
+        background: $black;
+        color: $white;
+        z-index: auto;
+        order: 2;
+        border-top: 10px solid $gold;
+        padding: 2rem 0;
+
+        @include large {
+          border-top: none;
+          order: 0;
+
+          &:after,
+          &:before {
+            position: absolute;
+            z-index: 2;
+            content: "";
+            right: -13%;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            border-right: 10px solid $gold;
+            background-color: inherit;
+            transform: skewX(-10deg);
+          }
+          &:before {
+            right: -16%;
+            border-right: none;
+          }
+        }
+        h2 {
+          color: $white;
+          border-bottom: none;
+          text-align: center;
+
+          @include large {
+            text-align: left;
+          }
+        }
+        .text-content {
+          z-index: 3;
+          padding: 0 2rem;
+          align-self: center;
+        }
+
+        .links {
+          display: flex;
+
+          a {
+            display: block;
+            background: $white;
+            width: fit-content;
+            background: url('../images/icons/oda_factbook.svg') no-repeat 0.25rem center, $white;
+            padding: 0.5rem 0.75rem;
+            padding-left: 2.75rem;
+            border-radius: 0.25rem;
+            line-height: 1.2;
+
+            &:first-child {
+              margin-left: auto;
+            }
+            &:last-child {
+              margin-right: auto;
+            }
+
+            &:hover {
+              text-decoration: none;
+              background-color: $gold;
+            }
+
+            span {
+              display: block;
+              color: $black;
+
+              &:first-child {
+                font-weight: bold;
+                font-size: 0.9rem;
+              }
+              &:last-child {
+                font-size: 0.7rem;
+              }
+            }
+          }
+
+          a:last-child {
+            background: url('../images/icons/oda_report_button.svg') no-repeat 0.25rem center, $white;
+            margin-left: 1rem;
+            &:hover {
+              background-color: $gold;
+            }
+          }
+        }
+      }
+
+      div:last-child {
+        max-height: 550px;
+        overflow: hidden;
+      }
+
     }
 
-    .block:nth-child(2) {
-      grid-column: 1 / 1;
-      @include large {
-        grid-column: 13 / 17;
-      }
+    [id='block-156'] {
       ul {
         list-style: none;
+        width: 100%;
+        border-radius: 0.25rem;
         padding: 0;
+
+        @include medium {
+          display: flex;
+          justify-content: space-between;
+          box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+          border: 1px solid $gray-lighter;
+        }
+
         li {
-          border-bottom: 1px solid $gray-lightest;
-          margin-bottom: .35rem;
-          padding-bottom: .5rem;
+          position: relative;
+          width: inherit;
+          margin: 0;
+          padding: 0;
+
+          button {
+            display: flex;
+            width: inherit;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            font-weight: bold;
+            color: $gray-dark;
+            align-items: center;
+            padding: 2rem 0;
+
+            @include medium {
+              flex-flow: column;
+              align-items: center;
+              padding: 0 0 4.5rem 0;
+              min-height: 185px;
+            }
+
+            &::after {
+              position: absolute;
+              content: "";
+              background: top right url("../images/tojibbers-bl.svg") no-repeat;
+              background-size: 15px 15px;
+              height: 15px;
+              width: 15px;
+              right: 1rem;
+              transform: rotate(180deg);
+              transition: transform .5s;
+              @include reduced-motion {
+                transition: none;
+              }
+              @include medium {
+                bottom: 40px;
+                right: inherit;
+              }
+            }
+
+            &.active::after {
+              transform: rotate(0deg);
+            }
+
+            img {
+              width: 35px;
+              height: 35px;
+              margin-right: 1rem;
+              margin-left: 1rem;
+              @include medium {
+                margin: 1.5rem 0;
+              }
+            }
+
+            &:hover,
+            &.active {
+              cursor: pointer;
+              background-color: $gold;
+              img {
+                // Turn icon black on hover
+                filter: brightness(0) saturate(100%) invert(11%) sepia(4%) saturate(7493%) hue-rotate(1deg) brightness(95%) contrast(107%);
+              }
+            }
+
+          }
+        }
+        ul {
+          border: none;
+          width: auto;
+          background: $white;
+          padding: 1rem;
+          z-index: 20;
+
+          @include medium {
+            position: absolute;
+            left: 0;
+            right: 0;
+            border: 1px solid $gray-lighter;
+            margin-bottom: 0.5rem;
+            margin-top: 0.5rem;
+            border-radius: 0.25rem;
+          }
+
+          li {
+              border-bottom: 1px solid $gray-lighter;
+              margin-bottom: 1rem;
+              padding-bottom: 1rem;
+
+              @include medium {
+                &:last-child {
+                  border-bottom: none;
+                  margin-bottom: 0;
+                  padding-bottom: 0;
+                }
+              }
+            a {
+              display: block;
+              color: $black;
+            }
+          }
         }
       }
     }
 
-    .block:nth-child(3) {
-      grid-column: 1 / 1;
-      background: url('../images/oda_front_reports_bg.png') no-repeat center center;
-      background-size: cover;
-      padding: 2rem 0;
-      @include large {
-        grid-column: 1 / 17;
+    [id='block-157'] {
+      padding-top: 5rem;
+      h2 {
+        border: none;
       }
-      .inner-content {
-        background: rgba(207, 184, 124, 0.9);
-        padding: 25px;
-        width: 75%;
-        border-radius: 5px;
-        h2 {
-          color: $black;
-          border-bottom: 1px solid $black;
+    }
+  }
+
+  .layout-wrap .layout--_by3 {
+      position: relative;
+
+      &:before {
+        background: url('../images/oda-what-we-do-bg.svg') repeat-x left top;
+        background-size: 1950px 1550px;
+        content: "";
+        display: block;
+        position: absolute;
+        left: -99999em;
+        right: -99999em;
+        top: -160px;
+        bottom: -70px;
+        z-index: -1;
+      }
+      &:after {
+        background-color: #fefdfc;
+        content: "";
+        display: block;
+        position: absolute;
+        left: -50%;
+        right: -50%;
+        top: 50%;
+        bottom: -70px;
+        z-index: -2;
+      }
+
+    .layout__region--content {
+      margin-top: 1rem;
+
+      @include large{
+        grid-template-columns:repeat( 2, minmax(20px, 1fr) );
+        gap: 2rem;
+      }
+
+      @include xl {
+        grid-template-columns:repeat( 3, minmax(20px, 1fr) );
+        gap: 2rem;
+      }
+
+      .block:not(.contextual-region) {
+        grid-column: 1 / 1;
+      }
+
+      @include large {
+        .block:not(.contextual-region):has(a):nth-child(2n-1) {
+          grid-column: 1 / 1;
+        }
+
+        .block:not(.contextual-region):has(a):nth-child(2n) {
+          grid-column: 2 / 2;
+        }
+      }
+
+      @include xl {
+        .block:not(.contextual-region):has(a):nth-child(3n-2) {
+            grid-column: 1 / 1;
+        }
+
+        .block:not(.contextual-region):has(a):nth-child(3n-1) {
+            grid-column: 2 / 2;
+        }
+
+        .block:not(.contextual-region):has(a):nth-child(3n) {
+            grid-column: 3 / 3;
+        }
+      }
+
+      .block {
+        position: relative;
+        background-color: $white;
+        padding: 5rem 2rem 2rem 2rem;
+        box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+
+        &:hover {
+          box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+        }
+
+        h2, h3 {
+          position: relative;
+          font-size: 1rem;
+          text-transform: uppercase;
+          border: none;
+          margin-bottom: .75rem;
           span {
             border: none;
           }
         }
-        a.button-black:before {
-          @include data_secure_left;
+        &:has(a:hover) img {
+          width: 45px;
         }
-        a.button-black:hover:before {
-          background-color: $black;
-        }
-      }
-    }
-
-    .block:nth-child(4) {
-      grid-column: 1 / 1;
-      @include large {
-        grid-column: 1 / 17;
-      }
-    }
-
-  }
-
-  .layout-wrap .layout--onecol:nth-child(2) .layout__region--content {
-    margin-top: 1rem;
-
-    .block:not(.contextual-region):has(a):nth-child(3n-2) {
-      grid-column: 1 / 1;
-      @include large {
-        grid-column: 1 / 5;
-      }
-    }
-
-    .block:not(.contextual-region):has(a):nth-child(3n-1) {
-      grid-column: 1 / 1;
-      @include large {
-        grid-column: 6 / 11;
-      }
-    }
-
-    .block:not(.contextual-region):has(a):nth-child(3n) {
-      grid-column: 1 / 1;
-      @include large {
-        grid-column: 12 / 17;
-      }
-    }
-
-    .block {
-      h2, h3 {
-        position: relative;
-        font-size: 1rem;
-        text-transform: uppercase;
-        text-align: center;
-        border: none;
-        margin-bottom: .75rem;
-        span {
-          border: none;
-        }
-        a[href] {
-          color: $gray-dark;
-          text-decoration: none;
-          &:after {
-            display:none;
-          }
-          &:hover {
-            color: $gray-light;
-          }
-
-        }
-        &:before {
-          display: block;
+        a:after {
+         background: none;
           content: "";
-          height: 25px;
-          width: 100%;
-          margin-bottom: .5rem;
-          background: url('../images/icons/oda_front_wwd_title.svg') no-repeat center center;
-        }
-        &:after {
-          content: "";
+          inset: 0;
+          pointer-events: auto;
           position: absolute;
-          transition: all .3s;
-          left: 42%;
-          right: 42%;
-          bottom: -.4rem;
-          height: 1px;
-          width: 16%;
-          border-bottom:4px solid $gold;
+          z-index: 10;
+          transform: none;
         }
-        &:has(a):hover:after {
-          left: 38%;
-          right: 38%;
-          width: 24%;
+        img {
+          position: absolute;
+          top: 25px;
         }
       }
     }
@@ -637,7 +858,7 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
   }
 
   .layout__region--content {
-    & > div:has(img) {
+    & > div:has(img.border) {
       border: 1px solid $gray-lightest;
       margin-bottom: 2rem;
     }

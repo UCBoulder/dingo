@@ -132,6 +132,18 @@ function dingo_preprocess_image_formatter(array &$variables) {
   }
 }
 
+/**
+ * Implements hook_preprocess_block().
+ */
+function dingo_preprocess_block(&$variables) {
+  // Add block id to template variables.
+  if (array_key_exists('#block_content', $variables['content'])) {
+    if ($variables['content']['#block_content']->id) {
+      $variables['block_id'] = $variables['content']['#block_content']->id->value;
+    }
+  }
+}
+
 function dingo_preprocess_facets_result_item(&$variables) {
   $facet = $variables['facet'];
   $term_id = $variables['raw_value'];

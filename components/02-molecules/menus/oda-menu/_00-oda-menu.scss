@@ -43,6 +43,7 @@
           padding: .8em 1.2em;
           border-top: 4px solid $white;
           border-bottom: 4px solid $white;
+          height: 55px;
           &:hover {
             border-bottom: 4px solid $gray-light;
           }
@@ -51,7 +52,6 @@
 
       li:first-child {
         a {
-          height: 50px;
           width: 20px;
           background-image: url(../images/icons/home.svg);
           font-size: 0;
