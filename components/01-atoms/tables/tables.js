@@ -11,12 +11,38 @@ function addMobileTableData(int) {
       if (j === thCollection.length) {
         continue;
       }
-      if (thCollection[j].hasAttribute('data-header-text')) {
-        var headerLabel = thCollection[j].getAttribute('data-header-text');
-      } else {
-        var headerLabel = thCollection[j].innerHTML;
-      }
-      tdCollection[j].setAttribute('data-label', headerLabel);
+
+      // Remove existing mobile header spans to avoid duplication on re-runs.
+      tdCollection[j].querySelectorAll('.table__mobile-header, .table__mobile-header-label').forEach(function(el) {
+        el.remove();
+      });
+
+      // Plain-text label used by screen readers and as a fallback.
+      var plainLabel = thCollection[j].hasAttribute('data-header-text')
+        ? thCollection[j].getAttribute('data-header-text')
+        : thCollection[j].textContent.trim();
+
+      // Visual span: cloned header HTML, hidden from screen readers.
+      var visualSpan = document.createElement('span');
+      visualSpan.classList.add('table__mobile-header');
+      visualSpan.setAttribute('aria-hidden', 'true');
+      visualSpan.innerHTML = thCollection[j].innerHTML;
+      // Remove cloned IDs to prevent duplicate IDs in the document.
+      visualSpan.querySelectorAll('[id]').forEach(function(el) {
+        el.removeAttribute('id');
+      });
+      // Prevent cloned interactive elements from receiving focus or clicks.
+      visualSpan.querySelectorAll('a, button, input, select, textarea, [tabindex]').forEach(function(el) {
+        el.setAttribute('tabindex', '-1');
+      });
+
+      // Screen reader span: plain text only, visually hidden.
+      var srSpan = document.createElement('span');
+      srSpan.classList.add('table__mobile-header-label', 'visually-hidden');
+      srSpan.textContent = plainLabel;
+
+      tdCollection[j].prepend(srSpan);
+      tdCollection[j].prepend(visualSpan);
     }
   }
 };

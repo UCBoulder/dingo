@@ -35,6 +35,9 @@ thead {
     color: $white;
     text-decoration: underline;
     text-underline-offset: 4px;
+    &:hover {
+      color: $gray-lightest;
+    }
   }
   .main & a svg.ext path {
     stroke: $white;
@@ -67,6 +70,12 @@ thead {
   border-top: 1px solid $gray-dark;
 }
 
+// Mobile header spans are injected by JS; hide on desktop so real thead is the only source.
+.table__mobile-header,
+.table__mobile-header-label {
+  display: none;
+}
+
 @media only screen and (max-width: 920px) {
   .table {
     display: block;
@@ -97,11 +106,17 @@ thead {
   .table__cell {
     display: block;
     border: none;
-    &::before {
-      display: block;
-      content: attr(data-label);
-      font-weight: bold;
-    }
+  }
+
+  // Visual HTML header label for sighted users; hidden from screen readers via aria-hidden.
+  .table__mobile-header {
+    display: block;
+    font-weight: bold;
+  }
+
+  // Plain-text header label for screen readers; visually hidden via .visually-hidden class.
+  .table__mobile-header-label {
+    display: block;
   }
 
   .table__row {
