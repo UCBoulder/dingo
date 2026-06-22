@@ -404,9 +404,12 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
 
   .path-frontpage ul.top-services,
   .path-frontpage ul.top-tutorials {
-    padding-left: 0;
+    padding-left: 1rem;
     li {
       margin-bottom: 0;
+    }
+    @include large {
+      padding-left: 0;
     }
   }
 
