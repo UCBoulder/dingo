@@ -16,7 +16,7 @@
     "node": ">=18"
   },
   "dependencies": {
-    "@babel/core": "^7.29.0",
+    "@babel/core": "^7.29.6",
     "@babel/preset-env": "^7.29.2",
     "@storybook/addon-a11y": "^7.6.20",
     "@storybook/addon-actions": "^7.6.20",
