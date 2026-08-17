@@ -1,13 +1,16 @@
 name: (A) Create Release
 on:
+  workflow_dispatch:
   push:
     branches:
-      - '*'
+      - '**'
+      - '!main'
 permissions:
   contents: write
 jobs:
   release:
     name: Tag code
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '#release')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6.0.2
@@ -20,32 +23,63 @@ jobs:
       - name: Create/push release
         run: |
           # Prep Git
-          git remote set-url origin https://$username:$GITHUB_TOKEN@github.com/UCBoulder/dingo.git
+          git remote set-url origin ******github.com/UCBoulder/dingo.git
           git config --global user.email "$email"
           git config --global user.name "$username"
 
           # Fetch all tags and branches
           git fetch --tags --force
 
-          # Determine current version and next version
-          echo "Determining latest version..."
-          git tag -l | sort -V
-          current_version=$(git tag -l | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -1)
-          echo "Current version: $current_version"
-
-          # If no version tag exists, start with 1.0.0
-          if [ -z "$current_version" ]; then
-            current_version="1.0.0"
-            echo "No version tag found. Starting with $current_version"
+          # Skip the main branch entirely
+          branch="$GITHUB_REF_NAME"
+          if [ "$branch" = "main" ]; then
+            echo "Skipping release: 'main' branch is not used for releases."
+            exit 0
           fi
+          echo "Branch: $branch"
 
-          # Calculate next version
-          next_version=$(echo ${current_version} | awk -F. -v OFS=. '{$NF += 1 ; print}')
+          # Determine the next release tag based on the branch type
+          if echo "$branch" | grep -Eq '^[0-9]+\.[0-9]+\.x$'; then
+            # Release branch (e.g. 2.0.x -> 2.0.53, 2.0.54, ...)
+            prefix="${branch%x}"                       # e.g. "2.0."
+            escaped_prefix=$(echo "$prefix" | sed 's/\./\\./g')
+            echo "Release branch detected. Version prefix: $prefix"
+
+            current_version=$(git tag -l | grep -E "^${escaped_prefix}[0-9]+$" | sort -V | tail -1)
+            echo "Current version: ${current_version:-none}"
+
+            if [ -z "$current_version" ]; then
+              next_version="${prefix}0"
+              echo "No matching version tag found. Starting with $next_version"
+            else
+              next_version=$(echo "$current_version" | awk -F. -v OFS=. '{$NF += 1 ; print}')
+            fi
+          else
+            # Development branch (e.g. md-123 -> md-123-1.0, md-123-1.1, ...)
+            safe_branch=$(echo "$branch" | tr '/' '-')
+            escaped_branch=$(echo "$safe_branch" | sed 's/[.[\*^$]/\\&/g')
+            echo "Development branch detected. Tag prefix: ${safe_branch}-1."
+
+            current_version=$(git tag -l | grep -E "^${escaped_branch}-1\.[0-9]+$" | sort -V | tail -1)
+            echo "Current version: ${current_version:-none}"
+
+            if [ -z "$current_version" ]; then
+              next_version="${safe_branch}-1.0"
+              echo "No matching version tag found. Starting with $next_version"
+            else
+              minor=$(echo "$current_version" | sed -E 's/.*\.([0-9]+)$/\1/')
+              next_version="${safe_branch}-1.$((minor + 1))"
+            fi
+          fi
           echo "Next version will be: $next_version"
 
           # Get current and latest commit hashes
           current_sha=$(git rev-parse --short HEAD)
-          latest_tag_sha=$(git rev-list -n 1 $current_version 2>/dev/null || echo "none")
+          if [ -n "$current_version" ]; then
+            latest_tag_sha=$(git rev-list -n 1 "$current_version" 2>/dev/null || echo "none")
+          else
+            latest_tag_sha="none"
+          fi
 
           # Check if a release for next version already exists
           if git tag | grep -q "^$next_version$"; then
@@ -87,7 +121,6 @@ jobs:
           rm -fR /tmp/dingo
           rm -f /tmp/dingo-*.zip
         env:
-          set_version: ${{ github.event.inputs.version }}
           username: ${{ secrets.GIT_USER }}
           email: ${{ secrets.GIT_EMAIL }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
