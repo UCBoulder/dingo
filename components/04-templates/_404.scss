@@ -1,0 +1,167 @@
+// Custom 404 page styling (ported from the "404_css" asset injector).
+// Scoped under #containAll404 so the generic .button / .flex helpers do not
+// leak site-wide. Markup is rendered by \Drupal\oit\Controller\OitController.
+#containAll404 {
+  min-height: 550px;
+
+  #mainbox-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 375px;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    font-family: "Roboto Condensed";
+  }
+
+  .mainbox {
+    box-sizing: border-box;
+    position: relative;
+    width: 350px;
+    height: 350px;
+
+    &:after {
+      position: absolute;
+      content: '';
+      width: 35px;
+      height: 35px;
+      background: url('/modules/custom/oit/images/404/wheel-arrow.png') no-repeat;
+      background-size: 35px;
+      right: -7px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+    }
+  }
+
+  .box {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 50%;
+    border: 10px solid #fff;
+    overflow: hidden;
+    transition: all ease 3s;
+    box-sizing: border-box;
+    z-index: -1;
+    background: url('/modules/custom/oit/images/404/inner_wheel.png') no-repeat;
+    background-size: contain;
+  }
+
+  .wheel-check {
+    position: absolute;
+    background-color: #000;
+    top: 50%;
+    right: 15px;
+    height: 5px;
+    width: 5px;
+  }
+
+  .spin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 4px solid #424242;
+    background-color: #000;
+    color: #fff;
+    box-shadow: 0 5px 20px #000;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 0;
+    font-family: "Roboto Condensed";
+
+    &:active {
+      width: 50px;
+      height: 50px;
+      font-size: 16px;
+    }
+  }
+
+  .spin-outer {
+    width: 350px;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+  }
+
+  #prize {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+
+  #prize,
+  #buff404 h3 {
+    margin: 20px auto;
+    font: 700 1.5em "Roboto Condensed";
+    text-align: center;
+  }
+
+  #show-host {
+    text-align: center;
+
+    img {
+      max-width: 100%;
+      top: 30px;
+      max-height: 350px;
+      position: relative;
+      display: inline-block;
+    }
+  }
+
+  #buff404 {
+    max-width: 775px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 0;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .spin-contain {
+    margin-top: 25px !important;
+  }
+
+  .flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: flex-start;
+    margin: 0 auto;
+    max-width: 775px;
+    z-index: 1;
+    position: relative;
+  }
+
+  .flex-one-half {
+    width: 50%;
+    flex-basis: 350px;
+    flex-grow: 1;
+    flex-shrink: 0;
+    padding: 0 8px;
+    margin: 0 0 16px 0;
+  }
+
+  .flex-one-third {
+    width: 33%;
+    flex-basis: 240px;
+    flex-grow: 1;
+    flex-shrink: 0;
+    padding: 0 8px;
+    margin: 0 0 16px 0;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+}
