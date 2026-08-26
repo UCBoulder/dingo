@@ -23,7 +23,7 @@ jobs:
       - name: Create/push release
         run: |
           # Prep Git
-          git remote set-url origin ******github.com/UCBoulder/dingo.git
+          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/UCBoulder/dingo.git"
           git config --global user.email "$email"
           git config --global user.name "$username"
 
