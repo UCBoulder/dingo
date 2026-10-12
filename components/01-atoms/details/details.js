@@ -28,18 +28,9 @@
         let typeInterval = 400;
         let searchInput = document.getElementById('searchbox');
 
-        searchInput.addEventListener('keyup', () => {
+        searchInput.addEventListener('input', () => {
           clearTimeout(typingTimer);
           typingTimer = setTimeout(liveSearch, typeInterval);
-        });
-
-        //Add clear on X click
-        $("#searchbox" ).on( "click", function() {
-          setTimeout(function (){
-            if (searchInput.value.trim().length === 0) {
-              $('details').removeClass('hidden');
-            }
-          }, 200);
         });
       }
       // Add Open All / Collapse All buttons
