@@ -1,58 +1,81 @@
-(function($, Drupal) {
+(function () {
+  'use strict';
 
-  "use strict";
+  const mainDetails = document.querySelectorAll('.main-content details');
+  const detailsSearch = Array.from(mainDetails).some((el) =>
+    el.classList.contains('details-search'),
+  );
+  const controlsHere = document.querySelector('div.deets-controls-here');
 
-    const dtn = $( ".main-content details" ).length;
-    const detailsSearch = $( ".main-content details" ).hasClass("details-search");
+  function detailsControls(placement) {
+    // Add Search Box to details if class is present
+    if (detailsSearch) {
+      placement.insertAdjacentHTML(
+        'beforebegin',
+        '<input type="search" id="searchbox" placeholder="Search">',
+      );
 
-    function detailsControls(placement) {
-      // Add Search Box to details if class is present
-      if (detailsSearch) {
-        $(placement).before('<input type="search" id="searchbox" placeholder="Search">');
-        //Search Functionality
-        let cards = document.querySelectorAll('details');
+      const cards = document.querySelectorAll('details');
+      const searchInput = document.getElementById('searchbox');
+      const typeInterval = 400;
+      let typingTimer;
 
-        function liveSearch() {
-          let search_query = document.getElementById("searchbox").value;
-          for (var i = 0; i < cards.length; i++) {
-            if(cards[i].textContent.toLowerCase()
-              .includes(search_query.toLowerCase())) {
-              cards[i].classList.remove("hidden");
-            } else {
-              cards[i].classList.add("hidden");
-            }
-          }
-        }
-
-        let typingTimer;
-        let typeInterval = 400;
-        let searchInput = document.getElementById('searchbox');
-
-        searchInput.addEventListener('input', () => {
-          clearTimeout(typingTimer);
-          typingTimer = setTimeout(liveSearch, typeInterval);
+      function liveSearch() {
+        const query = searchInput.value.toLowerCase();
+        cards.forEach((card) => {
+          card.classList.toggle(
+            'hidden',
+            !card.textContent.toLowerCase().includes(query),
+          );
         });
       }
-      // Add Open All / Collapse All buttons
-      $(placement).before('<div class="detail-control"><button class="button-internal open-deets">Open All</button> <button class="button-internal button-internal--active close-deets">Collapse All</button></div>');
+
+      searchInput.addEventListener('input', () => {
+        clearTimeout(typingTimer);
+        typingTimer = setTimeout(liveSearch, typeInterval);
+      });
     }
 
-    if ( dtn > 2 && !$('details').hasClass("no-deets-controls") && !$('div').hasClass("deets-controls-here") ) {
-      detailsControls('.main-content details:first');
-    }
+    // Add Open All / Collapse All buttons
+    placement.insertAdjacentHTML(
+      'beforebegin',
+      '<div class="detail-control"><button class="button-internal open-deets">Open All</button> <button class="button-internal button-internal--active close-deets">Collapse All</button></div>',
+    );
+  }
 
-    if ( $('div').hasClass("deets-controls-here") ) {
-      detailsControls(".deets-controls-here");
-    }
+  if (
+    mainDetails.length > 2 &&
+    !document.querySelector('details.no-deets-controls') &&
+    !controlsHere
+  ) {
+    detailsControls(mainDetails[0]);
+  }
 
-    $('button.open-deets').click(function() {
-      $('details').attr('open', '');
+  if (controlsHere) {
+    detailsControls(controlsHere);
+  }
+
+  document.querySelectorAll('button.open-deets').forEach((button) => {
+    button.addEventListener('click', () => {
+      document.querySelectorAll('details').forEach((el) => {
+        el.open = true;
+      });
     });
+  });
 
-    $('button.close-deets').click(function() {
-      $('details').removeAttr('open');
+  document.querySelectorAll('button.close-deets').forEach((button) => {
+    button.addEventListener('click', () => {
+      document.querySelectorAll('details').forEach((el) => {
+        el.open = false;
+      });
     });
+  });
 
-    $('html:has(main .view-facets) .views-exposed-form details').attr('open', 'open');
-
-})(jQuery, Drupal);
+  if (document.querySelector('main .view-facets')) {
+    document
+      .querySelectorAll('.views-exposed-form details')
+      .forEach((el) => {
+        el.open = true;
+      });
+  }
+})();
