@@ -9,6 +9,10 @@ form[id='views-exposed-form-oda-data-page-1'] {
     position: absolute;
     top: 7px;
     right: 7px;
+
+    input {
+      box-shadow: none;
+    }
   }
 
   input[type='submit'] {

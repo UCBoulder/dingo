@@ -145,6 +145,10 @@
         padding: 1em;
       }
 
+      .form-actions {
+        top: 20px;
+      }
+
       .views-exposed-form {
         position: sticky;
         width: fit-content;
@@ -164,6 +168,7 @@
       display: block;
       position: absolute;
       right: 0;
+      top: -40px;
 
       @include large {
         display: none;

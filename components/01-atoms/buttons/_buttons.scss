@@ -334,6 +334,7 @@ input[value='Search'] {
   &:hover {
     background-color: inherit;
     opacity: 0.6;
+    border: inherit;
   }
   @include small {
     height: 20px;
