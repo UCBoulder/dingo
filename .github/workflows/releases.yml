@@ -41,6 +41,7 @@ jobs:
           # Determine the next release tag based on the branch type
           if echo "$branch" | grep -Eq '^[0-9]+\.[0-9]+\.x$'; then
             # Release branch (e.g. 2.0.x -> 2.0.53, 2.0.54, ...)
+            release_flags=""
             prefix="${branch%x}"                       # e.g. "2.0."
             escaped_prefix=$(echo "$prefix" | sed 's/\./\\./g')
             echo "Release branch detected. Version prefix: $prefix"
@@ -56,6 +57,7 @@ jobs:
             fi
           else
             # Development branch (e.g. md-123 -> md-123-1.0, md-123-1.1, ...)
+            release_flags="--prerelease --latest=false"
             safe_branch=$(echo "$branch" | tr '/' '-')
             escaped_branch=$(echo "$safe_branch" | sed 's/[.[\*^$]/\\&/g')
             echo "Development branch detected. Tag prefix: ${safe_branch}-1."
@@ -115,7 +117,7 @@ jobs:
 
           # Create release with exact version number as title
           echo "Creating release $next_version..."
-          gh release create $next_version "/tmp/dingo-$next_version.zip#Dingo Built Theme" -F release.md --title "$next_version"
+          gh release create $next_version "/tmp/dingo-$next_version.zip#Dingo Built Theme" -F release.md --title "$next_version" $release_flags
 
           # Clean up
           rm -fR /tmp/dingo
@@ -124,3 +126,15 @@ jobs:
           username: ${{ secrets.GIT_USER }}
           email: ${{ secrets.GIT_EMAIL }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Notify Composer repository
+        continue-on-error: true
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "COMPOSER_REPO_DISPATCH_TOKEN not set; skipping Composer repository rebuild."
+            exit 0
+          fi
+          gh api "repos/UCBoulder/oit_composer/dispatches" -f event_type=package-released -f "client_payload[repository]=$repo"
+        env:
+          GH_TOKEN: ${{ secrets.COMPOSER_REPO_DISPATCH_TOKEN }}
+          repo: ${{ github.repository }}
