@@ -16,6 +16,10 @@ body {
   @include body-copy;
 }
 
+body:has(aside.top-bar) {
+  padding-top: var(--admin-toolbar-top-bar-height);
+}
+
 .margin-center {
   margin: 0 auto;
 }
